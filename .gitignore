@@ -1,6 +1,7 @@
 # ====================================================================
 # Global / Monorepo Tooling (Applies everywhere)
 # ====================================================================
+.env
 .DS_Store
 Thumbs.db
 .idea/
@@ -65,6 +66,9 @@ snaptrack/backend/postgres-data/
 # Testing
 snaptrack/backend/coverage/
 snaptrack/backend/.nyc_output/
+
+# Prisma
+snaptrack/backend/src/generated/prisma
 
 # ====================================================================
 # App: snaptrack/frontend (Next.js, Tailwind, Vercel)
