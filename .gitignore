@@ -1,5 +1,5 @@
 # ====================================================================
-# Root / Global Tooling
+# Global / Monorepo Tooling (Applies everywhere)
 # ====================================================================
 .DS_Store
 Thumbs.db
@@ -10,31 +10,40 @@ Thumbs.db
 *.njsproj
 *.sln
 *.swp
+*.pem
 
-# Logs
+# Global Logs & Debugging
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-pnpm-debug.log*
-
-# Runtime data
+yarn-error.log*
+.pnpm-debug.log*
 pids
 *.pid
 *.seed
 *.pid.lock
 
-# Dependency directories (Handled at root for monorepos)
+# Global Dependencies (Root and Package level)
 node_modules/
 jspm_packages/
 web_modules/
 
-# Monorepo build tools (Turbo, Nx, etc. if used)
+# Yarn Plug'n'Play & Berry specifics (if used)
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Monorepo Build Caches
 .turbo/
 .nx/
 
 # ====================================================================
-# App: snaptrack/backend (Express, Node.js, Prisma, Postgres)
+# App: snaptrack/backend (Express, Node, Prisma, Postgres)
 # ====================================================================
 # Build output
 snaptrack/backend/dist/
@@ -46,11 +55,10 @@ snaptrack/backend/.env.local
 snaptrack/backend/.env.*.local
 
 # Prisma specific
-# Note: Keep your schema.prisma file committed, but ignore local sqlite DBs if testing
 snaptrack/backend/prisma/*.db
 snaptrack/backend/prisma/*.db-journal
 
-# Local PostgreSQL data directory (if you run PG locally inside the project folder)
+# Local PostgreSQL data directory
 snaptrack/backend/pgdata/
 snaptrack/backend/postgres-data/
 
@@ -59,7 +67,7 @@ snaptrack/backend/coverage/
 snaptrack/backend/.nyc_output/
 
 # ====================================================================
-# App: snaptrack/frontend (Next.js, Tailwind)
+# App: snaptrack/frontend (Next.js, Tailwind, Vercel)
 # ====================================================================
 # Next.js build and cache outputs
 snaptrack/frontend/.next/
@@ -67,16 +75,18 @@ snaptrack/frontend/out/
 snaptrack/frontend/build/
 snaptrack/frontend/dist/
 
-# Tailwind / PostCSS cache
+# Vercel deployment tracking
+snaptrack/frontend/.vercel
+
+# TypeScript build info
+snaptrack/frontend/*.tsbuildinfo
+
+# Tailwind / Tooling cache
 snaptrack/frontend/.tailwind/
 snaptrack/frontend/.eslintcache
 
 # Frontend Local env files
-snaptrack/frontend/.env
-snaptrack/frontend/.env.local
-snaptrack/frontend/.env.development.local
-snaptrack/frontend/.env.test.local
-snaptrack/frontend/.env.production.local
+snaptrack/frontend/.env*
 
 # Testing
 snaptrack/frontend/coverage/
