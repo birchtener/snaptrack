@@ -1,15 +1,135 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
-  moduleFormat = "cjs"
+  // moduleFormat = "cjs"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
+enum Role {
+  owner
+  admin
+  scanner
+}
+
+enum LogType {
+  in
+  out
+}
+
+enum SystemAction {
+  create_student
+  update_student
+  delete_student
+  create_event
+  archive_event
+  update_membership
+  update_workspace
+}
+
+model Workspace {
+  id         String   @id @default(uuid())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relations
+  memberships membership[]
+  students    student[]
+  events      event[]
+  system_logs system_log[]
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password_hash String
+  first_name    String
+  last_name     String
+  created_at    DateTime  @default(now())
+  deleted_at    DateTime?
+
+  // Relations
+  memberships  membership[]
+  scanned_logs event_log[]
+  system_logs  system_log[]
+}
+
+model membership {
+  id           String   @id @default(uuid())
+  role         Role     @default(scanner)
+  user_id      String
+  workspace_id String
+  created_at   DateTime @default(now())
+
+  // Relations
+  user      User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, workspace_id])
+}
+
+model student {
+  id           String    @id @default(uuid())
+  workspace_id String
+  first_name   String
+  last_name    String
+  id_card_code String
+  metadata     Json      @default("{}")
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  deleted_at   DateTime?
+
+  // Relations
+  workspace Workspace   @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+  logs      event_log[]
+
+  @@unique([workspace_id, id_card_code])
+  @@index([id_card_code])
+}
+
+model event {
+  id           String    @id @default(uuid())
+  workspace_id String
+  name         String
+  is_active    Boolean   @default(true)
+  created_at   DateTime  @default(now())
+  archived_at  DateTime?
+
+  // Relations
+  workspace Workspace   @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+  logs      event_log[]
+}
+
+model event_log {
+  id         String   @id @default(uuid())
+  event_id   String
+  student_id String
+  scanned_by String
+  type       LogType
+  timestamp  DateTime @default(now())
+
+  // Relations
+  event   event   @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  student student @relation(fields: [student_id], references: [id], onDelete: Cascade)
+  scanner User    @relation(fields: [scanned_by], references: [id], onDelete: Restrict)
+
+  @@index([event_id, timestamp(sort: Desc)])
+}
+
+model system_log {
+  id           String       @id @default(uuid())
+  workspace_id String
+  created_by   String    
+  action       SystemAction
+  details      Json         @default("{}")
+  timestamp    DateTime     @default(now())
+
+  // Relations
+  workspace Workspace @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+  executor  User      @relation(fields: [created_by], references: [id], onDelete: Restrict)
+
+  @@index([workspace_id, timestamp(sort: Desc)])
+}
