@@ -1,0 +1,82 @@
+# ====================================================================
+# Root / Global Tooling
+# ====================================================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories (Handled at root for monorepos)
+node_modules/
+jspm_packages/
+web_modules/
+
+# Monorepo build tools (Turbo, Nx, etc. if used)
+.turbo/
+.nx/
+
+# ====================================================================
+# App: snaptrack/backend (Express, Node.js, Prisma, Postgres)
+# ====================================================================
+# Build output
+snaptrack/backend/dist/
+snaptrack/backend/build/
+
+# Local env files (Contains DB connection strings - NEVER COMMIT)
+snaptrack/backend/.env
+snaptrack/backend/.env.local
+snaptrack/backend/.env.*.local
+
+# Prisma specific
+# Note: Keep your schema.prisma file committed, but ignore local sqlite DBs if testing
+snaptrack/backend/prisma/*.db
+snaptrack/backend/prisma/*.db-journal
+
+# Local PostgreSQL data directory (if you run PG locally inside the project folder)
+snaptrack/backend/pgdata/
+snaptrack/backend/postgres-data/
+
+# Testing
+snaptrack/backend/coverage/
+snaptrack/backend/.nyc_output/
+
+# ====================================================================
+# App: snaptrack/frontend (Next.js, Tailwind)
+# ====================================================================
+# Next.js build and cache outputs
+snaptrack/frontend/.next/
+snaptrack/frontend/out/
+snaptrack/frontend/build/
+snaptrack/frontend/dist/
+
+# Tailwind / PostCSS cache
+snaptrack/frontend/.tailwind/
+snaptrack/frontend/.eslintcache
+
+# Frontend Local env files
+snaptrack/frontend/.env
+snaptrack/frontend/.env.local
+snaptrack/frontend/.env.development.local
+snaptrack/frontend/.env.test.local
+snaptrack/frontend/.env.production.local
+
+# Testing
+snaptrack/frontend/coverage/
