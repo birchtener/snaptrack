@@ -52,6 +52,11 @@ export type Workspace = Prisma.WorkspaceModel
  */
 export type User = Prisma.UserModel
 /**
+ * Model VerificationToken
+ * 
+ */
+export type VerificationToken = Prisma.VerificationTokenModel
+/**
  * Model membership
  * 
  */

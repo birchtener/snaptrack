@@ -10,6 +10,7 @@
  */
 export type * from './models/Workspace'
 export type * from './models/User'
+export type * from './models/VerificationToken'
 export type * from './models/membership'
 export type * from './models/student'
 export type * from './models/event'

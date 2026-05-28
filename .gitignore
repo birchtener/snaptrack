@@ -84,3 +84,5 @@ snaptrack/frontend/build/
 snaptrack/frontend/coverage/
 snaptrack/frontend/.eslintcache
 snaptrack/frontend/.tailwind/
+
+dist/

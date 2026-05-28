@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Workspace: 'Workspace',
   User: 'User',
+  VerificationToken: 'VerificationToken',
   membership: 'membership',
   student: 'student',
   event: 'event',
@@ -93,10 +94,21 @@ export const UserScalarFieldEnum = {
   first_name: 'first_name',
   last_name: 'last_name',
   created_at: 'created_at',
-  deleted_at: 'deleted_at'
+  deleted_at: 'deleted_at',
+  isVerified: 'isVerified'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const VerificationTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  expiresAt: 'expiresAt',
+  userId: 'userId'
+} as const
+
+export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
 
 
 export const MembershipScalarFieldEnum = {
