@@ -177,7 +177,7 @@ export type WorkspaceWhereInput = {
   memberships?: Prisma.MembershipListRelationFilter
   students?: Prisma.StudentListRelationFilter
   events?: Prisma.EventListRelationFilter
-  system_logs?: Prisma.System_logListRelationFilter
+  system_logs?: Prisma.SystemLogListRelationFilter
 }
 
 export type WorkspaceOrderByWithRelationInput = {
@@ -185,10 +185,10 @@ export type WorkspaceOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  memberships?: Prisma.membershipOrderByRelationAggregateInput
-  students?: Prisma.studentOrderByRelationAggregateInput
-  events?: Prisma.eventOrderByRelationAggregateInput
-  system_logs?: Prisma.system_logOrderByRelationAggregateInput
+  memberships?: Prisma.MembershipOrderByRelationAggregateInput
+  students?: Prisma.StudentOrderByRelationAggregateInput
+  events?: Prisma.EventOrderByRelationAggregateInput
+  system_logs?: Prisma.SystemLogOrderByRelationAggregateInput
 }
 
 export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
@@ -202,7 +202,7 @@ export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
   memberships?: Prisma.MembershipListRelationFilter
   students?: Prisma.StudentListRelationFilter
   events?: Prisma.EventListRelationFilter
-  system_logs?: Prisma.System_logListRelationFilter
+  system_logs?: Prisma.SystemLogListRelationFilter
 }, "id">
 
 export type WorkspaceOrderByWithAggregationInput = {
@@ -230,10 +230,10 @@ export type WorkspaceCreateInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipCreateNestedManyWithoutWorkspaceInput
-  students?: Prisma.studentCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateInput = {
@@ -241,10 +241,10 @@ export type WorkspaceUncheckedCreateInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutWorkspaceInput
-  students?: Prisma.studentUncheckedCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventUncheckedCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUpdateInput = {
@@ -252,10 +252,10 @@ export type WorkspaceUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUpdateManyWithoutWorkspaceNestedInput
-  students?: Prisma.studentUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateInput = {
@@ -263,10 +263,10 @@ export type WorkspaceUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutWorkspaceNestedInput
-  students?: Prisma.studentUncheckedUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUncheckedUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateManyInput = {
@@ -385,9 +385,9 @@ export type WorkspaceCreateWithoutMembershipsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  students?: Prisma.studentCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutMembershipsInput = {
@@ -395,9 +395,9 @@ export type WorkspaceUncheckedCreateWithoutMembershipsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  students?: Prisma.studentUncheckedCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventUncheckedCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutMembershipsInput = {
@@ -421,9 +421,9 @@ export type WorkspaceUpdateWithoutMembershipsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  students?: Prisma.studentUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutMembershipsInput = {
@@ -431,9 +431,9 @@ export type WorkspaceUncheckedUpdateWithoutMembershipsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  students?: Prisma.studentUncheckedUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUncheckedUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutStudentsInput = {
@@ -441,9 +441,9 @@ export type WorkspaceCreateWithoutStudentsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutStudentsInput = {
@@ -451,9 +451,9 @@ export type WorkspaceUncheckedCreateWithoutStudentsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventUncheckedCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutStudentsInput = {
@@ -477,9 +477,9 @@ export type WorkspaceUpdateWithoutStudentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutStudentsInput = {
@@ -487,9 +487,9 @@ export type WorkspaceUncheckedUpdateWithoutStudentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUncheckedUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutEventsInput = {
@@ -497,9 +497,9 @@ export type WorkspaceCreateWithoutEventsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipCreateNestedManyWithoutWorkspaceInput
-  students?: Prisma.studentCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutEventsInput = {
@@ -507,9 +507,9 @@ export type WorkspaceUncheckedCreateWithoutEventsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutWorkspaceInput
-  students?: Prisma.studentUncheckedCreateNestedManyWithoutWorkspaceInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutWorkspaceInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutEventsInput = {
@@ -533,9 +533,9 @@ export type WorkspaceUpdateWithoutEventsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUpdateManyWithoutWorkspaceNestedInput
-  students?: Prisma.studentUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutEventsInput = {
@@ -543,9 +543,9 @@ export type WorkspaceUncheckedUpdateWithoutEventsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutWorkspaceNestedInput
-  students?: Prisma.studentUncheckedUpdateManyWithoutWorkspaceNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutSystem_logsInput = {
@@ -553,9 +553,9 @@ export type WorkspaceCreateWithoutSystem_logsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipCreateNestedManyWithoutWorkspaceInput
-  students?: Prisma.studentCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutSystem_logsInput = {
@@ -563,9 +563,9 @@ export type WorkspaceUncheckedCreateWithoutSystem_logsInput = {
   name: string
   created_at?: Date | string
   updated_at?: Date | string
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutWorkspaceInput
-  students?: Prisma.studentUncheckedCreateNestedManyWithoutWorkspaceInput
-  events?: Prisma.eventUncheckedCreateNestedManyWithoutWorkspaceInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutWorkspaceInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutSystem_logsInput = {
@@ -589,9 +589,9 @@ export type WorkspaceUpdateWithoutSystem_logsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUpdateManyWithoutWorkspaceNestedInput
-  students?: Prisma.studentUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutSystem_logsInput = {
@@ -599,9 +599,9 @@ export type WorkspaceUncheckedUpdateWithoutSystem_logsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutWorkspaceNestedInput
-  students?: Prisma.studentUncheckedUpdateManyWithoutWorkspaceNestedInput
-  events?: Prisma.eventUncheckedUpdateManyWithoutWorkspaceNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 
@@ -637,28 +637,28 @@ export type WorkspaceCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
  * WorkspaceCountOutputType without action
  */
 export type WorkspaceCountOutputTypeCountMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.membershipWhereInput
+  where?: Prisma.MembershipWhereInput
 }
 
 /**
  * WorkspaceCountOutputType without action
  */
 export type WorkspaceCountOutputTypeCountStudentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
 }
 
 /**
  * WorkspaceCountOutputType without action
  */
 export type WorkspaceCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.eventWhereInput
+  where?: Prisma.EventWhereInput
 }
 
 /**
  * WorkspaceCountOutputType without action
  */
 export type WorkspaceCountOutputTypeCountSystem_logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.system_logWhereInput
+  where?: Prisma.SystemLogWhereInput
 }
 
 
@@ -709,10 +709,10 @@ export type WorkspaceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $WorkspacePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Workspace"
   objects: {
-    memberships: Prisma.$membershipPayload<ExtArgs>[]
-    students: Prisma.$studentPayload<ExtArgs>[]
-    events: Prisma.$eventPayload<ExtArgs>[]
-    system_logs: Prisma.$system_logPayload<ExtArgs>[]
+    memberships: Prisma.$MembershipPayload<ExtArgs>[]
+    students: Prisma.$StudentPayload<ExtArgs>[]
+    events: Prisma.$EventPayload<ExtArgs>[]
+    system_logs: Prisma.$SystemLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1113,10 +1113,10 @@ readonly fields: WorkspaceFieldRefs;
  */
 export interface Prisma__WorkspaceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  memberships<T extends Prisma.Workspace$membershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$membershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  students<T extends Prisma.Workspace$studentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  events<T extends Prisma.Workspace$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$eventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  system_logs<T extends Prisma.Workspace$system_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$system_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$system_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  memberships<T extends Prisma.Workspace$membershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  students<T extends Prisma.Workspace$studentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  events<T extends Prisma.Workspace$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  system_logs<T extends Prisma.Workspace$system_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$system_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SystemLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1547,20 +1547,20 @@ export type WorkspaceDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
  */
 export type Workspace$membershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the membership
+   * Select specific fields to fetch from the Membership
    */
-  select?: Prisma.membershipSelect<ExtArgs> | null
+  select?: Prisma.MembershipSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the membership
+   * Omit specific fields from the Membership
    */
-  omit?: Prisma.membershipOmit<ExtArgs> | null
+  omit?: Prisma.MembershipOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.membershipInclude<ExtArgs> | null
-  where?: Prisma.membershipWhereInput
-  orderBy?: Prisma.membershipOrderByWithRelationInput | Prisma.membershipOrderByWithRelationInput[]
-  cursor?: Prisma.membershipWhereUniqueInput
+  include?: Prisma.MembershipInclude<ExtArgs> | null
+  where?: Prisma.MembershipWhereInput
+  orderBy?: Prisma.MembershipOrderByWithRelationInput | Prisma.MembershipOrderByWithRelationInput[]
+  cursor?: Prisma.MembershipWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.MembershipScalarFieldEnum | Prisma.MembershipScalarFieldEnum[]
@@ -1571,20 +1571,20 @@ export type Workspace$membershipsArgs<ExtArgs extends runtime.Types.Extensions.I
  */
 export type Workspace$studentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
-  where?: Prisma.studentWhereInput
-  orderBy?: Prisma.studentOrderByWithRelationInput | Prisma.studentOrderByWithRelationInput[]
-  cursor?: Prisma.studentWhereUniqueInput
+  include?: Prisma.StudentInclude<ExtArgs> | null
+  where?: Prisma.StudentWhereInput
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
+  cursor?: Prisma.StudentWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.StudentScalarFieldEnum | Prisma.StudentScalarFieldEnum[]
@@ -1595,20 +1595,20 @@ export type Workspace$studentsArgs<ExtArgs extends runtime.Types.Extensions.Inte
  */
 export type Workspace$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the event
+   * Select specific fields to fetch from the Event
    */
-  select?: Prisma.eventSelect<ExtArgs> | null
+  select?: Prisma.EventSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the event
+   * Omit specific fields from the Event
    */
-  omit?: Prisma.eventOmit<ExtArgs> | null
+  omit?: Prisma.EventOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.eventInclude<ExtArgs> | null
-  where?: Prisma.eventWhereInput
-  orderBy?: Prisma.eventOrderByWithRelationInput | Prisma.eventOrderByWithRelationInput[]
-  cursor?: Prisma.eventWhereUniqueInput
+  include?: Prisma.EventInclude<ExtArgs> | null
+  where?: Prisma.EventWhereInput
+  orderBy?: Prisma.EventOrderByWithRelationInput | Prisma.EventOrderByWithRelationInput[]
+  cursor?: Prisma.EventWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[]
@@ -1619,23 +1619,23 @@ export type Workspace$eventsArgs<ExtArgs extends runtime.Types.Extensions.Intern
  */
 export type Workspace$system_logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the system_log
+   * Select specific fields to fetch from the SystemLog
    */
-  select?: Prisma.system_logSelect<ExtArgs> | null
+  select?: Prisma.SystemLogSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the system_log
+   * Omit specific fields from the SystemLog
    */
-  omit?: Prisma.system_logOmit<ExtArgs> | null
+  omit?: Prisma.SystemLogOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.system_logInclude<ExtArgs> | null
-  where?: Prisma.system_logWhereInput
-  orderBy?: Prisma.system_logOrderByWithRelationInput | Prisma.system_logOrderByWithRelationInput[]
-  cursor?: Prisma.system_logWhereUniqueInput
+  include?: Prisma.SystemLogInclude<ExtArgs> | null
+  where?: Prisma.SystemLogWhereInput
+  orderBy?: Prisma.SystemLogOrderByWithRelationInput | Prisma.SystemLogOrderByWithRelationInput[]
+  cursor?: Prisma.SystemLogWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.System_logScalarFieldEnum | Prisma.System_logScalarFieldEnum[]
+  distinct?: Prisma.SystemLogScalarFieldEnum | Prisma.SystemLogScalarFieldEnum[]
 }
 
 /**

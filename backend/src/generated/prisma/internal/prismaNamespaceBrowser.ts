@@ -53,12 +53,11 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Workspace: 'Workspace',
   User: 'User',
-  VerificationToken: 'VerificationToken',
-  membership: 'membership',
-  student: 'student',
-  event: 'event',
-  event_log: 'event_log',
-  system_log: 'system_log'
+  Membership: 'Membership',
+  Student: 'Student',
+  Event: 'Event',
+  EventLog: 'EventLog',
+  SystemLog: 'SystemLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -90,25 +89,14 @@ export type WorkspaceScalarFieldEnum = (typeof WorkspaceScalarFieldEnum)[keyof t
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  password_hash: 'password_hash',
   first_name: 'first_name',
   last_name: 'last_name',
+  image_url: 'image_url',
   created_at: 'created_at',
-  deleted_at: 'deleted_at',
-  isVerified: 'isVerified'
+  deleted_at: 'deleted_at'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-export const VerificationTokenScalarFieldEnum = {
-  id: 'id',
-  token: 'token',
-  expiresAt: 'expiresAt',
-  userId: 'userId'
-} as const
-
-export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
 
 
 export const MembershipScalarFieldEnum = {
@@ -149,7 +137,7 @@ export const EventScalarFieldEnum = {
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
 
 
-export const Event_logScalarFieldEnum = {
+export const EventLogScalarFieldEnum = {
   id: 'id',
   event_id: 'event_id',
   student_id: 'student_id',
@@ -158,10 +146,10 @@ export const Event_logScalarFieldEnum = {
   timestamp: 'timestamp'
 } as const
 
-export type Event_logScalarFieldEnum = (typeof Event_logScalarFieldEnum)[keyof typeof Event_logScalarFieldEnum]
+export type EventLogScalarFieldEnum = (typeof EventLogScalarFieldEnum)[keyof typeof EventLogScalarFieldEnum]
 
 
-export const System_logScalarFieldEnum = {
+export const SystemLogScalarFieldEnum = {
   id: 'id',
   workspace_id: 'workspace_id',
   created_by: 'created_by',
@@ -170,7 +158,7 @@ export const System_logScalarFieldEnum = {
   timestamp: 'timestamp'
 } as const
 
-export type System_logScalarFieldEnum = (typeof System_logScalarFieldEnum)[keyof typeof System_logScalarFieldEnum]
+export type SystemLogScalarFieldEnum = (typeof SystemLogScalarFieldEnum)[keyof typeof SystemLogScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `student` model and its related types.
+ * This file exports the `Student` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model student
+ * Model Student
  * 
  */
-export type studentModel = runtime.Types.Result.DefaultSelection<Prisma.$studentPayload>
+export type StudentModel = runtime.Types.Result.DefaultSelection<Prisma.$StudentPayload>
 
 export type AggregateStudent = {
   _count: StudentCountAggregateOutputType | null
@@ -97,37 +97,37 @@ export type StudentCountAggregateInputType = {
 
 export type StudentAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which student to aggregate.
+   * Filter which Student to aggregate.
    */
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of students to fetch.
+   * Determine the order of Students to fetch.
    */
-  orderBy?: Prisma.studentOrderByWithRelationInput | Prisma.studentOrderByWithRelationInput[]
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.studentWhereUniqueInput
+  cursor?: Prisma.StudentWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` students from the position of the cursor.
+   * Take `±n` Students from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` students.
+   * Skip the first `n` Students.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned students
+   * Count returned Students
   **/
   _count?: true | StudentCountAggregateInputType
   /**
@@ -155,11 +155,11 @@ export type GetStudentAggregateType<T extends StudentAggregateArgs> = {
 
 
 
-export type studentGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.studentWhereInput
-  orderBy?: Prisma.studentOrderByWithAggregationInput | Prisma.studentOrderByWithAggregationInput[]
+export type StudentGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StudentWhereInput
+  orderBy?: Prisma.StudentOrderByWithAggregationInput | Prisma.StudentOrderByWithAggregationInput[]
   by: Prisma.StudentScalarFieldEnum[] | Prisma.StudentScalarFieldEnum
-  having?: Prisma.studentScalarWhereWithAggregatesInput
+  having?: Prisma.StudentScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: StudentCountAggregateInputType | true
@@ -182,7 +182,7 @@ export type StudentGroupByOutputType = {
   _max: StudentMaxAggregateOutputType | null
 }
 
-export type GetStudentGroupByPayload<T extends studentGroupByArgs> = Prisma.PrismaPromise<
+export type GetStudentGroupByPayload<T extends StudentGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<StudentGroupByOutputType, T['by']> &
       {
@@ -197,24 +197,24 @@ export type GetStudentGroupByPayload<T extends studentGroupByArgs> = Prisma.Pris
 
 
 
-export type studentWhereInput = {
-  AND?: Prisma.studentWhereInput | Prisma.studentWhereInput[]
-  OR?: Prisma.studentWhereInput[]
-  NOT?: Prisma.studentWhereInput | Prisma.studentWhereInput[]
-  id?: Prisma.StringFilter<"student"> | string
-  workspace_id?: Prisma.StringFilter<"student"> | string
-  first_name?: Prisma.StringFilter<"student"> | string
-  last_name?: Prisma.StringFilter<"student"> | string
-  id_card_code?: Prisma.StringFilter<"student"> | string
-  metadata?: Prisma.JsonFilter<"student">
-  created_at?: Prisma.DateTimeFilter<"student"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableFilter<"student"> | Date | string | null
+export type StudentWhereInput = {
+  AND?: Prisma.StudentWhereInput | Prisma.StudentWhereInput[]
+  OR?: Prisma.StudentWhereInput[]
+  NOT?: Prisma.StudentWhereInput | Prisma.StudentWhereInput[]
+  id?: Prisma.StringFilter<"Student"> | string
+  workspace_id?: Prisma.StringFilter<"Student"> | string
+  first_name?: Prisma.StringFilter<"Student"> | string
+  last_name?: Prisma.StringFilter<"Student"> | string
+  id_card_code?: Prisma.StringFilter<"Student"> | string
+  metadata?: Prisma.JsonFilter<"Student">
+  created_at?: Prisma.DateTimeFilter<"Student"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Student"> | Date | string
+  deleted_at?: Prisma.DateTimeNullableFilter<"Student"> | Date | string | null
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
-  logs?: Prisma.Event_logListRelationFilter
+  logs?: Prisma.EventLogListRelationFilter
 }
 
-export type studentOrderByWithRelationInput = {
+export type StudentOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   workspace_id?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
@@ -225,28 +225,28 @@ export type studentOrderByWithRelationInput = {
   updated_at?: Prisma.SortOrder
   deleted_at?: Prisma.SortOrderInput | Prisma.SortOrder
   workspace?: Prisma.WorkspaceOrderByWithRelationInput
-  logs?: Prisma.event_logOrderByRelationAggregateInput
+  logs?: Prisma.EventLogOrderByRelationAggregateInput
 }
 
-export type studentWhereUniqueInput = Prisma.AtLeast<{
+export type StudentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  workspace_id_id_card_code?: Prisma.studentWorkspace_idId_card_codeCompoundUniqueInput
-  AND?: Prisma.studentWhereInput | Prisma.studentWhereInput[]
-  OR?: Prisma.studentWhereInput[]
-  NOT?: Prisma.studentWhereInput | Prisma.studentWhereInput[]
-  workspace_id?: Prisma.StringFilter<"student"> | string
-  first_name?: Prisma.StringFilter<"student"> | string
-  last_name?: Prisma.StringFilter<"student"> | string
-  id_card_code?: Prisma.StringFilter<"student"> | string
-  metadata?: Prisma.JsonFilter<"student">
-  created_at?: Prisma.DateTimeFilter<"student"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableFilter<"student"> | Date | string | null
+  workspace_id_id_card_code?: Prisma.StudentWorkspace_idId_card_codeCompoundUniqueInput
+  AND?: Prisma.StudentWhereInput | Prisma.StudentWhereInput[]
+  OR?: Prisma.StudentWhereInput[]
+  NOT?: Prisma.StudentWhereInput | Prisma.StudentWhereInput[]
+  workspace_id?: Prisma.StringFilter<"Student"> | string
+  first_name?: Prisma.StringFilter<"Student"> | string
+  last_name?: Prisma.StringFilter<"Student"> | string
+  id_card_code?: Prisma.StringFilter<"Student"> | string
+  metadata?: Prisma.JsonFilter<"Student">
+  created_at?: Prisma.DateTimeFilter<"Student"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Student"> | Date | string
+  deleted_at?: Prisma.DateTimeNullableFilter<"Student"> | Date | string | null
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
-  logs?: Prisma.Event_logListRelationFilter
+  logs?: Prisma.EventLogListRelationFilter
 }, "id" | "workspace_id_id_card_code">
 
-export type studentOrderByWithAggregationInput = {
+export type StudentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   workspace_id?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
@@ -256,27 +256,27 @@ export type studentOrderByWithAggregationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   deleted_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  _count?: Prisma.studentCountOrderByAggregateInput
-  _max?: Prisma.studentMaxOrderByAggregateInput
-  _min?: Prisma.studentMinOrderByAggregateInput
+  _count?: Prisma.StudentCountOrderByAggregateInput
+  _max?: Prisma.StudentMaxOrderByAggregateInput
+  _min?: Prisma.StudentMinOrderByAggregateInput
 }
 
-export type studentScalarWhereWithAggregatesInput = {
-  AND?: Prisma.studentScalarWhereWithAggregatesInput | Prisma.studentScalarWhereWithAggregatesInput[]
-  OR?: Prisma.studentScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.studentScalarWhereWithAggregatesInput | Prisma.studentScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"student"> | string
-  workspace_id?: Prisma.StringWithAggregatesFilter<"student"> | string
-  first_name?: Prisma.StringWithAggregatesFilter<"student"> | string
-  last_name?: Prisma.StringWithAggregatesFilter<"student"> | string
-  id_card_code?: Prisma.StringWithAggregatesFilter<"student"> | string
-  metadata?: Prisma.JsonWithAggregatesFilter<"student">
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"student"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableWithAggregatesFilter<"student"> | Date | string | null
+export type StudentScalarWhereWithAggregatesInput = {
+  AND?: Prisma.StudentScalarWhereWithAggregatesInput | Prisma.StudentScalarWhereWithAggregatesInput[]
+  OR?: Prisma.StudentScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.StudentScalarWhereWithAggregatesInput | Prisma.StudentScalarWhereWithAggregatesInput[]
+  id?: Prisma.StringWithAggregatesFilter<"Student"> | string
+  workspace_id?: Prisma.StringWithAggregatesFilter<"Student"> | string
+  first_name?: Prisma.StringWithAggregatesFilter<"Student"> | string
+  last_name?: Prisma.StringWithAggregatesFilter<"Student"> | string
+  id_card_code?: Prisma.StringWithAggregatesFilter<"Student"> | string
+  metadata?: Prisma.JsonWithAggregatesFilter<"Student">
+  created_at?: Prisma.DateTimeWithAggregatesFilter<"Student"> | Date | string
+  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Student"> | Date | string
+  deleted_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Student"> | Date | string | null
 }
 
-export type studentCreateInput = {
+export type StudentCreateInput = {
   id?: string
   first_name: string
   last_name: string
@@ -286,10 +286,10 @@ export type studentCreateInput = {
   updated_at?: Date | string
   deleted_at?: Date | string | null
   workspace: Prisma.WorkspaceCreateNestedOneWithoutStudentsInput
-  logs?: Prisma.event_logCreateNestedManyWithoutStudentInput
+  logs?: Prisma.EventLogCreateNestedManyWithoutStudentInput
 }
 
-export type studentUncheckedCreateInput = {
+export type StudentUncheckedCreateInput = {
   id?: string
   workspace_id: string
   first_name: string
@@ -299,10 +299,10 @@ export type studentUncheckedCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   deleted_at?: Date | string | null
-  logs?: Prisma.event_logUncheckedCreateNestedManyWithoutStudentInput
+  logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutStudentInput
 }
 
-export type studentUpdateInput = {
+export type StudentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -312,10 +312,10 @@ export type studentUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutStudentsNestedInput
-  logs?: Prisma.event_logUpdateManyWithoutStudentNestedInput
+  logs?: Prisma.EventLogUpdateManyWithoutStudentNestedInput
 }
 
-export type studentUncheckedUpdateInput = {
+export type StudentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -325,10 +325,10 @@ export type studentUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logs?: Prisma.event_logUncheckedUpdateManyWithoutStudentNestedInput
+  logs?: Prisma.EventLogUncheckedUpdateManyWithoutStudentNestedInput
 }
 
-export type studentCreateManyInput = {
+export type StudentCreateManyInput = {
   id?: string
   workspace_id: string
   first_name: string
@@ -340,7 +340,7 @@ export type studentCreateManyInput = {
   deleted_at?: Date | string | null
 }
 
-export type studentUpdateManyMutationInput = {
+export type StudentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -351,7 +351,7 @@ export type studentUpdateManyMutationInput = {
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type studentUncheckedUpdateManyInput = {
+export type StudentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -364,21 +364,21 @@ export type studentUncheckedUpdateManyInput = {
 }
 
 export type StudentListRelationFilter = {
-  every?: Prisma.studentWhereInput
-  some?: Prisma.studentWhereInput
-  none?: Prisma.studentWhereInput
+  every?: Prisma.StudentWhereInput
+  some?: Prisma.StudentWhereInput
+  none?: Prisma.StudentWhereInput
 }
 
-export type studentOrderByRelationAggregateInput = {
+export type StudentOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type studentWorkspace_idId_card_codeCompoundUniqueInput = {
+export type StudentWorkspace_idId_card_codeCompoundUniqueInput = {
   workspace_id: string
   id_card_code: string
 }
 
-export type studentCountOrderByAggregateInput = {
+export type StudentCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   workspace_id?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
@@ -390,7 +390,7 @@ export type studentCountOrderByAggregateInput = {
   deleted_at?: Prisma.SortOrder
 }
 
-export type studentMaxOrderByAggregateInput = {
+export type StudentMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   workspace_id?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
@@ -401,7 +401,7 @@ export type studentMaxOrderByAggregateInput = {
   deleted_at?: Prisma.SortOrder
 }
 
-export type studentMinOrderByAggregateInput = {
+export type StudentMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   workspace_id?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
@@ -413,67 +413,67 @@ export type studentMinOrderByAggregateInput = {
 }
 
 export type StudentScalarRelationFilter = {
-  is?: Prisma.studentWhereInput
-  isNot?: Prisma.studentWhereInput
+  is?: Prisma.StudentWhereInput
+  isNot?: Prisma.StudentWhereInput
 }
 
-export type studentCreateNestedManyWithoutWorkspaceInput = {
-  create?: Prisma.XOR<Prisma.studentCreateWithoutWorkspaceInput, Prisma.studentUncheckedCreateWithoutWorkspaceInput> | Prisma.studentCreateWithoutWorkspaceInput[] | Prisma.studentUncheckedCreateWithoutWorkspaceInput[]
-  connectOrCreate?: Prisma.studentCreateOrConnectWithoutWorkspaceInput | Prisma.studentCreateOrConnectWithoutWorkspaceInput[]
-  createMany?: Prisma.studentCreateManyWorkspaceInputEnvelope
-  connect?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
+export type StudentCreateNestedManyWithoutWorkspaceInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutWorkspaceInput, Prisma.StudentUncheckedCreateWithoutWorkspaceInput> | Prisma.StudentCreateWithoutWorkspaceInput[] | Prisma.StudentUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutWorkspaceInput | Prisma.StudentCreateOrConnectWithoutWorkspaceInput[]
+  createMany?: Prisma.StudentCreateManyWorkspaceInputEnvelope
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
 }
 
-export type studentUncheckedCreateNestedManyWithoutWorkspaceInput = {
-  create?: Prisma.XOR<Prisma.studentCreateWithoutWorkspaceInput, Prisma.studentUncheckedCreateWithoutWorkspaceInput> | Prisma.studentCreateWithoutWorkspaceInput[] | Prisma.studentUncheckedCreateWithoutWorkspaceInput[]
-  connectOrCreate?: Prisma.studentCreateOrConnectWithoutWorkspaceInput | Prisma.studentCreateOrConnectWithoutWorkspaceInput[]
-  createMany?: Prisma.studentCreateManyWorkspaceInputEnvelope
-  connect?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
+export type StudentUncheckedCreateNestedManyWithoutWorkspaceInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutWorkspaceInput, Prisma.StudentUncheckedCreateWithoutWorkspaceInput> | Prisma.StudentCreateWithoutWorkspaceInput[] | Prisma.StudentUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutWorkspaceInput | Prisma.StudentCreateOrConnectWithoutWorkspaceInput[]
+  createMany?: Prisma.StudentCreateManyWorkspaceInputEnvelope
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
 }
 
-export type studentUpdateManyWithoutWorkspaceNestedInput = {
-  create?: Prisma.XOR<Prisma.studentCreateWithoutWorkspaceInput, Prisma.studentUncheckedCreateWithoutWorkspaceInput> | Prisma.studentCreateWithoutWorkspaceInput[] | Prisma.studentUncheckedCreateWithoutWorkspaceInput[]
-  connectOrCreate?: Prisma.studentCreateOrConnectWithoutWorkspaceInput | Prisma.studentCreateOrConnectWithoutWorkspaceInput[]
-  upsert?: Prisma.studentUpsertWithWhereUniqueWithoutWorkspaceInput | Prisma.studentUpsertWithWhereUniqueWithoutWorkspaceInput[]
-  createMany?: Prisma.studentCreateManyWorkspaceInputEnvelope
-  set?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  disconnect?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  delete?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  connect?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  update?: Prisma.studentUpdateWithWhereUniqueWithoutWorkspaceInput | Prisma.studentUpdateWithWhereUniqueWithoutWorkspaceInput[]
-  updateMany?: Prisma.studentUpdateManyWithWhereWithoutWorkspaceInput | Prisma.studentUpdateManyWithWhereWithoutWorkspaceInput[]
-  deleteMany?: Prisma.studentScalarWhereInput | Prisma.studentScalarWhereInput[]
+export type StudentUpdateManyWithoutWorkspaceNestedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutWorkspaceInput, Prisma.StudentUncheckedCreateWithoutWorkspaceInput> | Prisma.StudentCreateWithoutWorkspaceInput[] | Prisma.StudentUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutWorkspaceInput | Prisma.StudentCreateOrConnectWithoutWorkspaceInput[]
+  upsert?: Prisma.StudentUpsertWithWhereUniqueWithoutWorkspaceInput | Prisma.StudentUpsertWithWhereUniqueWithoutWorkspaceInput[]
+  createMany?: Prisma.StudentCreateManyWorkspaceInputEnvelope
+  set?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  disconnect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  delete?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  update?: Prisma.StudentUpdateWithWhereUniqueWithoutWorkspaceInput | Prisma.StudentUpdateWithWhereUniqueWithoutWorkspaceInput[]
+  updateMany?: Prisma.StudentUpdateManyWithWhereWithoutWorkspaceInput | Prisma.StudentUpdateManyWithWhereWithoutWorkspaceInput[]
+  deleteMany?: Prisma.StudentScalarWhereInput | Prisma.StudentScalarWhereInput[]
 }
 
-export type studentUncheckedUpdateManyWithoutWorkspaceNestedInput = {
-  create?: Prisma.XOR<Prisma.studentCreateWithoutWorkspaceInput, Prisma.studentUncheckedCreateWithoutWorkspaceInput> | Prisma.studentCreateWithoutWorkspaceInput[] | Prisma.studentUncheckedCreateWithoutWorkspaceInput[]
-  connectOrCreate?: Prisma.studentCreateOrConnectWithoutWorkspaceInput | Prisma.studentCreateOrConnectWithoutWorkspaceInput[]
-  upsert?: Prisma.studentUpsertWithWhereUniqueWithoutWorkspaceInput | Prisma.studentUpsertWithWhereUniqueWithoutWorkspaceInput[]
-  createMany?: Prisma.studentCreateManyWorkspaceInputEnvelope
-  set?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  disconnect?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  delete?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  connect?: Prisma.studentWhereUniqueInput | Prisma.studentWhereUniqueInput[]
-  update?: Prisma.studentUpdateWithWhereUniqueWithoutWorkspaceInput | Prisma.studentUpdateWithWhereUniqueWithoutWorkspaceInput[]
-  updateMany?: Prisma.studentUpdateManyWithWhereWithoutWorkspaceInput | Prisma.studentUpdateManyWithWhereWithoutWorkspaceInput[]
-  deleteMany?: Prisma.studentScalarWhereInput | Prisma.studentScalarWhereInput[]
+export type StudentUncheckedUpdateManyWithoutWorkspaceNestedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutWorkspaceInput, Prisma.StudentUncheckedCreateWithoutWorkspaceInput> | Prisma.StudentCreateWithoutWorkspaceInput[] | Prisma.StudentUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutWorkspaceInput | Prisma.StudentCreateOrConnectWithoutWorkspaceInput[]
+  upsert?: Prisma.StudentUpsertWithWhereUniqueWithoutWorkspaceInput | Prisma.StudentUpsertWithWhereUniqueWithoutWorkspaceInput[]
+  createMany?: Prisma.StudentCreateManyWorkspaceInputEnvelope
+  set?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  disconnect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  delete?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  update?: Prisma.StudentUpdateWithWhereUniqueWithoutWorkspaceInput | Prisma.StudentUpdateWithWhereUniqueWithoutWorkspaceInput[]
+  updateMany?: Prisma.StudentUpdateManyWithWhereWithoutWorkspaceInput | Prisma.StudentUpdateManyWithWhereWithoutWorkspaceInput[]
+  deleteMany?: Prisma.StudentScalarWhereInput | Prisma.StudentScalarWhereInput[]
 }
 
-export type studentCreateNestedOneWithoutLogsInput = {
-  create?: Prisma.XOR<Prisma.studentCreateWithoutLogsInput, Prisma.studentUncheckedCreateWithoutLogsInput>
-  connectOrCreate?: Prisma.studentCreateOrConnectWithoutLogsInput
-  connect?: Prisma.studentWhereUniqueInput
+export type StudentCreateNestedOneWithoutLogsInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutLogsInput, Prisma.StudentUncheckedCreateWithoutLogsInput>
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutLogsInput
+  connect?: Prisma.StudentWhereUniqueInput
 }
 
-export type studentUpdateOneRequiredWithoutLogsNestedInput = {
-  create?: Prisma.XOR<Prisma.studentCreateWithoutLogsInput, Prisma.studentUncheckedCreateWithoutLogsInput>
-  connectOrCreate?: Prisma.studentCreateOrConnectWithoutLogsInput
-  upsert?: Prisma.studentUpsertWithoutLogsInput
-  connect?: Prisma.studentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.studentUpdateToOneWithWhereWithoutLogsInput, Prisma.studentUpdateWithoutLogsInput>, Prisma.studentUncheckedUpdateWithoutLogsInput>
+export type StudentUpdateOneRequiredWithoutLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutLogsInput, Prisma.StudentUncheckedCreateWithoutLogsInput>
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutLogsInput
+  upsert?: Prisma.StudentUpsertWithoutLogsInput
+  connect?: Prisma.StudentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StudentUpdateToOneWithWhereWithoutLogsInput, Prisma.StudentUpdateWithoutLogsInput>, Prisma.StudentUncheckedUpdateWithoutLogsInput>
 }
 
-export type studentCreateWithoutWorkspaceInput = {
+export type StudentCreateWithoutWorkspaceInput = {
   id?: string
   first_name: string
   last_name: string
@@ -482,10 +482,10 @@ export type studentCreateWithoutWorkspaceInput = {
   created_at?: Date | string
   updated_at?: Date | string
   deleted_at?: Date | string | null
-  logs?: Prisma.event_logCreateNestedManyWithoutStudentInput
+  logs?: Prisma.EventLogCreateNestedManyWithoutStudentInput
 }
 
-export type studentUncheckedCreateWithoutWorkspaceInput = {
+export type StudentUncheckedCreateWithoutWorkspaceInput = {
   id?: string
   first_name: string
   last_name: string
@@ -494,51 +494,51 @@ export type studentUncheckedCreateWithoutWorkspaceInput = {
   created_at?: Date | string
   updated_at?: Date | string
   deleted_at?: Date | string | null
-  logs?: Prisma.event_logUncheckedCreateNestedManyWithoutStudentInput
+  logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutStudentInput
 }
 
-export type studentCreateOrConnectWithoutWorkspaceInput = {
-  where: Prisma.studentWhereUniqueInput
-  create: Prisma.XOR<Prisma.studentCreateWithoutWorkspaceInput, Prisma.studentUncheckedCreateWithoutWorkspaceInput>
+export type StudentCreateOrConnectWithoutWorkspaceInput = {
+  where: Prisma.StudentWhereUniqueInput
+  create: Prisma.XOR<Prisma.StudentCreateWithoutWorkspaceInput, Prisma.StudentUncheckedCreateWithoutWorkspaceInput>
 }
 
-export type studentCreateManyWorkspaceInputEnvelope = {
-  data: Prisma.studentCreateManyWorkspaceInput | Prisma.studentCreateManyWorkspaceInput[]
+export type StudentCreateManyWorkspaceInputEnvelope = {
+  data: Prisma.StudentCreateManyWorkspaceInput | Prisma.StudentCreateManyWorkspaceInput[]
   skipDuplicates?: boolean
 }
 
-export type studentUpsertWithWhereUniqueWithoutWorkspaceInput = {
-  where: Prisma.studentWhereUniqueInput
-  update: Prisma.XOR<Prisma.studentUpdateWithoutWorkspaceInput, Prisma.studentUncheckedUpdateWithoutWorkspaceInput>
-  create: Prisma.XOR<Prisma.studentCreateWithoutWorkspaceInput, Prisma.studentUncheckedCreateWithoutWorkspaceInput>
+export type StudentUpsertWithWhereUniqueWithoutWorkspaceInput = {
+  where: Prisma.StudentWhereUniqueInput
+  update: Prisma.XOR<Prisma.StudentUpdateWithoutWorkspaceInput, Prisma.StudentUncheckedUpdateWithoutWorkspaceInput>
+  create: Prisma.XOR<Prisma.StudentCreateWithoutWorkspaceInput, Prisma.StudentUncheckedCreateWithoutWorkspaceInput>
 }
 
-export type studentUpdateWithWhereUniqueWithoutWorkspaceInput = {
-  where: Prisma.studentWhereUniqueInput
-  data: Prisma.XOR<Prisma.studentUpdateWithoutWorkspaceInput, Prisma.studentUncheckedUpdateWithoutWorkspaceInput>
+export type StudentUpdateWithWhereUniqueWithoutWorkspaceInput = {
+  where: Prisma.StudentWhereUniqueInput
+  data: Prisma.XOR<Prisma.StudentUpdateWithoutWorkspaceInput, Prisma.StudentUncheckedUpdateWithoutWorkspaceInput>
 }
 
-export type studentUpdateManyWithWhereWithoutWorkspaceInput = {
-  where: Prisma.studentScalarWhereInput
-  data: Prisma.XOR<Prisma.studentUpdateManyMutationInput, Prisma.studentUncheckedUpdateManyWithoutWorkspaceInput>
+export type StudentUpdateManyWithWhereWithoutWorkspaceInput = {
+  where: Prisma.StudentScalarWhereInput
+  data: Prisma.XOR<Prisma.StudentUpdateManyMutationInput, Prisma.StudentUncheckedUpdateManyWithoutWorkspaceInput>
 }
 
-export type studentScalarWhereInput = {
-  AND?: Prisma.studentScalarWhereInput | Prisma.studentScalarWhereInput[]
-  OR?: Prisma.studentScalarWhereInput[]
-  NOT?: Prisma.studentScalarWhereInput | Prisma.studentScalarWhereInput[]
-  id?: Prisma.StringFilter<"student"> | string
-  workspace_id?: Prisma.StringFilter<"student"> | string
-  first_name?: Prisma.StringFilter<"student"> | string
-  last_name?: Prisma.StringFilter<"student"> | string
-  id_card_code?: Prisma.StringFilter<"student"> | string
-  metadata?: Prisma.JsonFilter<"student">
-  created_at?: Prisma.DateTimeFilter<"student"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableFilter<"student"> | Date | string | null
+export type StudentScalarWhereInput = {
+  AND?: Prisma.StudentScalarWhereInput | Prisma.StudentScalarWhereInput[]
+  OR?: Prisma.StudentScalarWhereInput[]
+  NOT?: Prisma.StudentScalarWhereInput | Prisma.StudentScalarWhereInput[]
+  id?: Prisma.StringFilter<"Student"> | string
+  workspace_id?: Prisma.StringFilter<"Student"> | string
+  first_name?: Prisma.StringFilter<"Student"> | string
+  last_name?: Prisma.StringFilter<"Student"> | string
+  id_card_code?: Prisma.StringFilter<"Student"> | string
+  metadata?: Prisma.JsonFilter<"Student">
+  created_at?: Prisma.DateTimeFilter<"Student"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Student"> | Date | string
+  deleted_at?: Prisma.DateTimeNullableFilter<"Student"> | Date | string | null
 }
 
-export type studentCreateWithoutLogsInput = {
+export type StudentCreateWithoutLogsInput = {
   id?: string
   first_name: string
   last_name: string
@@ -550,7 +550,7 @@ export type studentCreateWithoutLogsInput = {
   workspace: Prisma.WorkspaceCreateNestedOneWithoutStudentsInput
 }
 
-export type studentUncheckedCreateWithoutLogsInput = {
+export type StudentUncheckedCreateWithoutLogsInput = {
   id?: string
   workspace_id: string
   first_name: string
@@ -562,23 +562,23 @@ export type studentUncheckedCreateWithoutLogsInput = {
   deleted_at?: Date | string | null
 }
 
-export type studentCreateOrConnectWithoutLogsInput = {
-  where: Prisma.studentWhereUniqueInput
-  create: Prisma.XOR<Prisma.studentCreateWithoutLogsInput, Prisma.studentUncheckedCreateWithoutLogsInput>
+export type StudentCreateOrConnectWithoutLogsInput = {
+  where: Prisma.StudentWhereUniqueInput
+  create: Prisma.XOR<Prisma.StudentCreateWithoutLogsInput, Prisma.StudentUncheckedCreateWithoutLogsInput>
 }
 
-export type studentUpsertWithoutLogsInput = {
-  update: Prisma.XOR<Prisma.studentUpdateWithoutLogsInput, Prisma.studentUncheckedUpdateWithoutLogsInput>
-  create: Prisma.XOR<Prisma.studentCreateWithoutLogsInput, Prisma.studentUncheckedCreateWithoutLogsInput>
-  where?: Prisma.studentWhereInput
+export type StudentUpsertWithoutLogsInput = {
+  update: Prisma.XOR<Prisma.StudentUpdateWithoutLogsInput, Prisma.StudentUncheckedUpdateWithoutLogsInput>
+  create: Prisma.XOR<Prisma.StudentCreateWithoutLogsInput, Prisma.StudentUncheckedCreateWithoutLogsInput>
+  where?: Prisma.StudentWhereInput
 }
 
-export type studentUpdateToOneWithWhereWithoutLogsInput = {
-  where?: Prisma.studentWhereInput
-  data: Prisma.XOR<Prisma.studentUpdateWithoutLogsInput, Prisma.studentUncheckedUpdateWithoutLogsInput>
+export type StudentUpdateToOneWithWhereWithoutLogsInput = {
+  where?: Prisma.StudentWhereInput
+  data: Prisma.XOR<Prisma.StudentUpdateWithoutLogsInput, Prisma.StudentUncheckedUpdateWithoutLogsInput>
 }
 
-export type studentUpdateWithoutLogsInput = {
+export type StudentUpdateWithoutLogsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -590,7 +590,7 @@ export type studentUpdateWithoutLogsInput = {
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutStudentsNestedInput
 }
 
-export type studentUncheckedUpdateWithoutLogsInput = {
+export type StudentUncheckedUpdateWithoutLogsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -602,7 +602,7 @@ export type studentUncheckedUpdateWithoutLogsInput = {
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type studentCreateManyWorkspaceInput = {
+export type StudentCreateManyWorkspaceInput = {
   id?: string
   first_name: string
   last_name: string
@@ -613,7 +613,7 @@ export type studentCreateManyWorkspaceInput = {
   deleted_at?: Date | string | null
 }
 
-export type studentUpdateWithoutWorkspaceInput = {
+export type StudentUpdateWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -622,10 +622,10 @@ export type studentUpdateWithoutWorkspaceInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logs?: Prisma.event_logUpdateManyWithoutStudentNestedInput
+  logs?: Prisma.EventLogUpdateManyWithoutStudentNestedInput
 }
 
-export type studentUncheckedUpdateWithoutWorkspaceInput = {
+export type StudentUncheckedUpdateWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -634,10 +634,10 @@ export type studentUncheckedUpdateWithoutWorkspaceInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  logs?: Prisma.event_logUncheckedUpdateManyWithoutStudentNestedInput
+  logs?: Prisma.EventLogUncheckedUpdateManyWithoutStudentNestedInput
 }
 
-export type studentUncheckedUpdateManyWithoutWorkspaceInput = {
+export type StudentUncheckedUpdateManyWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -675,11 +675,11 @@ export type StudentCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
  * StudentCountOutputType without action
  */
 export type StudentCountOutputTypeCountLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.event_logWhereInput
+  where?: Prisma.EventLogWhereInput
 }
 
 
-export type studentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type StudentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   workspace_id?: boolean
   first_name?: boolean
@@ -690,11 +690,11 @@ export type studentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   updated_at?: boolean
   deleted_at?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
-  logs?: boolean | Prisma.student$logsArgs<ExtArgs>
+  logs?: boolean | Prisma.Student$logsArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
 
-export type studentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type StudentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   workspace_id?: boolean
   first_name?: boolean
@@ -707,7 +707,7 @@ export type studentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
 
-export type studentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type StudentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   workspace_id?: boolean
   first_name?: boolean
@@ -720,7 +720,7 @@ export type studentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
 
-export type studentSelectScalar = {
+export type StudentSelectScalar = {
   id?: boolean
   workspace_id?: boolean
   first_name?: boolean
@@ -732,24 +732,24 @@ export type studentSelectScalar = {
   deleted_at?: boolean
 }
 
-export type studentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspace_id" | "first_name" | "last_name" | "id_card_code" | "metadata" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["student"]>
-export type studentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspace_id" | "first_name" | "last_name" | "id_card_code" | "metadata" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["student"]>
+export type StudentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
-  logs?: boolean | Prisma.student$logsArgs<ExtArgs>
+  logs?: boolean | Prisma.Student$logsArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type studentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
 }
-export type studentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
 }
 
-export type $studentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "student"
+export type $StudentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "Student"
   objects: {
     workspace: Prisma.$WorkspacePayload<ExtArgs>
-    logs: Prisma.$event_logPayload<ExtArgs>[]
+    logs: Prisma.$EventLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -765,18 +765,18 @@ export type $studentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   composites: {}
 }
 
-export type studentGetPayload<S extends boolean | null | undefined | studentDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$studentPayload, S>
+export type StudentGetPayload<S extends boolean | null | undefined | StudentDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$StudentPayload, S>
 
-export type studentCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<studentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type StudentCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<StudentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: StudentCountAggregateInputType | true
   }
 
-export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['student'], meta: { name: 'student' } }
+export interface StudentDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Student'], meta: { name: 'Student' } }
   /**
    * Find zero or one Student that matches the filter.
-   * @param {studentFindUniqueArgs} args - Arguments to find a Student
+   * @param {StudentFindUniqueArgs} args - Arguments to find a Student
    * @example
    * // Get one Student
    * const student = await prisma.student.findUnique({
@@ -785,12 +785,12 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   }
    * })
    */
-  findUnique<T extends studentFindUniqueArgs>(args: Prisma.SelectSubset<T, studentFindUniqueArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends StudentFindUniqueArgs>(args: Prisma.SelectSubset<T, StudentFindUniqueArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one Student that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {studentFindUniqueOrThrowArgs} args - Arguments to find a Student
+   * @param {StudentFindUniqueOrThrowArgs} args - Arguments to find a Student
    * @example
    * // Get one Student
    * const student = await prisma.student.findUniqueOrThrow({
@@ -799,13 +799,13 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   }
    * })
    */
-  findUniqueOrThrow<T extends studentFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, studentFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends StudentFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, StudentFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Student that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {studentFindFirstArgs} args - Arguments to find a Student
+   * @param {StudentFindFirstArgs} args - Arguments to find a Student
    * @example
    * // Get one Student
    * const student = await prisma.student.findFirst({
@@ -814,14 +814,14 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   }
    * })
    */
-  findFirst<T extends studentFindFirstArgs>(args?: Prisma.SelectSubset<T, studentFindFirstArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends StudentFindFirstArgs>(args?: Prisma.SelectSubset<T, StudentFindFirstArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Student that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {studentFindFirstOrThrowArgs} args - Arguments to find a Student
+   * @param {StudentFindFirstOrThrowArgs} args - Arguments to find a Student
    * @example
    * // Get one Student
    * const student = await prisma.student.findFirstOrThrow({
@@ -830,13 +830,13 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   }
    * })
    */
-  findFirstOrThrow<T extends studentFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, studentFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends StudentFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, StudentFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more Students that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {studentFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {StudentFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Students
    * const students = await prisma.student.findMany()
@@ -848,11 +848,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * const studentWithIdOnly = await prisma.student.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends studentFindManyArgs>(args?: Prisma.SelectSubset<T, studentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends StudentFindManyArgs>(args?: Prisma.SelectSubset<T, StudentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a Student.
-   * @param {studentCreateArgs} args - Arguments to create a Student.
+   * @param {StudentCreateArgs} args - Arguments to create a Student.
    * @example
    * // Create one Student
    * const Student = await prisma.student.create({
@@ -862,11 +862,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * })
    * 
    */
-  create<T extends studentCreateArgs>(args: Prisma.SelectSubset<T, studentCreateArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends StudentCreateArgs>(args: Prisma.SelectSubset<T, StudentCreateArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many Students.
-   * @param {studentCreateManyArgs} args - Arguments to create many Students.
+   * @param {StudentCreateManyArgs} args - Arguments to create many Students.
    * @example
    * // Create many Students
    * const student = await prisma.student.createMany({
@@ -876,11 +876,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * })
    *     
    */
-  createMany<T extends studentCreateManyArgs>(args?: Prisma.SelectSubset<T, studentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends StudentCreateManyArgs>(args?: Prisma.SelectSubset<T, StudentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create many Students and returns the data saved in the database.
-   * @param {studentCreateManyAndReturnArgs} args - Arguments to create many Students.
+   * @param {StudentCreateManyAndReturnArgs} args - Arguments to create many Students.
    * @example
    * // Create many Students
    * const student = await prisma.student.createManyAndReturn({
@@ -900,11 +900,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends studentCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, studentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends StudentCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, StudentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Delete a Student.
-   * @param {studentDeleteArgs} args - Arguments to delete one Student.
+   * @param {StudentDeleteArgs} args - Arguments to delete one Student.
    * @example
    * // Delete one Student
    * const Student = await prisma.student.delete({
@@ -914,11 +914,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * })
    * 
    */
-  delete<T extends studentDeleteArgs>(args: Prisma.SelectSubset<T, studentDeleteArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends StudentDeleteArgs>(args: Prisma.SelectSubset<T, StudentDeleteArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one Student.
-   * @param {studentUpdateArgs} args - Arguments to update one Student.
+   * @param {StudentUpdateArgs} args - Arguments to update one Student.
    * @example
    * // Update one Student
    * const student = await prisma.student.update({
@@ -931,11 +931,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * })
    * 
    */
-  update<T extends studentUpdateArgs>(args: Prisma.SelectSubset<T, studentUpdateArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends StudentUpdateArgs>(args: Prisma.SelectSubset<T, StudentUpdateArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more Students.
-   * @param {studentDeleteManyArgs} args - Arguments to filter Students to delete.
+   * @param {StudentDeleteManyArgs} args - Arguments to filter Students to delete.
    * @example
    * // Delete a few Students
    * const { count } = await prisma.student.deleteMany({
@@ -945,13 +945,13 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * })
    * 
    */
-  deleteMany<T extends studentDeleteManyArgs>(args?: Prisma.SelectSubset<T, studentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends StudentDeleteManyArgs>(args?: Prisma.SelectSubset<T, StudentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Students.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {studentUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {StudentUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Students
    * const student = await prisma.student.updateMany({
@@ -964,11 +964,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * })
    * 
    */
-  updateMany<T extends studentUpdateManyArgs>(args: Prisma.SelectSubset<T, studentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends StudentUpdateManyArgs>(args: Prisma.SelectSubset<T, StudentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Students and returns the data updated in the database.
-   * @param {studentUpdateManyAndReturnArgs} args - Arguments to update many Students.
+   * @param {StudentUpdateManyAndReturnArgs} args - Arguments to update many Students.
    * @example
    * // Update many Students
    * const student = await prisma.student.updateManyAndReturn({
@@ -994,11 +994,11 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends studentUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, studentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends StudentUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, StudentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one Student.
-   * @param {studentUpsertArgs} args - Arguments to update or create a Student.
+   * @param {StudentUpsertArgs} args - Arguments to update or create a Student.
    * @example
    * // Update or create a Student
    * const student = await prisma.student.upsert({
@@ -1013,14 +1013,14 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   }
    * })
    */
-  upsert<T extends studentUpsertArgs>(args: Prisma.SelectSubset<T, studentUpsertArgs<ExtArgs>>): Prisma.Prisma__studentClient<runtime.Types.Result.GetResult<Prisma.$studentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends StudentUpsertArgs>(args: Prisma.SelectSubset<T, StudentUpsertArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of Students.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {studentCountArgs} args - Arguments to filter Students to count.
+   * @param {StudentCountArgs} args - Arguments to filter Students to count.
    * @example
    * // Count the number of Students
    * const count = await prisma.student.count({
@@ -1029,8 +1029,8 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   }
    * })
   **/
-  count<T extends studentCountArgs>(
-    args?: Prisma.Subset<T, studentCountArgs>,
+  count<T extends StudentCountArgs>(
+    args?: Prisma.Subset<T, StudentCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -1069,7 +1069,7 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * Group by Student.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {studentGroupByArgs} args - Group by arguments.
+   * @param {StudentGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -1084,14 +1084,14 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * 
   **/
   groupBy<
-    T extends studentGroupByArgs,
+    T extends StudentGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: studentGroupByArgs['orderBy'] }
-      : { orderBy?: studentGroupByArgs['orderBy'] },
+      ? { orderBy: StudentGroupByArgs['orderBy'] }
+      : { orderBy?: StudentGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -1140,23 +1140,23 @@ export interface studentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, studentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStudentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, StudentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStudentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the student model
+ * Fields of the Student model
  */
-readonly fields: studentFieldRefs;
+readonly fields: StudentFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for student.
+ * The delegate class that acts as a "Promise-like" for Student.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__studentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__StudentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   workspace<T extends Prisma.WorkspaceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WorkspaceDefaultArgs<ExtArgs>>): Prisma.Prisma__WorkspaceClient<runtime.Types.Result.GetResult<Prisma.$WorkspacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  logs<T extends Prisma.student$logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.student$logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$event_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  logs<T extends Prisma.Student$logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1183,456 +1183,456 @@ export interface Prisma__studentClient<T, Null = never, ExtArgs extends runtime.
 
 
 /**
- * Fields of the student model
+ * Fields of the Student model
  */
-export interface studentFieldRefs {
-  readonly id: Prisma.FieldRef<"student", 'String'>
-  readonly workspace_id: Prisma.FieldRef<"student", 'String'>
-  readonly first_name: Prisma.FieldRef<"student", 'String'>
-  readonly last_name: Prisma.FieldRef<"student", 'String'>
-  readonly id_card_code: Prisma.FieldRef<"student", 'String'>
-  readonly metadata: Prisma.FieldRef<"student", 'Json'>
-  readonly created_at: Prisma.FieldRef<"student", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"student", 'DateTime'>
-  readonly deleted_at: Prisma.FieldRef<"student", 'DateTime'>
+export interface StudentFieldRefs {
+  readonly id: Prisma.FieldRef<"Student", 'String'>
+  readonly workspace_id: Prisma.FieldRef<"Student", 'String'>
+  readonly first_name: Prisma.FieldRef<"Student", 'String'>
+  readonly last_name: Prisma.FieldRef<"Student", 'String'>
+  readonly id_card_code: Prisma.FieldRef<"Student", 'String'>
+  readonly metadata: Prisma.FieldRef<"Student", 'Json'>
+  readonly created_at: Prisma.FieldRef<"Student", 'DateTime'>
+  readonly updated_at: Prisma.FieldRef<"Student", 'DateTime'>
+  readonly deleted_at: Prisma.FieldRef<"Student", 'DateTime'>
 }
     
 
 // Custom InputTypes
 /**
- * student findUnique
+ * Student findUnique
  */
-export type studentFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * Filter, which student to fetch.
+   * Filter, which Student to fetch.
    */
-  where: Prisma.studentWhereUniqueInput
+  where: Prisma.StudentWhereUniqueInput
 }
 
 /**
- * student findUniqueOrThrow
+ * Student findUniqueOrThrow
  */
-export type studentFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * Filter, which student to fetch.
+   * Filter, which Student to fetch.
    */
-  where: Prisma.studentWhereUniqueInput
+  where: Prisma.StudentWhereUniqueInput
 }
 
 /**
- * student findFirst
+ * Student findFirst
  */
-export type studentFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * Filter, which student to fetch.
+   * Filter, which Student to fetch.
    */
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of students to fetch.
+   * Determine the order of Students to fetch.
    */
-  orderBy?: Prisma.studentOrderByWithRelationInput | Prisma.studentOrderByWithRelationInput[]
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for students.
+   * Sets the position for searching for Students.
    */
-  cursor?: Prisma.studentWhereUniqueInput
+  cursor?: Prisma.StudentWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` students from the position of the cursor.
+   * Take `±n` Students from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` students.
+   * Skip the first `n` Students.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of students.
+   * Filter by unique combinations of Students.
    */
   distinct?: Prisma.StudentScalarFieldEnum | Prisma.StudentScalarFieldEnum[]
 }
 
 /**
- * student findFirstOrThrow
+ * Student findFirstOrThrow
  */
-export type studentFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * Filter, which student to fetch.
+   * Filter, which Student to fetch.
    */
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of students to fetch.
+   * Determine the order of Students to fetch.
    */
-  orderBy?: Prisma.studentOrderByWithRelationInput | Prisma.studentOrderByWithRelationInput[]
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for students.
+   * Sets the position for searching for Students.
    */
-  cursor?: Prisma.studentWhereUniqueInput
+  cursor?: Prisma.StudentWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` students from the position of the cursor.
+   * Take `±n` Students from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` students.
+   * Skip the first `n` Students.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of students.
+   * Filter by unique combinations of Students.
    */
   distinct?: Prisma.StudentScalarFieldEnum | Prisma.StudentScalarFieldEnum[]
 }
 
 /**
- * student findMany
+ * Student findMany
  */
-export type studentFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * Filter, which students to fetch.
+   * Filter, which Students to fetch.
    */
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of students to fetch.
+   * Determine the order of Students to fetch.
    */
-  orderBy?: Prisma.studentOrderByWithRelationInput | Prisma.studentOrderByWithRelationInput[]
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing students.
+   * Sets the position for listing Students.
    */
-  cursor?: Prisma.studentWhereUniqueInput
+  cursor?: Prisma.StudentWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` students from the position of the cursor.
+   * Take `±n` Students from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` students.
+   * Skip the first `n` Students.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of students.
+   * Filter by unique combinations of Students.
    */
   distinct?: Prisma.StudentScalarFieldEnum | Prisma.StudentScalarFieldEnum[]
 }
 
 /**
- * student create
+ * Student create
  */
-export type studentCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * The data needed to create a student.
+   * The data needed to create a Student.
    */
-  data: Prisma.XOR<Prisma.studentCreateInput, Prisma.studentUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.StudentCreateInput, Prisma.StudentUncheckedCreateInput>
 }
 
 /**
- * student createMany
+ * Student createMany
  */
-export type studentCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many students.
+   * The data used to create many Students.
    */
-  data: Prisma.studentCreateManyInput | Prisma.studentCreateManyInput[]
+  data: Prisma.StudentCreateManyInput | Prisma.StudentCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * student createManyAndReturn
+ * Student createManyAndReturn
  */
-export type studentCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.StudentSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
-   * The data used to create many students.
+   * The data used to create many Students.
    */
-  data: Prisma.studentCreateManyInput | Prisma.studentCreateManyInput[]
+  data: Prisma.StudentCreateManyInput | Prisma.StudentCreateManyInput[]
   skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentIncludeCreateManyAndReturn<ExtArgs> | null
+  include?: Prisma.StudentIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * student update
+ * Student update
  */
-export type studentUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * The data needed to update a student.
+   * The data needed to update a Student.
    */
-  data: Prisma.XOR<Prisma.studentUpdateInput, Prisma.studentUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.StudentUpdateInput, Prisma.StudentUncheckedUpdateInput>
   /**
-   * Choose, which student to update.
+   * Choose, which Student to update.
    */
-  where: Prisma.studentWhereUniqueInput
+  where: Prisma.StudentWhereUniqueInput
 }
 
 /**
- * student updateMany
+ * Student updateMany
  */
-export type studentUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update students.
+   * The data used to update Students.
    */
-  data: Prisma.XOR<Prisma.studentUpdateManyMutationInput, Prisma.studentUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.StudentUpdateManyMutationInput, Prisma.StudentUncheckedUpdateManyInput>
   /**
-   * Filter which students to update
+   * Filter which Students to update
    */
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
   /**
-   * Limit how many students to update.
+   * Limit how many Students to update.
    */
   limit?: number
 }
 
 /**
- * student updateManyAndReturn
+ * Student updateManyAndReturn
  */
-export type studentUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.StudentSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
-   * The data used to update students.
+   * The data used to update Students.
    */
-  data: Prisma.XOR<Prisma.studentUpdateManyMutationInput, Prisma.studentUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.StudentUpdateManyMutationInput, Prisma.StudentUncheckedUpdateManyInput>
   /**
-   * Filter which students to update
+   * Filter which Students to update
    */
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
   /**
-   * Limit how many students to update.
+   * Limit how many Students to update.
    */
   limit?: number
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentIncludeUpdateManyAndReturn<ExtArgs> | null
+  include?: Prisma.StudentIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * student upsert
+ * Student upsert
  */
-export type studentUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * The filter to search for the student to update in case it exists.
+   * The filter to search for the Student to update in case it exists.
    */
-  where: Prisma.studentWhereUniqueInput
+  where: Prisma.StudentWhereUniqueInput
   /**
-   * In case the student found by the `where` argument doesn't exist, create a new student with this data.
+   * In case the Student found by the `where` argument doesn't exist, create a new Student with this data.
    */
-  create: Prisma.XOR<Prisma.studentCreateInput, Prisma.studentUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.StudentCreateInput, Prisma.StudentUncheckedCreateInput>
   /**
-   * In case the student was found with the provided `where` argument, update it with this data.
+   * In case the Student was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.studentUpdateInput, Prisma.studentUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.StudentUpdateInput, Prisma.StudentUncheckedUpdateInput>
 }
 
 /**
- * student delete
+ * Student delete
  */
-export type studentDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
   /**
-   * Filter which student to delete.
+   * Filter which Student to delete.
    */
-  where: Prisma.studentWhereUniqueInput
+  where: Prisma.StudentWhereUniqueInput
 }
 
 /**
- * student deleteMany
+ * Student deleteMany
  */
-export type studentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which students to delete
+   * Filter which Students to delete
    */
-  where?: Prisma.studentWhereInput
+  where?: Prisma.StudentWhereInput
   /**
-   * Limit how many students to delete.
+   * Limit how many Students to delete.
    */
   limit?: number
 }
 
 /**
- * student.logs
+ * Student.logs
  */
-export type student$logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Student$logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the event_log
+   * Select specific fields to fetch from the EventLog
    */
-  select?: Prisma.event_logSelect<ExtArgs> | null
+  select?: Prisma.EventLogSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the event_log
+   * Omit specific fields from the EventLog
    */
-  omit?: Prisma.event_logOmit<ExtArgs> | null
+  omit?: Prisma.EventLogOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.event_logInclude<ExtArgs> | null
-  where?: Prisma.event_logWhereInput
-  orderBy?: Prisma.event_logOrderByWithRelationInput | Prisma.event_logOrderByWithRelationInput[]
-  cursor?: Prisma.event_logWhereUniqueInput
+  include?: Prisma.EventLogInclude<ExtArgs> | null
+  where?: Prisma.EventLogWhereInput
+  orderBy?: Prisma.EventLogOrderByWithRelationInput | Prisma.EventLogOrderByWithRelationInput[]
+  cursor?: Prisma.EventLogWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.Event_logScalarFieldEnum | Prisma.Event_logScalarFieldEnum[]
+  distinct?: Prisma.EventLogScalarFieldEnum | Prisma.EventLogScalarFieldEnum[]
 }
 
 /**
- * student without action
+ * Student without action
  */
-export type studentDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StudentDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the student
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the student
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentInclude<ExtArgs> | null
+  include?: Prisma.StudentInclude<ExtArgs> | null
 }

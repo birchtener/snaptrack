@@ -27,34 +27,31 @@ export type AggregateUser = {
 export type UserMinAggregateOutputType = {
   id: string | null
   email: string | null
-  password_hash: string | null
   first_name: string | null
   last_name: string | null
+  image_url: string | null
   created_at: Date | null
   deleted_at: Date | null
-  isVerified: boolean | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: string | null
   email: string | null
-  password_hash: string | null
   first_name: string | null
   last_name: string | null
+  image_url: string | null
   created_at: Date | null
   deleted_at: Date | null
-  isVerified: boolean | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
   email: number
-  password_hash: number
   first_name: number
   last_name: number
+  image_url: number
   created_at: number
   deleted_at: number
-  isVerified: number
   _all: number
 }
 
@@ -62,34 +59,31 @@ export type UserCountAggregateOutputType = {
 export type UserMinAggregateInputType = {
   id?: true
   email?: true
-  password_hash?: true
   first_name?: true
   last_name?: true
+  image_url?: true
   created_at?: true
   deleted_at?: true
-  isVerified?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
   email?: true
-  password_hash?: true
   first_name?: true
   last_name?: true
+  image_url?: true
   created_at?: true
   deleted_at?: true
-  isVerified?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
   email?: true
-  password_hash?: true
   first_name?: true
   last_name?: true
+  image_url?: true
   created_at?: true
   deleted_at?: true
-  isVerified?: true
   _all?: true
 }
 
@@ -168,12 +162,11 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type UserGroupByOutputType = {
   id: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url: string | null
   created_at: Date
   deleted_at: Date | null
-  isVerified: boolean
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -200,31 +193,27 @@ export type UserWhereInput = {
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
-  password_hash?: Prisma.StringFilter<"User"> | string
   first_name?: Prisma.StringFilter<"User"> | string
   last_name?: Prisma.StringFilter<"User"> | string
+  image_url?: Prisma.StringNullableFilter<"User"> | string | null
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   deleted_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  isVerified?: Prisma.BoolFilter<"User"> | boolean
-  verificationToken?: Prisma.XOR<Prisma.VerificationTokenNullableScalarRelationFilter, Prisma.VerificationTokenWhereInput> | null
   memberships?: Prisma.MembershipListRelationFilter
-  scanned_logs?: Prisma.Event_logListRelationFilter
-  system_logs?: Prisma.System_logListRelationFilter
+  scanned_logs?: Prisma.EventLogListRelationFilter
+  system_logs?: Prisma.SystemLogListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
+  image_url?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   deleted_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  isVerified?: Prisma.SortOrder
-  verificationToken?: Prisma.VerificationTokenOrderByWithRelationInput
-  memberships?: Prisma.membershipOrderByRelationAggregateInput
-  scanned_logs?: Prisma.event_logOrderByRelationAggregateInput
-  system_logs?: Prisma.system_logOrderByRelationAggregateInput
+  memberships?: Prisma.MembershipOrderByRelationAggregateInput
+  scanned_logs?: Prisma.EventLogOrderByRelationAggregateInput
+  system_logs?: Prisma.SystemLogOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -233,27 +222,24 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  password_hash?: Prisma.StringFilter<"User"> | string
   first_name?: Prisma.StringFilter<"User"> | string
   last_name?: Prisma.StringFilter<"User"> | string
+  image_url?: Prisma.StringNullableFilter<"User"> | string | null
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   deleted_at?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  isVerified?: Prisma.BoolFilter<"User"> | boolean
-  verificationToken?: Prisma.XOR<Prisma.VerificationTokenNullableScalarRelationFilter, Prisma.VerificationTokenWhereInput> | null
   memberships?: Prisma.MembershipListRelationFilter
-  scanned_logs?: Prisma.Event_logListRelationFilter
-  system_logs?: Prisma.System_logListRelationFilter
+  scanned_logs?: Prisma.EventLogListRelationFilter
+  system_logs?: Prisma.SystemLogListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
+  image_url?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   deleted_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  isVerified?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -265,138 +251,123 @@ export type UserScalarWhereWithAggregatesInput = {
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
-  password_hash?: Prisma.StringWithAggregatesFilter<"User"> | string
   first_name?: Prisma.StringWithAggregatesFilter<"User"> | string
   last_name?: Prisma.StringWithAggregatesFilter<"User"> | string
+  image_url?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   deleted_at?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-  isVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
 }
 
 export type UserCreateInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenCreateNestedOneWithoutUserInput
-  memberships?: Prisma.membershipCreateNestedManyWithoutUserInput
-  scanned_logs?: Prisma.event_logCreateNestedManyWithoutScannerInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutExecutorInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedCreateNestedOneWithoutUserInput
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutUserInput
-  scanned_logs?: Prisma.event_logUncheckedCreateNestedManyWithoutScannerInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutExecutorInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUpdateOneWithoutUserNestedInput
-  memberships?: Prisma.membershipUpdateManyWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUpdateManyWithoutScannerNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutExecutorNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedUpdateOneWithoutUserNestedInput
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUncheckedUpdateManyWithoutScannerNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutExecutorNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
 }
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
+  image_url?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   deleted_at?: Prisma.SortOrder
-  isVerified?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
+  image_url?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   deleted_at?: Prisma.SortOrder
-  isVerified?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
+  image_url?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   deleted_at?: Prisma.SortOrder
-  isVerified?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -404,26 +375,12 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
-export type UserCreateNestedOneWithoutVerificationTokenInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutVerificationTokenInput, Prisma.UserUncheckedCreateWithoutVerificationTokenInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVerificationTokenInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutVerificationTokenNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutVerificationTokenInput, Prisma.UserUncheckedCreateWithoutVerificationTokenInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVerificationTokenInput
-  upsert?: Prisma.UserUpsertWithoutVerificationTokenInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVerificationTokenInput, Prisma.UserUpdateWithoutVerificationTokenInput>, Prisma.UserUncheckedUpdateWithoutVerificationTokenInput>
 }
 
 export type UserCreateNestedOneWithoutMembershipsInput = {
@@ -468,104 +425,28 @@ export type UserUpdateOneRequiredWithoutSystem_logsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSystem_logsInput, Prisma.UserUpdateWithoutSystem_logsInput>, Prisma.UserUncheckedUpdateWithoutSystem_logsInput>
 }
 
-export type UserCreateWithoutVerificationTokenInput = {
-  id?: string
-  email: string
-  password_hash: string
-  first_name: string
-  last_name: string
-  created_at?: Date | string
-  deleted_at?: Date | string | null
-  isVerified?: boolean
-  memberships?: Prisma.membershipCreateNestedManyWithoutUserInput
-  scanned_logs?: Prisma.event_logCreateNestedManyWithoutScannerInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutExecutorInput
-}
-
-export type UserUncheckedCreateWithoutVerificationTokenInput = {
-  id?: string
-  email: string
-  password_hash: string
-  first_name: string
-  last_name: string
-  created_at?: Date | string
-  deleted_at?: Date | string | null
-  isVerified?: boolean
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutUserInput
-  scanned_logs?: Prisma.event_logUncheckedCreateNestedManyWithoutScannerInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutExecutorInput
-}
-
-export type UserCreateOrConnectWithoutVerificationTokenInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutVerificationTokenInput, Prisma.UserUncheckedCreateWithoutVerificationTokenInput>
-}
-
-export type UserUpsertWithoutVerificationTokenInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutVerificationTokenInput, Prisma.UserUncheckedUpdateWithoutVerificationTokenInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutVerificationTokenInput, Prisma.UserUncheckedCreateWithoutVerificationTokenInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutVerificationTokenInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutVerificationTokenInput, Prisma.UserUncheckedUpdateWithoutVerificationTokenInput>
-}
-
-export type UserUpdateWithoutVerificationTokenInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  first_name?: Prisma.StringFieldUpdateOperationsInput | string
-  last_name?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  memberships?: Prisma.membershipUpdateManyWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUpdateManyWithoutScannerNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutExecutorNestedInput
-}
-
-export type UserUncheckedUpdateWithoutVerificationTokenInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  first_name?: Prisma.StringFieldUpdateOperationsInput | string
-  last_name?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUncheckedUpdateManyWithoutScannerNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutExecutorNestedInput
-}
-
 export type UserCreateWithoutMembershipsInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenCreateNestedOneWithoutUserInput
-  scanned_logs?: Prisma.event_logCreateNestedManyWithoutScannerInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutExecutorInput
+  scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
 }
 
 export type UserUncheckedCreateWithoutMembershipsInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedCreateNestedOneWithoutUserInput
-  scanned_logs?: Prisma.event_logUncheckedCreateNestedManyWithoutScannerInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutExecutorInput
+  scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
 }
 
 export type UserCreateOrConnectWithoutMembershipsInput = {
@@ -587,57 +468,49 @@ export type UserUpdateToOneWithWhereWithoutMembershipsInput = {
 export type UserUpdateWithoutMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUpdateOneWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUpdateManyWithoutScannerNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutExecutorNestedInput
+  scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedUpdateOneWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUncheckedUpdateManyWithoutScannerNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutExecutorNestedInput
+  scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
 }
 
 export type UserCreateWithoutScanned_logsInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenCreateNestedOneWithoutUserInput
-  memberships?: Prisma.membershipCreateNestedManyWithoutUserInput
-  system_logs?: Prisma.system_logCreateNestedManyWithoutExecutorInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
 }
 
 export type UserUncheckedCreateWithoutScanned_logsInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedCreateNestedOneWithoutUserInput
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutUserInput
-  system_logs?: Prisma.system_logUncheckedCreateNestedManyWithoutExecutorInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
 }
 
 export type UserCreateOrConnectWithoutScanned_logsInput = {
@@ -659,57 +532,49 @@ export type UserUpdateToOneWithWhereWithoutScanned_logsInput = {
 export type UserUpdateWithoutScanned_logsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUpdateOneWithoutUserNestedInput
-  memberships?: Prisma.membershipUpdateManyWithoutUserNestedInput
-  system_logs?: Prisma.system_logUpdateManyWithoutExecutorNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutScanned_logsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedUpdateOneWithoutUserNestedInput
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutUserNestedInput
-  system_logs?: Prisma.system_logUncheckedUpdateManyWithoutExecutorNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
 }
 
 export type UserCreateWithoutSystem_logsInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenCreateNestedOneWithoutUserInput
-  memberships?: Prisma.membershipCreateNestedManyWithoutUserInput
-  scanned_logs?: Prisma.event_logCreateNestedManyWithoutScannerInput
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
 }
 
 export type UserUncheckedCreateWithoutSystem_logsInput = {
   id?: string
   email: string
-  password_hash: string
   first_name: string
   last_name: string
+  image_url?: string | null
   created_at?: Date | string
   deleted_at?: Date | string | null
-  isVerified?: boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedCreateNestedOneWithoutUserInput
-  memberships?: Prisma.membershipUncheckedCreateNestedManyWithoutUserInput
-  scanned_logs?: Prisma.event_logUncheckedCreateNestedManyWithoutScannerInput
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
 }
 
 export type UserCreateOrConnectWithoutSystem_logsInput = {
@@ -731,29 +596,25 @@ export type UserUpdateToOneWithWhereWithoutSystem_logsInput = {
 export type UserUpdateWithoutSystem_logsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUpdateOneWithoutUserNestedInput
-  memberships?: Prisma.membershipUpdateManyWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUpdateManyWithoutScannerNestedInput
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSystem_logsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  verificationToken?: Prisma.VerificationTokenUncheckedUpdateOneWithoutUserNestedInput
-  memberships?: Prisma.membershipUncheckedUpdateManyWithoutUserNestedInput
-  scanned_logs?: Prisma.event_logUncheckedUpdateManyWithoutScannerNestedInput
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
 }
 
 
@@ -787,34 +648,32 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.membershipWhereInput
+  where?: Prisma.MembershipWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountScanned_logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.event_logWhereInput
+  where?: Prisma.EventLogWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountSystem_logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.system_logWhereInput
+  where?: Prisma.SystemLogWhereInput
 }
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
-  password_hash?: boolean
   first_name?: boolean
   last_name?: boolean
+  image_url?: boolean
   created_at?: boolean
   deleted_at?: boolean
-  isVerified?: boolean
-  verificationToken?: boolean | Prisma.User$verificationTokenArgs<ExtArgs>
   memberships?: boolean | Prisma.User$membershipsArgs<ExtArgs>
   scanned_logs?: boolean | Prisma.User$scanned_logsArgs<ExtArgs>
   system_logs?: boolean | Prisma.User$system_logsArgs<ExtArgs>
@@ -824,39 +683,35 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
-  password_hash?: boolean
   first_name?: boolean
   last_name?: boolean
+  image_url?: boolean
   created_at?: boolean
   deleted_at?: boolean
-  isVerified?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
-  password_hash?: boolean
   first_name?: boolean
   last_name?: boolean
+  image_url?: boolean
   created_at?: boolean
   deleted_at?: boolean
-  isVerified?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
   email?: boolean
-  password_hash?: boolean
   first_name?: boolean
   last_name?: boolean
+  image_url?: boolean
   created_at?: boolean
   deleted_at?: boolean
-  isVerified?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password_hash" | "first_name" | "last_name" | "created_at" | "deleted_at" | "isVerified", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "first_name" | "last_name" | "image_url" | "created_at" | "deleted_at", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  verificationToken?: boolean | Prisma.User$verificationTokenArgs<ExtArgs>
   memberships?: boolean | Prisma.User$membershipsArgs<ExtArgs>
   scanned_logs?: boolean | Prisma.User$scanned_logsArgs<ExtArgs>
   system_logs?: boolean | Prisma.User$system_logsArgs<ExtArgs>
@@ -868,20 +723,18 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    verificationToken: Prisma.$VerificationTokenPayload<ExtArgs> | null
-    memberships: Prisma.$membershipPayload<ExtArgs>[]
-    scanned_logs: Prisma.$event_logPayload<ExtArgs>[]
-    system_logs: Prisma.$system_logPayload<ExtArgs>[]
+    memberships: Prisma.$MembershipPayload<ExtArgs>[]
+    scanned_logs: Prisma.$EventLogPayload<ExtArgs>[]
+    system_logs: Prisma.$SystemLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     email: string
-    password_hash: string
     first_name: string
     last_name: string
+    image_url: string | null
     created_at: Date
     deleted_at: Date | null
-    isVerified: boolean
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1276,10 +1129,9 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  verificationToken<T extends Prisma.User$verificationTokenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$verificationTokenArgs<ExtArgs>>): Prisma.Prisma__VerificationTokenClient<runtime.Types.Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  memberships<T extends Prisma.User$membershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$membershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  scanned_logs<T extends Prisma.User$scanned_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$scanned_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$event_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  system_logs<T extends Prisma.User$system_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$system_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$system_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  memberships<T extends Prisma.User$membershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  scanned_logs<T extends Prisma.User$scanned_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$scanned_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  system_logs<T extends Prisma.User$system_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$system_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SystemLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1311,12 +1163,11 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
-  readonly password_hash: Prisma.FieldRef<"User", 'String'>
   readonly first_name: Prisma.FieldRef<"User", 'String'>
   readonly last_name: Prisma.FieldRef<"User", 'String'>
+  readonly image_url: Prisma.FieldRef<"User", 'String'>
   readonly created_at: Prisma.FieldRef<"User", 'DateTime'>
   readonly deleted_at: Prisma.FieldRef<"User", 'DateTime'>
-  readonly isVerified: Prisma.FieldRef<"User", 'Boolean'>
 }
     
 
@@ -1710,43 +1561,24 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.verificationToken
- */
-export type User$verificationTokenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the VerificationToken
-   */
-  select?: Prisma.VerificationTokenSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the VerificationToken
-   */
-  omit?: Prisma.VerificationTokenOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.VerificationTokenInclude<ExtArgs> | null
-  where?: Prisma.VerificationTokenWhereInput
-}
-
-/**
  * User.memberships
  */
 export type User$membershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the membership
+   * Select specific fields to fetch from the Membership
    */
-  select?: Prisma.membershipSelect<ExtArgs> | null
+  select?: Prisma.MembershipSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the membership
+   * Omit specific fields from the Membership
    */
-  omit?: Prisma.membershipOmit<ExtArgs> | null
+  omit?: Prisma.MembershipOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.membershipInclude<ExtArgs> | null
-  where?: Prisma.membershipWhereInput
-  orderBy?: Prisma.membershipOrderByWithRelationInput | Prisma.membershipOrderByWithRelationInput[]
-  cursor?: Prisma.membershipWhereUniqueInput
+  include?: Prisma.MembershipInclude<ExtArgs> | null
+  where?: Prisma.MembershipWhereInput
+  orderBy?: Prisma.MembershipOrderByWithRelationInput | Prisma.MembershipOrderByWithRelationInput[]
+  cursor?: Prisma.MembershipWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.MembershipScalarFieldEnum | Prisma.MembershipScalarFieldEnum[]
@@ -1757,23 +1589,23 @@ export type User$membershipsArgs<ExtArgs extends runtime.Types.Extensions.Intern
  */
 export type User$scanned_logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the event_log
+   * Select specific fields to fetch from the EventLog
    */
-  select?: Prisma.event_logSelect<ExtArgs> | null
+  select?: Prisma.EventLogSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the event_log
+   * Omit specific fields from the EventLog
    */
-  omit?: Prisma.event_logOmit<ExtArgs> | null
+  omit?: Prisma.EventLogOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.event_logInclude<ExtArgs> | null
-  where?: Prisma.event_logWhereInput
-  orderBy?: Prisma.event_logOrderByWithRelationInput | Prisma.event_logOrderByWithRelationInput[]
-  cursor?: Prisma.event_logWhereUniqueInput
+  include?: Prisma.EventLogInclude<ExtArgs> | null
+  where?: Prisma.EventLogWhereInput
+  orderBy?: Prisma.EventLogOrderByWithRelationInput | Prisma.EventLogOrderByWithRelationInput[]
+  cursor?: Prisma.EventLogWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.Event_logScalarFieldEnum | Prisma.Event_logScalarFieldEnum[]
+  distinct?: Prisma.EventLogScalarFieldEnum | Prisma.EventLogScalarFieldEnum[]
 }
 
 /**
@@ -1781,23 +1613,23 @@ export type User$scanned_logsArgs<ExtArgs extends runtime.Types.Extensions.Inter
  */
 export type User$system_logsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the system_log
+   * Select specific fields to fetch from the SystemLog
    */
-  select?: Prisma.system_logSelect<ExtArgs> | null
+  select?: Prisma.SystemLogSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the system_log
+   * Omit specific fields from the SystemLog
    */
-  omit?: Prisma.system_logOmit<ExtArgs> | null
+  omit?: Prisma.SystemLogOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.system_logInclude<ExtArgs> | null
-  where?: Prisma.system_logWhereInput
-  orderBy?: Prisma.system_logOrderByWithRelationInput | Prisma.system_logOrderByWithRelationInput[]
-  cursor?: Prisma.system_logWhereUniqueInput
+  include?: Prisma.SystemLogInclude<ExtArgs> | null
+  where?: Prisma.SystemLogWhereInput
+  orderBy?: Prisma.SystemLogOrderByWithRelationInput | Prisma.SystemLogOrderByWithRelationInput[]
+  cursor?: Prisma.SystemLogWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.System_logScalarFieldEnum | Prisma.System_logScalarFieldEnum[]
+  distinct?: Prisma.SystemLogScalarFieldEnum | Prisma.SystemLogScalarFieldEnum[]
 }
 
 /**

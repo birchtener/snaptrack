@@ -52,32 +52,27 @@ export type Workspace = Prisma.WorkspaceModel
  */
 export type User = Prisma.UserModel
 /**
- * Model VerificationToken
+ * Model Membership
  * 
  */
-export type VerificationToken = Prisma.VerificationTokenModel
+export type Membership = Prisma.MembershipModel
 /**
- * Model membership
+ * Model Student
  * 
  */
-export type membership = Prisma.membershipModel
+export type Student = Prisma.StudentModel
 /**
- * Model student
+ * Model Event
  * 
  */
-export type student = Prisma.studentModel
+export type Event = Prisma.EventModel
 /**
- * Model event
+ * Model EventLog
  * 
  */
-export type event = Prisma.eventModel
+export type EventLog = Prisma.EventLogModel
 /**
- * Model event_log
+ * Model SystemLog
  * 
  */
-export type event_log = Prisma.event_logModel
-/**
- * Model system_log
- * 
- */
-export type system_log = Prisma.system_logModel
+export type SystemLog = Prisma.SystemLogModel

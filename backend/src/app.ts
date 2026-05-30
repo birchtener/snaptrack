@@ -3,6 +3,8 @@ import cors from "cors";
 import helmet from "helmet";
 import { errorHandler } from "./middlewares/error.middleware";
 import { clerkMiddleware } from "@clerk/express";
+import InitializeRoutes from "./routes";
+
 const app = express();
 
 const allowedOrigins = [
@@ -28,9 +30,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(clerkMiddleware());
 
-app.get("/health", (req, res) => {
-  res.status(200).json({ status: "healthy", timestamp: new Date() });
-});
+InitializeRoutes(app);
 
 app.use(errorHandler);
 

@@ -45,25 +45,16 @@ model Workspace {
 model User {
   id            String    @id @default(uuid())
   email         String    @unique
-  password_hash String
   first_name    String
   last_name     String
+  image_url     String?
   created_at    DateTime  @default(now())
   deleted_at    DateTime?
-  verificationToken VerificationToken?
 
   // Relations
   memberships  Membership[]
   scanned_logs EventLog[]
   system_logs  SystemLog[]
-}
-
-model VerificationToken {
-  id        String   @id @default(uuid())
-  token     String   @unique
-  expiresAt DateTime
-  userId    String   @unique
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Membership {

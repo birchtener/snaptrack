@@ -35,5 +35,9 @@
     "pg": "^8.21.0",
     "resend": "^6.12.4",
     "zod": "^4.4.3"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.1.0",
+    "utf-8-validate": "^6.0.6"
   }
 }
