@@ -44,6 +44,7 @@ export type WorkspaceCountAggregateOutputType = {
   id: number
   name: number
   created_by: number
+  student_metadata_schema: number
   created_at: number
   updated_at: number
   _all: number
@@ -70,6 +71,7 @@ export type WorkspaceCountAggregateInputType = {
   id?: true
   name?: true
   created_by?: true
+  student_metadata_schema?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -151,6 +153,7 @@ export type WorkspaceGroupByOutputType = {
   id: string
   name: string
   created_by: string
+  student_metadata_schema: runtime.JsonValue
   created_at: Date
   updated_at: Date
   _count: WorkspaceCountAggregateOutputType | null
@@ -180,6 +183,7 @@ export type WorkspaceWhereInput = {
   id?: Prisma.StringFilter<"Workspace"> | string
   name?: Prisma.StringFilter<"Workspace"> | string
   created_by?: Prisma.StringFilter<"Workspace"> | string
+  student_metadata_schema?: Prisma.JsonFilter<"Workspace">
   created_at?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   memberships?: Prisma.MembershipListRelationFilter
@@ -193,6 +197,7 @@ export type WorkspaceOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
+  student_metadata_schema?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   memberships?: Prisma.MembershipOrderByRelationAggregateInput
@@ -209,6 +214,7 @@ export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.WorkspaceWhereInput | Prisma.WorkspaceWhereInput[]
   name?: Prisma.StringFilter<"Workspace"> | string
   created_by?: Prisma.StringFilter<"Workspace"> | string
+  student_metadata_schema?: Prisma.JsonFilter<"Workspace">
   created_at?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   memberships?: Prisma.MembershipListRelationFilter
@@ -222,6 +228,7 @@ export type WorkspaceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
+  student_metadata_schema?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.WorkspaceCountOrderByAggregateInput
@@ -236,6 +243,7 @@ export type WorkspaceScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Workspace"> | string
   name?: Prisma.StringWithAggregatesFilter<"Workspace"> | string
   created_by?: Prisma.StringWithAggregatesFilter<"Workspace"> | string
+  student_metadata_schema?: Prisma.JsonWithAggregatesFilter<"Workspace">
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Workspace"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Workspace"> | Date | string
 }
@@ -243,6 +251,7 @@ export type WorkspaceScalarWhereWithAggregatesInput = {
 export type WorkspaceCreateInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
@@ -256,6 +265,7 @@ export type WorkspaceUncheckedCreateInput = {
   id?: string
   name: string
   created_by: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
@@ -267,6 +277,7 @@ export type WorkspaceUncheckedCreateInput = {
 export type WorkspaceUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
@@ -280,6 +291,7 @@ export type WorkspaceUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
@@ -292,6 +304,7 @@ export type WorkspaceCreateManyInput = {
   id?: string
   name: string
   created_by: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -299,6 +312,7 @@ export type WorkspaceCreateManyInput = {
 export type WorkspaceUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -307,6 +321,7 @@ export type WorkspaceUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -315,6 +330,7 @@ export type WorkspaceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
+  student_metadata_schema?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -459,6 +475,7 @@ export type WorkspaceUpdateOneRequiredWithoutSystem_logsNestedInput = {
 export type WorkspaceCreateWithoutCreatorInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
@@ -470,6 +487,7 @@ export type WorkspaceCreateWithoutCreatorInput = {
 export type WorkspaceUncheckedCreateWithoutCreatorInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
@@ -511,6 +529,7 @@ export type WorkspaceScalarWhereInput = {
   id?: Prisma.StringFilter<"Workspace"> | string
   name?: Prisma.StringFilter<"Workspace"> | string
   created_by?: Prisma.StringFilter<"Workspace"> | string
+  student_metadata_schema?: Prisma.JsonFilter<"Workspace">
   created_at?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Workspace"> | Date | string
 }
@@ -518,6 +537,7 @@ export type WorkspaceScalarWhereInput = {
 export type WorkspaceCreateWithoutMembershipsInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   students?: Prisma.StudentCreateNestedManyWithoutWorkspaceInput
@@ -530,6 +550,7 @@ export type WorkspaceUncheckedCreateWithoutMembershipsInput = {
   id?: string
   name: string
   created_by: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   students?: Prisma.StudentUncheckedCreateNestedManyWithoutWorkspaceInput
@@ -556,6 +577,7 @@ export type WorkspaceUpdateToOneWithWhereWithoutMembershipsInput = {
 export type WorkspaceUpdateWithoutMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   students?: Prisma.StudentUpdateManyWithoutWorkspaceNestedInput
@@ -568,6 +590,7 @@ export type WorkspaceUncheckedUpdateWithoutMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   students?: Prisma.StudentUncheckedUpdateManyWithoutWorkspaceNestedInput
@@ -578,6 +601,7 @@ export type WorkspaceUncheckedUpdateWithoutMembershipsInput = {
 export type WorkspaceCreateWithoutStudentsInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
@@ -590,6 +614,7 @@ export type WorkspaceUncheckedCreateWithoutStudentsInput = {
   id?: string
   name: string
   created_by: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
@@ -616,6 +641,7 @@ export type WorkspaceUpdateToOneWithWhereWithoutStudentsInput = {
 export type WorkspaceUpdateWithoutStudentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
@@ -628,6 +654,7 @@ export type WorkspaceUncheckedUpdateWithoutStudentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
@@ -638,6 +665,7 @@ export type WorkspaceUncheckedUpdateWithoutStudentsInput = {
 export type WorkspaceCreateWithoutEventsInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
@@ -650,6 +678,7 @@ export type WorkspaceUncheckedCreateWithoutEventsInput = {
   id?: string
   name: string
   created_by: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
@@ -676,6 +705,7 @@ export type WorkspaceUpdateToOneWithWhereWithoutEventsInput = {
 export type WorkspaceUpdateWithoutEventsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
@@ -688,6 +718,7 @@ export type WorkspaceUncheckedUpdateWithoutEventsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
@@ -698,6 +729,7 @@ export type WorkspaceUncheckedUpdateWithoutEventsInput = {
 export type WorkspaceCreateWithoutSystem_logsInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
@@ -710,6 +742,7 @@ export type WorkspaceUncheckedCreateWithoutSystem_logsInput = {
   id?: string
   name: string
   created_by: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
@@ -736,6 +769,7 @@ export type WorkspaceUpdateToOneWithWhereWithoutSystem_logsInput = {
 export type WorkspaceUpdateWithoutSystem_logsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
@@ -748,6 +782,7 @@ export type WorkspaceUncheckedUpdateWithoutSystem_logsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
@@ -758,6 +793,7 @@ export type WorkspaceUncheckedUpdateWithoutSystem_logsInput = {
 export type WorkspaceCreateManyCreatorInput = {
   id?: string
   name: string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -765,6 +801,7 @@ export type WorkspaceCreateManyCreatorInput = {
 export type WorkspaceUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
@@ -776,6 +813,7 @@ export type WorkspaceUpdateWithoutCreatorInput = {
 export type WorkspaceUncheckedUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
@@ -787,6 +825,7 @@ export type WorkspaceUncheckedUpdateWithoutCreatorInput = {
 export type WorkspaceUncheckedUpdateManyWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  student_metadata_schema?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -853,6 +892,7 @@ export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   name?: boolean
   created_by?: boolean
+  student_metadata_schema?: boolean
   created_at?: boolean
   updated_at?: boolean
   memberships?: boolean | Prisma.Workspace$membershipsArgs<ExtArgs>
@@ -867,6 +907,7 @@ export type WorkspaceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   name?: boolean
   created_by?: boolean
+  student_metadata_schema?: boolean
   created_at?: boolean
   updated_at?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -876,6 +917,7 @@ export type WorkspaceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   name?: boolean
   created_by?: boolean
+  student_metadata_schema?: boolean
   created_at?: boolean
   updated_at?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -885,11 +927,12 @@ export type WorkspaceSelectScalar = {
   id?: boolean
   name?: boolean
   created_by?: boolean
+  student_metadata_schema?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type WorkspaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "created_by" | "created_at" | "updated_at", ExtArgs["result"]["workspace"]>
+export type WorkspaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "created_by" | "student_metadata_schema" | "created_at" | "updated_at", ExtArgs["result"]["workspace"]>
 export type WorkspaceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   memberships?: boolean | Prisma.Workspace$membershipsArgs<ExtArgs>
   students?: boolean | Prisma.Workspace$studentsArgs<ExtArgs>
@@ -918,6 +961,7 @@ export type $WorkspacePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     id: string
     name: string
     created_by: string
+    student_metadata_schema: runtime.JsonValue
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["workspace"]>
@@ -1351,6 +1395,7 @@ export interface WorkspaceFieldRefs {
   readonly id: Prisma.FieldRef<"Workspace", 'String'>
   readonly name: Prisma.FieldRef<"Workspace", 'String'>
   readonly created_by: Prisma.FieldRef<"Workspace", 'String'>
+  readonly student_metadata_schema: Prisma.FieldRef<"Workspace", 'Json'>
   readonly created_at: Prisma.FieldRef<"Workspace", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Workspace", 'DateTime'>
 }

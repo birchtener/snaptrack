@@ -35,11 +35,12 @@ enum SystemAction {
 }
 
 model Workspace {
-  id         String   @id @default(uuid())
-  name       String
-  created_by String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id                      String   @id @default(uuid())
+  name                    String
+  created_by              String
+  student_metadata_schema Json     @default("[]")
+  created_at              DateTime @default(now())
+  updated_at              DateTime @updatedAt
 
   // Relations
   memberships Membership[]
@@ -50,20 +51,20 @@ model Workspace {
 }
 
 model User {
-  id            String    @id // @default(uuid())
-  email         String    @unique
-  first_name    String
-  last_name     String
-  image_url     String?
-  created_at    DateTime  @default(now())
-  deleted_at    DateTime?
+  id         String    @id // @default(uuid())
+  email      String    @unique
+  first_name String
+  last_name  String
+  image_url  String?
+  created_at DateTime  @default(now())
+  deleted_at DateTime?
 
   // Relations
-  memberships  Membership[]
-  scanned_logs EventLog[]
-  system_logs  SystemLog[]
-  events       Event[]
-  created_workspaces Workspace[] @relation("WorkspaceCreator")
+  memberships        Membership[]
+  scanned_logs       EventLog[]
+  system_logs        SystemLog[]
+  events             Event[]
+  created_workspaces Workspace[]  @relation("WorkspaceCreator")
 }
 
 model Membership {
@@ -92,7 +93,7 @@ model Student {
   deleted_at   DateTime?
 
   // Relations
-  workspace Workspace   @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+  workspace Workspace  @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
   logs      EventLog[]
 
   @@unique([workspace_id, id_card_code])
@@ -110,9 +111,9 @@ model Event {
   archived_at  DateTime?
 
   // Relations
-  workspace Workspace   @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+  workspace Workspace  @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
   logs      EventLog[]
-  creator   User      @relation(fields: [created_by], references: [id], onDelete: Restrict)
+  creator   User       @relation(fields: [created_by], references: [id], onDelete: Restrict)
 }
 
 model EventLog {
@@ -134,7 +135,7 @@ model EventLog {
 model SystemLog {
   id           String       @id @default(uuid())
   workspace_id String
-  created_by   String    
+  created_by   String
   action       SystemAction
   details      Json         @default("{}")
   timestamp    DateTime     @default(now())
