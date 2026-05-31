@@ -129,8 +129,10 @@ export const EventScalarFieldEnum = {
   id: 'id',
   workspace_id: 'workspace_id',
   name: 'name',
+  description: 'description',
   is_active: 'is_active',
   created_at: 'created_at',
+  created_by: 'created_by',
   archived_at: 'archived_at'
 } as const
 

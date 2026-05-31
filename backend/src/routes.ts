@@ -1,10 +1,18 @@
-import { Express } from "express";
+import { Express, raw } from "express";
 import UserRoute from "./modules/user/user.routes";
+import WebhookRoute from "./modules/webhook/webhook.routes";
+import MembershipRoute from "./modules/membership/membership.routes";
+import { protect } from "./middlewares/auth.middleware";
+
 export default function InitializeRoutes(app: Express) {
   // Health check endpoint
   app.get("/health", (req, res) => {
     res.status(200).json({ status: "healthy", timestamp: new Date() });
   });
+  app.use("/api/v1", WebhookRoute);
+
+  app.use(protect);
 
   app.use("/api/v1/user", UserRoute);
+  app.use("/api/v1/membership", MembershipRoute);
 }
