@@ -31,8 +31,12 @@ export const SystemAction = {
   update_student: 'update_student',
   delete_student: 'delete_student',
   create_event: 'create_event',
-  archive_event: 'archive_event',
-  update_membership: 'update_membership',
+  update_event: 'update_event',
+  delete_event: 'delete_event',
+  add_member: 'add_member',
+  update_member: 'update_member',
+  remove_member: 'remove_member',
+  create_workspace: 'create_workspace',
   update_workspace: 'update_workspace'
 } as const
 

@@ -24,8 +24,12 @@ enum SystemAction {
   update_student
   delete_student
   create_event
-  archive_event
-  update_membership
+  update_event
+  delete_event
+  add_member
+  update_member
+  remove_member
+  create_workspace
   update_workspace
 }
 
