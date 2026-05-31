@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { UserController } from "./user.controller";
-import { requireAuth } from "@clerk/express";
 const router = Router();
 
-router.post("/sync", requireAuth(), UserController.syncUser);
+router.get("/get", UserController.getUser);
+router.delete("/delete", UserController.deleteUser);
+router.patch("/update", UserController.updateUser);
 
 export default router;
