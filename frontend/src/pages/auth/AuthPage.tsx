@@ -1,19 +1,18 @@
-import { GalleryVerticalEnd } from "lucide-react";
-
 import PixelBlast from "@/components/background/PixelBlast";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+import Logo from "@/assets/Logo";
 
 export default function AuthPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2 bg-background">
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
-          <a href="#" className="flex items-center gap-2 font-medium">
-            <div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <GalleryVerticalEnd className="size-4" />
+          <Link to="/" className="flex items-center gap-2 font-bold">
+            <div className="flex items-center justify-center">
+              <Logo className="size-6 text-primary" />
             </div>
             SnapTrack
-          </a>
+          </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
