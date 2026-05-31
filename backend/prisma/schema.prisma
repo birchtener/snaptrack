@@ -31,11 +31,13 @@ enum SystemAction {
   remove_member
   create_workspace
   update_workspace
+  delete_workspace
 }
 
 model Workspace {
   id         String   @id @default(uuid())
   name       String
+  created_by String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -44,6 +46,7 @@ model Workspace {
   students    Student[]
   events      Event[]
   system_logs SystemLog[]
+  creator     User         @relation("WorkspaceCreator", fields: [created_by], references: [id], onDelete: Restrict)
 }
 
 model User {
@@ -60,6 +63,7 @@ model User {
   scanned_logs EventLog[]
   system_logs  SystemLog[]
   events       Event[]
+  created_workspaces Workspace[] @relation("WorkspaceCreator")
 }
 
 model Membership {

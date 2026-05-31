@@ -37,7 +37,8 @@ export const SystemAction = {
   update_member: 'update_member',
   remove_member: 'remove_member',
   create_workspace: 'create_workspace',
-  update_workspace: 'update_workspace'
+  update_workspace: 'update_workspace',
+  delete_workspace: 'delete_workspace'
 } as const
 
 export type SystemAction = (typeof SystemAction)[keyof typeof SystemAction]

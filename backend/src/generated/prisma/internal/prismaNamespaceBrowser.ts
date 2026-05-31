@@ -79,6 +79,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const WorkspaceScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  created_by: 'created_by',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
