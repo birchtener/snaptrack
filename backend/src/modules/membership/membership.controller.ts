@@ -18,7 +18,7 @@ export class MembershipController {
       role,
     );
 
-    return res.status(201).json({ member: newMember });
+    return res.status(201).json({ success: true, data: newMember });
   });
 
   static getWorkspaceMembers = catchAsync(
@@ -31,7 +31,7 @@ export class MembershipController {
 
       const members = await MembershipService.getWorkspaceMembers(workspaceId);
 
-      return res.status(200).json({ members });
+      return res.status(200).json({ success: true, data: members });
     },
   );
 
@@ -52,7 +52,7 @@ export class MembershipController {
       newRole,
     );
 
-    return res.status(200).json({ member: updatedMember });
+    return res.status(200).json({ success: true, data: updatedMember });
   });
 
   static removeMember = catchAsync(async (req: Request, res: Response) => {
@@ -70,6 +70,6 @@ export class MembershipController {
       targetId,
     );
 
-    return res.status(200).json({ member: deletedMember });
+    return res.status(200).json({ success: true, data: deletedMember });
   });
 }

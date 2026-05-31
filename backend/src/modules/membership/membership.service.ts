@@ -1,5 +1,5 @@
 import { prisma } from "../../config/db";
-import { Role, Prisma } from "../../generated/prisma/client";
+import { Role, Prisma, SystemAction } from "../../generated/prisma/client";
 import { AppError } from "../../utils/app.error";
 import { SystemLogService } from "../system-log/system-log.service";
 
@@ -31,11 +31,10 @@ export class MembershipService {
       void SystemLogService.createLog(
         workspaceId,
         userId as string,
-        "update_membership",
+        SystemAction.add_member,
         {
           target_user_id: newMember.user_id,
           target_user_name: `${newMember.user.first_name} ${newMember.user.last_name}`,
-          action_performed: "add_member",
           new_role: role,
         },
       );
@@ -109,11 +108,10 @@ export class MembershipService {
       void SystemLogService.createLog(
         workspaceId,
         userId as string,
-        "update_membership",
+        SystemAction.update_member,
         {
           target_user_id: updatedMember.user_id,
           target_user_name: `${updatedMember.user.first_name} ${updatedMember.user.last_name}`,
-          action_performed: "change_role",
           new_role: updatedMember.role,
         },
       );
@@ -186,11 +184,10 @@ export class MembershipService {
       void SystemLogService.createLog(
         workspaceId,
         userId as string,
-        "update_membership",
+        SystemAction.remove_member,
         {
           target_user_id: deletedMember.user_id,
           target_user_name: `${deletedMember.user.first_name} ${deletedMember.user.last_name}`,
-          action_performed: "remove_member",
         },
       );
 

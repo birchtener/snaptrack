@@ -1,24 +1,29 @@
 import { Router } from "express";
 import { MembershipController } from "./membership.controller";
 import { checkRole } from "../../middlewares/rbac.middleware";
-const router = Router();
-
-router.use(checkRole(["owner", "admin", "scanner"]));
+import { Role } from "../../generated/prisma/client";
+const router = Router({
+  mergeParams: true,
+});
 
 router.post(
-  "/add/:workspace_id",
-  checkRole(["owner", "admin"]),
+  "/",
+  checkRole([Role.owner, Role.admin]),
   MembershipController.addMember,
 );
-router.get("/list/:workspace_id", MembershipController.getWorkspaceMembers);
+router.get(
+  "/",
+  checkRole([Role.owner, Role.admin, Role.scanner]),
+  MembershipController.getWorkspaceMembers,
+);
 router.patch(
-  "/update/:workspace_id/:target_id",
-  checkRole(["owner", "admin"]),
+  "/:target_id",
+  checkRole([Role.owner, Role.admin]),
   MembershipController.updateMemberRole,
 );
 router.delete(
-  "/remove/:workspace_id/:target_id",
-  checkRole(["owner", "admin"]),
+  "/:target_id",
+  checkRole([Role.owner, Role.admin]),
   MembershipController.removeMember,
 );
 
