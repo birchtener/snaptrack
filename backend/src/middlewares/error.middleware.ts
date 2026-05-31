@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { ZodError } from "zod";
-import { AppError } from "../utils/app.error"; // 💡 1. Import your REAL AppError class
+import { AppError } from "../utils/app.error";
 
 export const errorHandler = (
   err: any,
