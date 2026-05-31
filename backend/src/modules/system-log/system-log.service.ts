@@ -16,7 +16,7 @@ export interface EventLogDetails {
 
 export interface MembershipLogDetails {
   target_user_id: string;
-  action_performed: "add_member" | "remove_member" | "change_role";
+  target_user_name: string;
   old_role?: string;
   new_role?: string;
 }
