@@ -40,6 +40,25 @@ export class WorkspaceController {
     });
   });
 
+  static updateWorkspace = catchAsync(async (req: Request, res: Response) => {
+    const userId = req.user!.id;
+    const workspaceId = req.workspace!.id;
+    const name = req.body.name;
+    const fieldDefinitions = req.body.fieldDefinitions;
+
+    const updatedWorkspace = await WorkspaceService.updateWorkspace(
+      workspaceId,
+      userId,
+      name,
+      fieldDefinitions,
+    );
+
+    res.status(200).json({
+      success: true,
+      data: updatedWorkspace,
+    });
+  });
+
   static deleteWorkspace = catchAsync(async (req: Request, res: Response) => {
     const userId = req.user!.id;
     const workspaceId = req.workspace!.id;

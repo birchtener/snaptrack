@@ -19,6 +19,11 @@ router.get(
   checkRole([Role.owner, Role.admin, Role.scanner]),
   WorkspaceController.getWorkspaceById,
 );
+router.patch(
+  "/:workspace_id",
+  checkRole([Role.owner, Role.admin]),
+  WorkspaceController.updateWorkspace,
+);
 router.delete(
   "/:workspace_id",
   checkRole([Role.owner]),
