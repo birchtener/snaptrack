@@ -21,13 +21,46 @@ export class UserService {
 
   static async deleteUser(userId: string) {
     try {
-      const deletedUser = await prisma.user.delete({
+      const user = await prisma.user.findUnique({
         where: { id: userId },
+      });
+
+      if (!user || user.deleted_at) {
+        throw new AppError("User not found", 404);
+      }
+
+      const ownedWorkspaces = await prisma.workspace.findMany({
+        where: { created_by: userId },
+        select: { id: true },
+      });
+
+      await prisma.$transaction(async (tx) => {
+        if (ownedWorkspaces.length > 0) {
+          const workspaceIds = ownedWorkspaces.map((w) => w.id);
+          await tx.workspace.deleteMany({
+            where: { id: { in: workspaceIds } },
+          });
+        }
+
+        await tx.membership.deleteMany({
+          where: { user_id: userId },
+        });
+
+        await tx.user.update({
+          where: { id: userId },
+          data: {
+            first_name: "Archived",
+            last_name: "User",
+            email: `archived-${userId}@system.local`,
+            image_url: null,
+            deleted_at: new Date(),
+          },
+        });
       });
 
       await clerkDeleteUser(userId);
 
-      return deletedUser;
+      return { id: userId, softDeleted: true };
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2025") {

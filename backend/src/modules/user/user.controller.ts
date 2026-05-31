@@ -3,13 +3,7 @@ import { UserService } from "./user.service";
 import { catchAsync } from "../../utils/catchAsync";
 export class UserController {
   static getUser = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
-
-    if (!userId) {
-      return res.status(401).json({
-        error: "Unauthenticated: Missing user identification token.",
-      });
-    }
+    const userId = req.user!.id;
 
     const user = await UserService.getUser(userId);
 
@@ -17,13 +11,7 @@ export class UserController {
   });
 
   static deleteUser = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
-
-    if (!userId) {
-      return res.status(401).json({
-        error: "Unauthenticated: Missing user identification token.",
-      });
-    }
+    const userId = req.user!.id;
 
     const deletedUser = await UserService.deleteUser(userId as string);
 
@@ -31,7 +19,7 @@ export class UserController {
   });
 
   static updateUser = catchAsync(async (req: Request, res: Response) => {
-    const userId = req.user?.id;
+    const userId = req.user!.id;
 
     const { firstName, lastName, password } = req.body;
 
