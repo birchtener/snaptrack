@@ -15,12 +15,12 @@ const router = Router({
 });
 
 router.get(
-  "/:workspace_id",
+  "/",
   checkRole([Role.owner, Role.admin, Role.scanner]),
   EventController.getEvents,
 );
 router.get(
-  "/:workspace_id/:event_id",
+  "/:event_id",
   checkRole([Role.owner, Role.admin, Role.scanner]),
   validate(getEventByIdSchema),
   EventController.getEventById,
@@ -28,18 +28,14 @@ router.get(
 
 router.use(checkRole([Role.owner, Role.admin]));
 
-router.post(
-  "/:workspace_id",
-  validate(createEventSchema),
-  EventController.createEvent,
-);
+router.post("/", validate(createEventSchema), EventController.createEvent);
 router.patch(
-  "/:workspace_id/:event_id",
+  "/:event_id",
   validate(updateEventSchema),
   EventController.updateEvent,
 );
 router.delete(
-  "/:workspace_id/:event_id",
+  "/:event_id",
   validate(deleteEventSchema),
   EventController.deleteEvent,
 );
