@@ -2,6 +2,7 @@ import { Express, raw } from "express";
 import UserRoute from "./modules/user/user.routes";
 import WebhookRoute from "./modules/webhook/webhook.routes";
 import MembershipRoute from "./modules/membership/membership.routes";
+import EventRoute from "./modules/event/event.router";
 import { protect } from "./middlewares/auth.middleware";
 
 export default function InitializeRoutes(app: Express) {
@@ -13,6 +14,7 @@ export default function InitializeRoutes(app: Express) {
 
   app.use(protect);
 
-  app.use("/api/v1/user", UserRoute);
-  app.use("/api/v1/membership", MembershipRoute);
+  app.use("/api/v1/users", UserRoute);
+  app.use("/api/v1/:workspace_id/memberships", MembershipRoute);
+  app.use("/api/v1/:workspace_id/events", EventRoute);
 }
