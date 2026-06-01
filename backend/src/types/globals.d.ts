@@ -6,6 +6,7 @@ import "multer";
 declare global {
   namespace Express {
     interface Request {
+      validatedQuery?: Record<string, any>;
       user?: {
         id: string;
         firstName: string;
