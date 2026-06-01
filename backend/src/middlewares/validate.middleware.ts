@@ -1,6 +1,5 @@
-// src/middlewares/validate.middleware.ts
 import { Request, Response, NextFunction } from "express";
-import { z } from "zod"; // 💡 Just import standard z
+import { z } from "zod";
 
 export const validate = (schema: z.ZodType<any, any, any>) => {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -13,7 +12,9 @@ export const validate = (schema: z.ZodType<any, any, any>) => {
 
       req.body = parsed.body || req.body;
       req.params = parsed.params || req.params;
-      req.query = parsed.query || req.query;
+      req.validatedQuery = parsed.query
+        ? (parsed.query as Record<string, any>)
+        : undefined;
 
       return next();
     } catch (error) {
