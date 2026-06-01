@@ -4,6 +4,7 @@ import WebhookRoute from "./modules/webhook/webhook.routes";
 import MembershipRoute from "./modules/membership/membership.routes";
 import EventRoute from "./modules/event/event.router";
 import WorkspaceRoute from "./modules/workspace/workspace.routes";
+import StudentRoute from "./modules/student/student.routes";
 import { protect } from "./middlewares/auth.middleware";
 
 export default function InitializeRoutes(app: Express) {
@@ -19,4 +20,5 @@ export default function InitializeRoutes(app: Express) {
   app.use("/api/v1/workspaces", WorkspaceRoute);
   app.use("/api/v1/:workspace_id/memberships", MembershipRoute);
   app.use("/api/v1/:workspace_id/events", EventRoute);
+  app.use("/api/v1/:workspace_id/students", StudentRoute);
 }
