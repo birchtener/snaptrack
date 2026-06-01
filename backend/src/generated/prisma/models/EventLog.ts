@@ -26,6 +26,7 @@ export type AggregateEventLog = {
 
 export type EventLogMinAggregateOutputType = {
   id: string | null
+  workspace_id: string | null
   event_id: string | null
   student_id: string | null
   scanned_by: string | null
@@ -35,6 +36,7 @@ export type EventLogMinAggregateOutputType = {
 
 export type EventLogMaxAggregateOutputType = {
   id: string | null
+  workspace_id: string | null
   event_id: string | null
   student_id: string | null
   scanned_by: string | null
@@ -44,6 +46,7 @@ export type EventLogMaxAggregateOutputType = {
 
 export type EventLogCountAggregateOutputType = {
   id: number
+  workspace_id: number
   event_id: number
   student_id: number
   scanned_by: number
@@ -55,6 +58,7 @@ export type EventLogCountAggregateOutputType = {
 
 export type EventLogMinAggregateInputType = {
   id?: true
+  workspace_id?: true
   event_id?: true
   student_id?: true
   scanned_by?: true
@@ -64,6 +68,7 @@ export type EventLogMinAggregateInputType = {
 
 export type EventLogMaxAggregateInputType = {
   id?: true
+  workspace_id?: true
   event_id?: true
   student_id?: true
   scanned_by?: true
@@ -73,6 +78,7 @@ export type EventLogMaxAggregateInputType = {
 
 export type EventLogCountAggregateInputType = {
   id?: true
+  workspace_id?: true
   event_id?: true
   student_id?: true
   scanned_by?: true
@@ -155,6 +161,7 @@ export type EventLogGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type EventLogGroupByOutputType = {
   id: string
+  workspace_id: string
   event_id: string
   student_id: string
   scanned_by: string
@@ -185,11 +192,13 @@ export type EventLogWhereInput = {
   OR?: Prisma.EventLogWhereInput[]
   NOT?: Prisma.EventLogWhereInput | Prisma.EventLogWhereInput[]
   id?: Prisma.StringFilter<"EventLog"> | string
+  workspace_id?: Prisma.StringFilter<"EventLog"> | string
   event_id?: Prisma.StringFilter<"EventLog"> | string
   student_id?: Prisma.StringFilter<"EventLog"> | string
   scanned_by?: Prisma.StringFilter<"EventLog"> | string
   type?: Prisma.EnumLogTypeFilter<"EventLog"> | $Enums.LogType
   timestamp?: Prisma.DateTimeFilter<"EventLog"> | Date | string
+  workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
   event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
   scanner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -197,11 +206,13 @@ export type EventLogWhereInput = {
 
 export type EventLogOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  workspace_id?: Prisma.SortOrder
   event_id?: Prisma.SortOrder
   student_id?: Prisma.SortOrder
   scanned_by?: Prisma.SortOrder
   type?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
+  workspace?: Prisma.WorkspaceOrderByWithRelationInput
   event?: Prisma.EventOrderByWithRelationInput
   student?: Prisma.StudentOrderByWithRelationInput
   scanner?: Prisma.UserOrderByWithRelationInput
@@ -212,11 +223,13 @@ export type EventLogWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.EventLogWhereInput | Prisma.EventLogWhereInput[]
   OR?: Prisma.EventLogWhereInput[]
   NOT?: Prisma.EventLogWhereInput | Prisma.EventLogWhereInput[]
+  workspace_id?: Prisma.StringFilter<"EventLog"> | string
   event_id?: Prisma.StringFilter<"EventLog"> | string
   student_id?: Prisma.StringFilter<"EventLog"> | string
   scanned_by?: Prisma.StringFilter<"EventLog"> | string
   type?: Prisma.EnumLogTypeFilter<"EventLog"> | $Enums.LogType
   timestamp?: Prisma.DateTimeFilter<"EventLog"> | Date | string
+  workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
   event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
   scanner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -224,6 +237,7 @@ export type EventLogWhereUniqueInput = Prisma.AtLeast<{
 
 export type EventLogOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  workspace_id?: Prisma.SortOrder
   event_id?: Prisma.SortOrder
   student_id?: Prisma.SortOrder
   scanned_by?: Prisma.SortOrder
@@ -239,6 +253,7 @@ export type EventLogScalarWhereWithAggregatesInput = {
   OR?: Prisma.EventLogScalarWhereWithAggregatesInput[]
   NOT?: Prisma.EventLogScalarWhereWithAggregatesInput | Prisma.EventLogScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"EventLog"> | string
+  workspace_id?: Prisma.StringWithAggregatesFilter<"EventLog"> | string
   event_id?: Prisma.StringWithAggregatesFilter<"EventLog"> | string
   student_id?: Prisma.StringWithAggregatesFilter<"EventLog"> | string
   scanned_by?: Prisma.StringWithAggregatesFilter<"EventLog"> | string
@@ -250,6 +265,7 @@ export type EventLogCreateInput = {
   id?: string
   type: $Enums.LogType
   timestamp?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutEvent_logsInput
   event: Prisma.EventCreateNestedOneWithoutLogsInput
   student: Prisma.StudentCreateNestedOneWithoutLogsInput
   scanner: Prisma.UserCreateNestedOneWithoutScanned_logsInput
@@ -257,6 +273,7 @@ export type EventLogCreateInput = {
 
 export type EventLogUncheckedCreateInput = {
   id?: string
+  workspace_id: string
   event_id: string
   student_id: string
   scanned_by: string
@@ -268,6 +285,7 @@ export type EventLogUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutEvent_logsNestedInput
   event?: Prisma.EventUpdateOneRequiredWithoutLogsNestedInput
   student?: Prisma.StudentUpdateOneRequiredWithoutLogsNestedInput
   scanner?: Prisma.UserUpdateOneRequiredWithoutScanned_logsNestedInput
@@ -275,6 +293,7 @@ export type EventLogUpdateInput = {
 
 export type EventLogUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   event_id?: Prisma.StringFieldUpdateOperationsInput | string
   student_id?: Prisma.StringFieldUpdateOperationsInput | string
   scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
@@ -284,6 +303,7 @@ export type EventLogUncheckedUpdateInput = {
 
 export type EventLogCreateManyInput = {
   id?: string
+  workspace_id: string
   event_id: string
   student_id: string
   scanned_by: string
@@ -299,6 +319,7 @@ export type EventLogUpdateManyMutationInput = {
 
 export type EventLogUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   event_id?: Prisma.StringFieldUpdateOperationsInput | string
   student_id?: Prisma.StringFieldUpdateOperationsInput | string
   scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
@@ -318,6 +339,7 @@ export type EventLogOrderByRelationAggregateInput = {
 
 export type EventLogCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  workspace_id?: Prisma.SortOrder
   event_id?: Prisma.SortOrder
   student_id?: Prisma.SortOrder
   scanned_by?: Prisma.SortOrder
@@ -327,6 +349,7 @@ export type EventLogCountOrderByAggregateInput = {
 
 export type EventLogMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  workspace_id?: Prisma.SortOrder
   event_id?: Prisma.SortOrder
   student_id?: Prisma.SortOrder
   scanned_by?: Prisma.SortOrder
@@ -336,11 +359,54 @@ export type EventLogMaxOrderByAggregateInput = {
 
 export type EventLogMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  workspace_id?: Prisma.SortOrder
   event_id?: Prisma.SortOrder
   student_id?: Prisma.SortOrder
   scanned_by?: Prisma.SortOrder
   type?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
+}
+
+export type EventLogCreateNestedManyWithoutWorkspaceInput = {
+  create?: Prisma.XOR<Prisma.EventLogCreateWithoutWorkspaceInput, Prisma.EventLogUncheckedCreateWithoutWorkspaceInput> | Prisma.EventLogCreateWithoutWorkspaceInput[] | Prisma.EventLogUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.EventLogCreateOrConnectWithoutWorkspaceInput | Prisma.EventLogCreateOrConnectWithoutWorkspaceInput[]
+  createMany?: Prisma.EventLogCreateManyWorkspaceInputEnvelope
+  connect?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+}
+
+export type EventLogUncheckedCreateNestedManyWithoutWorkspaceInput = {
+  create?: Prisma.XOR<Prisma.EventLogCreateWithoutWorkspaceInput, Prisma.EventLogUncheckedCreateWithoutWorkspaceInput> | Prisma.EventLogCreateWithoutWorkspaceInput[] | Prisma.EventLogUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.EventLogCreateOrConnectWithoutWorkspaceInput | Prisma.EventLogCreateOrConnectWithoutWorkspaceInput[]
+  createMany?: Prisma.EventLogCreateManyWorkspaceInputEnvelope
+  connect?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+}
+
+export type EventLogUpdateManyWithoutWorkspaceNestedInput = {
+  create?: Prisma.XOR<Prisma.EventLogCreateWithoutWorkspaceInput, Prisma.EventLogUncheckedCreateWithoutWorkspaceInput> | Prisma.EventLogCreateWithoutWorkspaceInput[] | Prisma.EventLogUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.EventLogCreateOrConnectWithoutWorkspaceInput | Prisma.EventLogCreateOrConnectWithoutWorkspaceInput[]
+  upsert?: Prisma.EventLogUpsertWithWhereUniqueWithoutWorkspaceInput | Prisma.EventLogUpsertWithWhereUniqueWithoutWorkspaceInput[]
+  createMany?: Prisma.EventLogCreateManyWorkspaceInputEnvelope
+  set?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  disconnect?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  delete?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  connect?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  update?: Prisma.EventLogUpdateWithWhereUniqueWithoutWorkspaceInput | Prisma.EventLogUpdateWithWhereUniqueWithoutWorkspaceInput[]
+  updateMany?: Prisma.EventLogUpdateManyWithWhereWithoutWorkspaceInput | Prisma.EventLogUpdateManyWithWhereWithoutWorkspaceInput[]
+  deleteMany?: Prisma.EventLogScalarWhereInput | Prisma.EventLogScalarWhereInput[]
+}
+
+export type EventLogUncheckedUpdateManyWithoutWorkspaceNestedInput = {
+  create?: Prisma.XOR<Prisma.EventLogCreateWithoutWorkspaceInput, Prisma.EventLogUncheckedCreateWithoutWorkspaceInput> | Prisma.EventLogCreateWithoutWorkspaceInput[] | Prisma.EventLogUncheckedCreateWithoutWorkspaceInput[]
+  connectOrCreate?: Prisma.EventLogCreateOrConnectWithoutWorkspaceInput | Prisma.EventLogCreateOrConnectWithoutWorkspaceInput[]
+  upsert?: Prisma.EventLogUpsertWithWhereUniqueWithoutWorkspaceInput | Prisma.EventLogUpsertWithWhereUniqueWithoutWorkspaceInput[]
+  createMany?: Prisma.EventLogCreateManyWorkspaceInputEnvelope
+  set?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  disconnect?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  delete?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  connect?: Prisma.EventLogWhereUniqueInput | Prisma.EventLogWhereUniqueInput[]
+  update?: Prisma.EventLogUpdateWithWhereUniqueWithoutWorkspaceInput | Prisma.EventLogUpdateWithWhereUniqueWithoutWorkspaceInput[]
+  updateMany?: Prisma.EventLogUpdateManyWithWhereWithoutWorkspaceInput | Prisma.EventLogUpdateManyWithWhereWithoutWorkspaceInput[]
+  deleteMany?: Prisma.EventLogScalarWhereInput | Prisma.EventLogScalarWhereInput[]
 }
 
 export type EventLogCreateNestedManyWithoutScannerInput = {
@@ -473,16 +539,75 @@ export type EnumLogTypeFieldUpdateOperationsInput = {
   set?: $Enums.LogType
 }
 
+export type EventLogCreateWithoutWorkspaceInput = {
+  id?: string
+  type: $Enums.LogType
+  timestamp?: Date | string
+  event: Prisma.EventCreateNestedOneWithoutLogsInput
+  student: Prisma.StudentCreateNestedOneWithoutLogsInput
+  scanner: Prisma.UserCreateNestedOneWithoutScanned_logsInput
+}
+
+export type EventLogUncheckedCreateWithoutWorkspaceInput = {
+  id?: string
+  event_id: string
+  student_id: string
+  scanned_by: string
+  type: $Enums.LogType
+  timestamp?: Date | string
+}
+
+export type EventLogCreateOrConnectWithoutWorkspaceInput = {
+  where: Prisma.EventLogWhereUniqueInput
+  create: Prisma.XOR<Prisma.EventLogCreateWithoutWorkspaceInput, Prisma.EventLogUncheckedCreateWithoutWorkspaceInput>
+}
+
+export type EventLogCreateManyWorkspaceInputEnvelope = {
+  data: Prisma.EventLogCreateManyWorkspaceInput | Prisma.EventLogCreateManyWorkspaceInput[]
+  skipDuplicates?: boolean
+}
+
+export type EventLogUpsertWithWhereUniqueWithoutWorkspaceInput = {
+  where: Prisma.EventLogWhereUniqueInput
+  update: Prisma.XOR<Prisma.EventLogUpdateWithoutWorkspaceInput, Prisma.EventLogUncheckedUpdateWithoutWorkspaceInput>
+  create: Prisma.XOR<Prisma.EventLogCreateWithoutWorkspaceInput, Prisma.EventLogUncheckedCreateWithoutWorkspaceInput>
+}
+
+export type EventLogUpdateWithWhereUniqueWithoutWorkspaceInput = {
+  where: Prisma.EventLogWhereUniqueInput
+  data: Prisma.XOR<Prisma.EventLogUpdateWithoutWorkspaceInput, Prisma.EventLogUncheckedUpdateWithoutWorkspaceInput>
+}
+
+export type EventLogUpdateManyWithWhereWithoutWorkspaceInput = {
+  where: Prisma.EventLogScalarWhereInput
+  data: Prisma.XOR<Prisma.EventLogUpdateManyMutationInput, Prisma.EventLogUncheckedUpdateManyWithoutWorkspaceInput>
+}
+
+export type EventLogScalarWhereInput = {
+  AND?: Prisma.EventLogScalarWhereInput | Prisma.EventLogScalarWhereInput[]
+  OR?: Prisma.EventLogScalarWhereInput[]
+  NOT?: Prisma.EventLogScalarWhereInput | Prisma.EventLogScalarWhereInput[]
+  id?: Prisma.StringFilter<"EventLog"> | string
+  workspace_id?: Prisma.StringFilter<"EventLog"> | string
+  event_id?: Prisma.StringFilter<"EventLog"> | string
+  student_id?: Prisma.StringFilter<"EventLog"> | string
+  scanned_by?: Prisma.StringFilter<"EventLog"> | string
+  type?: Prisma.EnumLogTypeFilter<"EventLog"> | $Enums.LogType
+  timestamp?: Prisma.DateTimeFilter<"EventLog"> | Date | string
+}
+
 export type EventLogCreateWithoutScannerInput = {
   id?: string
   type: $Enums.LogType
   timestamp?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutEvent_logsInput
   event: Prisma.EventCreateNestedOneWithoutLogsInput
   student: Prisma.StudentCreateNestedOneWithoutLogsInput
 }
 
 export type EventLogUncheckedCreateWithoutScannerInput = {
   id?: string
+  workspace_id: string
   event_id: string
   student_id: string
   type: $Enums.LogType
@@ -515,28 +640,18 @@ export type EventLogUpdateManyWithWhereWithoutScannerInput = {
   data: Prisma.XOR<Prisma.EventLogUpdateManyMutationInput, Prisma.EventLogUncheckedUpdateManyWithoutScannerInput>
 }
 
-export type EventLogScalarWhereInput = {
-  AND?: Prisma.EventLogScalarWhereInput | Prisma.EventLogScalarWhereInput[]
-  OR?: Prisma.EventLogScalarWhereInput[]
-  NOT?: Prisma.EventLogScalarWhereInput | Prisma.EventLogScalarWhereInput[]
-  id?: Prisma.StringFilter<"EventLog"> | string
-  event_id?: Prisma.StringFilter<"EventLog"> | string
-  student_id?: Prisma.StringFilter<"EventLog"> | string
-  scanned_by?: Prisma.StringFilter<"EventLog"> | string
-  type?: Prisma.EnumLogTypeFilter<"EventLog"> | $Enums.LogType
-  timestamp?: Prisma.DateTimeFilter<"EventLog"> | Date | string
-}
-
 export type EventLogCreateWithoutStudentInput = {
   id?: string
   type: $Enums.LogType
   timestamp?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutEvent_logsInput
   event: Prisma.EventCreateNestedOneWithoutLogsInput
   scanner: Prisma.UserCreateNestedOneWithoutScanned_logsInput
 }
 
 export type EventLogUncheckedCreateWithoutStudentInput = {
   id?: string
+  workspace_id: string
   event_id: string
   scanned_by: string
   type: $Enums.LogType
@@ -573,12 +688,14 @@ export type EventLogCreateWithoutEventInput = {
   id?: string
   type: $Enums.LogType
   timestamp?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutEvent_logsInput
   student: Prisma.StudentCreateNestedOneWithoutLogsInput
   scanner: Prisma.UserCreateNestedOneWithoutScanned_logsInput
 }
 
 export type EventLogUncheckedCreateWithoutEventInput = {
   id?: string
+  workspace_id: string
   student_id: string
   scanned_by: string
   type: $Enums.LogType
@@ -611,8 +728,45 @@ export type EventLogUpdateManyWithWhereWithoutEventInput = {
   data: Prisma.XOR<Prisma.EventLogUpdateManyMutationInput, Prisma.EventLogUncheckedUpdateManyWithoutEventInput>
 }
 
+export type EventLogCreateManyWorkspaceInput = {
+  id?: string
+  event_id: string
+  student_id: string
+  scanned_by: string
+  type: $Enums.LogType
+  timestamp?: Date | string
+}
+
+export type EventLogUpdateWithoutWorkspaceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
+  timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  event?: Prisma.EventUpdateOneRequiredWithoutLogsNestedInput
+  student?: Prisma.StudentUpdateOneRequiredWithoutLogsNestedInput
+  scanner?: Prisma.UserUpdateOneRequiredWithoutScanned_logsNestedInput
+}
+
+export type EventLogUncheckedUpdateWithoutWorkspaceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  event_id?: Prisma.StringFieldUpdateOperationsInput | string
+  student_id?: Prisma.StringFieldUpdateOperationsInput | string
+  scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
+  timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EventLogUncheckedUpdateManyWithoutWorkspaceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  event_id?: Prisma.StringFieldUpdateOperationsInput | string
+  student_id?: Prisma.StringFieldUpdateOperationsInput | string
+  scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
+  timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type EventLogCreateManyScannerInput = {
   id?: string
+  workspace_id: string
   event_id: string
   student_id: string
   type: $Enums.LogType
@@ -623,12 +777,14 @@ export type EventLogUpdateWithoutScannerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutEvent_logsNestedInput
   event?: Prisma.EventUpdateOneRequiredWithoutLogsNestedInput
   student?: Prisma.StudentUpdateOneRequiredWithoutLogsNestedInput
 }
 
 export type EventLogUncheckedUpdateWithoutScannerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   event_id?: Prisma.StringFieldUpdateOperationsInput | string
   student_id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
@@ -637,6 +793,7 @@ export type EventLogUncheckedUpdateWithoutScannerInput = {
 
 export type EventLogUncheckedUpdateManyWithoutScannerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   event_id?: Prisma.StringFieldUpdateOperationsInput | string
   student_id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
@@ -645,6 +802,7 @@ export type EventLogUncheckedUpdateManyWithoutScannerInput = {
 
 export type EventLogCreateManyStudentInput = {
   id?: string
+  workspace_id: string
   event_id: string
   scanned_by: string
   type: $Enums.LogType
@@ -655,12 +813,14 @@ export type EventLogUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutEvent_logsNestedInput
   event?: Prisma.EventUpdateOneRequiredWithoutLogsNestedInput
   scanner?: Prisma.UserUpdateOneRequiredWithoutScanned_logsNestedInput
 }
 
 export type EventLogUncheckedUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   event_id?: Prisma.StringFieldUpdateOperationsInput | string
   scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
@@ -669,6 +829,7 @@ export type EventLogUncheckedUpdateWithoutStudentInput = {
 
 export type EventLogUncheckedUpdateManyWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   event_id?: Prisma.StringFieldUpdateOperationsInput | string
   scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
@@ -677,6 +838,7 @@ export type EventLogUncheckedUpdateManyWithoutStudentInput = {
 
 export type EventLogCreateManyEventInput = {
   id?: string
+  workspace_id: string
   student_id: string
   scanned_by: string
   type: $Enums.LogType
@@ -687,12 +849,14 @@ export type EventLogUpdateWithoutEventInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutEvent_logsNestedInput
   student?: Prisma.StudentUpdateOneRequiredWithoutLogsNestedInput
   scanner?: Prisma.UserUpdateOneRequiredWithoutScanned_logsNestedInput
 }
 
 export type EventLogUncheckedUpdateWithoutEventInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   student_id?: Prisma.StringFieldUpdateOperationsInput | string
   scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
@@ -701,6 +865,7 @@ export type EventLogUncheckedUpdateWithoutEventInput = {
 
 export type EventLogUncheckedUpdateManyWithoutEventInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   student_id?: Prisma.StringFieldUpdateOperationsInput | string
   scanned_by?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumLogTypeFieldUpdateOperationsInput | $Enums.LogType
@@ -711,11 +876,13 @@ export type EventLogUncheckedUpdateManyWithoutEventInput = {
 
 export type EventLogSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  workspace_id?: boolean
   event_id?: boolean
   student_id?: boolean
   scanned_by?: boolean
   type?: boolean
   timestamp?: boolean
+  workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   scanner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -723,11 +890,13 @@ export type EventLogSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type EventLogSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  workspace_id?: boolean
   event_id?: boolean
   student_id?: boolean
   scanned_by?: boolean
   type?: boolean
   timestamp?: boolean
+  workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   scanner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -735,11 +904,13 @@ export type EventLogSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type EventLogSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  workspace_id?: boolean
   event_id?: boolean
   student_id?: boolean
   scanned_by?: boolean
   type?: boolean
   timestamp?: boolean
+  workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   scanner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -747,6 +918,7 @@ export type EventLogSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type EventLogSelectScalar = {
   id?: boolean
+  workspace_id?: boolean
   event_id?: boolean
   student_id?: boolean
   scanned_by?: boolean
@@ -754,18 +926,21 @@ export type EventLogSelectScalar = {
   timestamp?: boolean
 }
 
-export type EventLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "event_id" | "student_id" | "scanned_by" | "type" | "timestamp", ExtArgs["result"]["eventLog"]>
+export type EventLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspace_id" | "event_id" | "student_id" | "scanned_by" | "type" | "timestamp", ExtArgs["result"]["eventLog"]>
 export type EventLogInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   scanner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type EventLogIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   scanner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type EventLogIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   scanner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -774,12 +949,14 @@ export type EventLogIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $EventLogPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "EventLog"
   objects: {
+    workspace: Prisma.$WorkspacePayload<ExtArgs>
     event: Prisma.$EventPayload<ExtArgs>
     student: Prisma.$StudentPayload<ExtArgs>
     scanner: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    workspace_id: string
     event_id: string
     student_id: string
     scanned_by: string
@@ -1179,6 +1356,7 @@ readonly fields: EventLogFieldRefs;
  */
 export interface Prisma__EventLogClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  workspace<T extends Prisma.WorkspaceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WorkspaceDefaultArgs<ExtArgs>>): Prisma.Prisma__WorkspaceClient<runtime.Types.Result.GetResult<Prisma.$WorkspacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   event<T extends Prisma.EventDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EventDefaultArgs<ExtArgs>>): Prisma.Prisma__EventClient<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   student<T extends Prisma.StudentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StudentDefaultArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   scanner<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -1212,6 +1390,7 @@ export interface Prisma__EventLogClient<T, Null = never, ExtArgs extends runtime
  */
 export interface EventLogFieldRefs {
   readonly id: Prisma.FieldRef<"EventLog", 'String'>
+  readonly workspace_id: Prisma.FieldRef<"EventLog", 'String'>
   readonly event_id: Prisma.FieldRef<"EventLog", 'String'>
   readonly student_id: Prisma.FieldRef<"EventLog", 'String'>
   readonly scanned_by: Prisma.FieldRef<"EventLog", 'String'>

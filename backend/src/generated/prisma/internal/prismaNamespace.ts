@@ -1009,10 +1009,10 @@ export const StudentScalarFieldEnum = {
   first_name: 'first_name',
   last_name: 'last_name',
   id_card_code: 'id_card_code',
+  added_by: 'added_by',
   metadata: 'metadata',
   created_at: 'created_at',
-  updated_at: 'updated_at',
-  deleted_at: 'deleted_at'
+  updated_at: 'updated_at'
 } as const
 
 export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
@@ -1034,6 +1034,7 @@ export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof Ev
 
 export const EventLogScalarFieldEnum = {
   id: 'id',
+  workspace_id: 'workspace_id',
   event_id: 'event_id',
   student_id: 'student_id',
   scanned_by: 'scanned_by',

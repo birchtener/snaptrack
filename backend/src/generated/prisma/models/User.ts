@@ -202,6 +202,7 @@ export type UserWhereInput = {
   scanned_logs?: Prisma.EventLogListRelationFilter
   system_logs?: Prisma.SystemLogListRelationFilter
   events?: Prisma.EventListRelationFilter
+  added_students?: Prisma.StudentListRelationFilter
   created_workspaces?: Prisma.WorkspaceListRelationFilter
 }
 
@@ -217,6 +218,7 @@ export type UserOrderByWithRelationInput = {
   scanned_logs?: Prisma.EventLogOrderByRelationAggregateInput
   system_logs?: Prisma.SystemLogOrderByRelationAggregateInput
   events?: Prisma.EventOrderByRelationAggregateInput
+  added_students?: Prisma.StudentOrderByRelationAggregateInput
   created_workspaces?: Prisma.WorkspaceOrderByRelationAggregateInput
 }
 
@@ -235,6 +237,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   scanned_logs?: Prisma.EventLogListRelationFilter
   system_logs?: Prisma.SystemLogListRelationFilter
   events?: Prisma.EventListRelationFilter
+  added_students?: Prisma.StudentListRelationFilter
   created_workspaces?: Prisma.WorkspaceListRelationFilter
 }, "id" | "email">
 
@@ -276,6 +279,7 @@ export type UserCreateInput = {
   scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceCreateNestedManyWithoutCreatorInput
 }
 
@@ -291,6 +295,7 @@ export type UserUncheckedCreateInput = {
   scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentUncheckedCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceUncheckedCreateNestedManyWithoutCreatorInput
 }
 
@@ -306,6 +311,7 @@ export type UserUpdateInput = {
   scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUpdateManyWithoutCreatorNestedInput
 }
 
@@ -321,6 +327,7 @@ export type UserUncheckedUpdateInput = {
   scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUncheckedUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUncheckedUpdateManyWithoutCreatorNestedInput
 }
 
@@ -425,6 +432,20 @@ export type UserUpdateOneRequiredWithoutMembershipsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMembershipsInput, Prisma.UserUpdateWithoutMembershipsInput>, Prisma.UserUncheckedUpdateWithoutMembershipsInput>
 }
 
+export type UserCreateNestedOneWithoutAdded_studentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdded_studentsInput, Prisma.UserUncheckedCreateWithoutAdded_studentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdded_studentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAdded_studentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdded_studentsInput, Prisma.UserUncheckedCreateWithoutAdded_studentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdded_studentsInput
+  upsert?: Prisma.UserUpsertWithoutAdded_studentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAdded_studentsInput, Prisma.UserUpdateWithoutAdded_studentsInput>, Prisma.UserUncheckedUpdateWithoutAdded_studentsInput>
+}
+
 export type UserCreateNestedOneWithoutEventsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutEventsInput, Prisma.UserUncheckedCreateWithoutEventsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutEventsInput
@@ -479,6 +500,7 @@ export type UserCreateWithoutCreated_workspacesInput = {
   scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentCreateNestedManyWithoutAdderInput
 }
 
 export type UserUncheckedCreateWithoutCreated_workspacesInput = {
@@ -493,6 +515,7 @@ export type UserUncheckedCreateWithoutCreated_workspacesInput = {
   scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentUncheckedCreateNestedManyWithoutAdderInput
 }
 
 export type UserCreateOrConnectWithoutCreated_workspacesInput = {
@@ -523,6 +546,7 @@ export type UserUpdateWithoutCreated_workspacesInput = {
   scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUpdateManyWithoutAdderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreated_workspacesInput = {
@@ -537,6 +561,7 @@ export type UserUncheckedUpdateWithoutCreated_workspacesInput = {
   scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUncheckedUpdateManyWithoutAdderNestedInput
 }
 
 export type UserCreateWithoutMembershipsInput = {
@@ -550,6 +575,7 @@ export type UserCreateWithoutMembershipsInput = {
   scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceCreateNestedManyWithoutCreatorInput
 }
 
@@ -564,6 +590,7 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentUncheckedCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceUncheckedCreateNestedManyWithoutCreatorInput
 }
 
@@ -594,6 +621,7 @@ export type UserUpdateWithoutMembershipsInput = {
   scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUpdateManyWithoutCreatorNestedInput
 }
 
@@ -605,6 +633,83 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
+  system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUncheckedUpdateManyWithoutAdderNestedInput
+  created_workspaces?: Prisma.WorkspaceUncheckedUpdateManyWithoutCreatorNestedInput
+}
+
+export type UserCreateWithoutAdded_studentsInput = {
+  id: string
+  email: string
+  first_name: string
+  last_name: string
+  image_url?: string | null
+  created_at?: Date | string
+  deleted_at?: Date | string | null
+  memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
+  system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
+  events?: Prisma.EventCreateNestedManyWithoutCreatorInput
+  created_workspaces?: Prisma.WorkspaceCreateNestedManyWithoutCreatorInput
+}
+
+export type UserUncheckedCreateWithoutAdded_studentsInput = {
+  id: string
+  email: string
+  first_name: string
+  last_name: string
+  image_url?: string | null
+  created_at?: Date | string
+  deleted_at?: Date | string | null
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
+  system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutCreatorInput
+  created_workspaces?: Prisma.WorkspaceUncheckedCreateNestedManyWithoutCreatorInput
+}
+
+export type UserCreateOrConnectWithoutAdded_studentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdded_studentsInput, Prisma.UserUncheckedCreateWithoutAdded_studentsInput>
+}
+
+export type UserUpsertWithoutAdded_studentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAdded_studentsInput, Prisma.UserUncheckedUpdateWithoutAdded_studentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdded_studentsInput, Prisma.UserUncheckedCreateWithoutAdded_studentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAdded_studentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAdded_studentsInput, Prisma.UserUncheckedUpdateWithoutAdded_studentsInput>
+}
+
+export type UserUpdateWithoutAdded_studentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
+  system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
+  events?: Prisma.EventUpdateManyWithoutCreatorNestedInput
+  created_workspaces?: Prisma.WorkspaceUpdateManyWithoutCreatorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAdded_studentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutCreatorNestedInput
@@ -622,6 +727,7 @@ export type UserCreateWithoutEventsInput = {
   memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
   scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
+  added_students?: Prisma.StudentCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceCreateNestedManyWithoutCreatorInput
 }
 
@@ -636,6 +742,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
   system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
+  added_students?: Prisma.StudentUncheckedCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceUncheckedCreateNestedManyWithoutCreatorInput
 }
 
@@ -666,6 +773,7 @@ export type UserUpdateWithoutEventsInput = {
   memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
+  added_students?: Prisma.StudentUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUpdateManyWithoutCreatorNestedInput
 }
 
@@ -680,6 +788,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
   system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
+  added_students?: Prisma.StudentUncheckedUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUncheckedUpdateManyWithoutCreatorNestedInput
 }
 
@@ -694,6 +803,7 @@ export type UserCreateWithoutScanned_logsInput = {
   memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
   system_logs?: Prisma.SystemLogCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceCreateNestedManyWithoutCreatorInput
 }
 
@@ -708,6 +818,7 @@ export type UserUncheckedCreateWithoutScanned_logsInput = {
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   system_logs?: Prisma.SystemLogUncheckedCreateNestedManyWithoutExecutorInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentUncheckedCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceUncheckedCreateNestedManyWithoutCreatorInput
 }
 
@@ -738,6 +849,7 @@ export type UserUpdateWithoutScanned_logsInput = {
   memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   system_logs?: Prisma.SystemLogUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUpdateManyWithoutCreatorNestedInput
 }
 
@@ -752,6 +864,7 @@ export type UserUncheckedUpdateWithoutScanned_logsInput = {
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   system_logs?: Prisma.SystemLogUncheckedUpdateManyWithoutExecutorNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUncheckedUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUncheckedUpdateManyWithoutCreatorNestedInput
 }
 
@@ -766,6 +879,7 @@ export type UserCreateWithoutSystem_logsInput = {
   memberships?: Prisma.MembershipCreateNestedManyWithoutUserInput
   scanned_logs?: Prisma.EventLogCreateNestedManyWithoutScannerInput
   events?: Prisma.EventCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceCreateNestedManyWithoutCreatorInput
 }
 
@@ -780,6 +894,7 @@ export type UserUncheckedCreateWithoutSystem_logsInput = {
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   scanned_logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutScannerInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutCreatorInput
+  added_students?: Prisma.StudentUncheckedCreateNestedManyWithoutAdderInput
   created_workspaces?: Prisma.WorkspaceUncheckedCreateNestedManyWithoutCreatorInput
 }
 
@@ -810,6 +925,7 @@ export type UserUpdateWithoutSystem_logsInput = {
   memberships?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   scanned_logs?: Prisma.EventLogUpdateManyWithoutScannerNestedInput
   events?: Prisma.EventUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUpdateManyWithoutCreatorNestedInput
 }
 
@@ -824,6 +940,7 @@ export type UserUncheckedUpdateWithoutSystem_logsInput = {
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   scanned_logs?: Prisma.EventLogUncheckedUpdateManyWithoutScannerNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutCreatorNestedInput
+  added_students?: Prisma.StudentUncheckedUpdateManyWithoutAdderNestedInput
   created_workspaces?: Prisma.WorkspaceUncheckedUpdateManyWithoutCreatorNestedInput
 }
 
@@ -837,6 +954,7 @@ export type UserCountOutputType = {
   scanned_logs: number
   system_logs: number
   events: number
+  added_students: number
   created_workspaces: number
 }
 
@@ -845,6 +963,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   scanned_logs?: boolean | UserCountOutputTypeCountScanned_logsArgs
   system_logs?: boolean | UserCountOutputTypeCountSystem_logsArgs
   events?: boolean | UserCountOutputTypeCountEventsArgs
+  added_students?: boolean | UserCountOutputTypeCountAdded_studentsArgs
   created_workspaces?: boolean | UserCountOutputTypeCountCreated_workspacesArgs
 }
 
@@ -889,6 +1008,13 @@ export type UserCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Ext
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountAdded_studentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StudentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountCreated_workspacesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.WorkspaceWhereInput
 }
@@ -906,6 +1032,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   scanned_logs?: boolean | Prisma.User$scanned_logsArgs<ExtArgs>
   system_logs?: boolean | Prisma.User$system_logsArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
+  added_students?: boolean | Prisma.User$added_studentsArgs<ExtArgs>
   created_workspaces?: boolean | Prisma.User$created_workspacesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -946,6 +1073,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   scanned_logs?: boolean | Prisma.User$scanned_logsArgs<ExtArgs>
   system_logs?: boolean | Prisma.User$system_logsArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
+  added_students?: boolean | Prisma.User$added_studentsArgs<ExtArgs>
   created_workspaces?: boolean | Prisma.User$created_workspacesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -959,6 +1087,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     scanned_logs: Prisma.$EventLogPayload<ExtArgs>[]
     system_logs: Prisma.$SystemLogPayload<ExtArgs>[]
     events: Prisma.$EventPayload<ExtArgs>[]
+    added_students: Prisma.$StudentPayload<ExtArgs>[]
     created_workspaces: Prisma.$WorkspacePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1367,6 +1496,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   scanned_logs<T extends Prisma.User$scanned_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$scanned_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   system_logs<T extends Prisma.User$system_logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$system_logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SystemLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  added_students<T extends Prisma.User$added_studentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$added_studentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   created_workspaces<T extends Prisma.User$created_workspacesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$created_workspacesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WorkspacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1890,6 +2020,30 @@ export type User$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[]
+}
+
+/**
+ * User.added_students
+ */
+export type User$added_studentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Student
+   */
+  select?: Prisma.StudentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Student
+   */
+  omit?: Prisma.StudentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StudentInclude<ExtArgs> | null
+  where?: Prisma.StudentWhereInput
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
+  cursor?: Prisma.StudentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StudentScalarFieldEnum | Prisma.StudentScalarFieldEnum[]
 }
 
 /**

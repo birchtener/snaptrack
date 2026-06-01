@@ -46,6 +46,7 @@ model Workspace {
   memberships Membership[]
   students    Student[]
   events      Event[]
+  event_logs  EventLog[]
   system_logs SystemLog[]
   creator     User         @relation("WorkspaceCreator", fields: [created_by], references: [id], onDelete: Restrict)
 }
@@ -64,6 +65,7 @@ model User {
   scanned_logs       EventLog[]
   system_logs        SystemLog[]
   events             Event[]
+  added_students     Student[]
   created_workspaces Workspace[]  @relation("WorkspaceCreator")
 }
 
@@ -82,19 +84,20 @@ model Membership {
 }
 
 model Student {
-  id           String    @id @default(uuid())
+  id           String   @id @default(uuid())
   workspace_id String
   first_name   String
   last_name    String
   id_card_code String
-  metadata     Json      @default("{}")
-  created_at   DateTime  @default(now())
-  updated_at   DateTime  @updatedAt
-  deleted_at   DateTime?
+  added_by     String
+  metadata     Json     @default("{}")
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
 
   // Relations
   workspace Workspace  @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
   logs      EventLog[]
+  adder     User       @relation(fields: [added_by], references: [id], onDelete: Restrict)
 
   @@unique([workspace_id, id_card_code])
   @@index([id_card_code])
@@ -117,17 +120,19 @@ model Event {
 }
 
 model EventLog {
-  id         String   @id @default(uuid())
-  event_id   String
-  student_id String
-  scanned_by String
-  type       LogType
-  timestamp  DateTime @default(now())
+  id           String   @id @default(uuid())
+  workspace_id String
+  event_id     String
+  student_id   String
+  scanned_by   String
+  type         LogType
+  timestamp    DateTime @default(now())
 
   // Relations
-  event   Event   @relation(fields: [event_id], references: [id], onDelete: Cascade)
-  student Student @relation(fields: [student_id], references: [id], onDelete: Cascade)
-  scanner User    @relation(fields: [scanned_by], references: [id], onDelete: Restrict)
+  workspace Workspace @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+  event     Event     @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  student   Student   @relation(fields: [student_id], references: [id], onDelete: Cascade)
+  scanner   User      @relation(fields: [scanned_by], references: [id], onDelete: Restrict)
 
   @@index([event_id, timestamp(sort: Desc)])
 }

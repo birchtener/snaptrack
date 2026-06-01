@@ -30,9 +30,9 @@ export type StudentMinAggregateOutputType = {
   first_name: string | null
   last_name: string | null
   id_card_code: string | null
+  added_by: string | null
   created_at: Date | null
   updated_at: Date | null
-  deleted_at: Date | null
 }
 
 export type StudentMaxAggregateOutputType = {
@@ -41,9 +41,9 @@ export type StudentMaxAggregateOutputType = {
   first_name: string | null
   last_name: string | null
   id_card_code: string | null
+  added_by: string | null
   created_at: Date | null
   updated_at: Date | null
-  deleted_at: Date | null
 }
 
 export type StudentCountAggregateOutputType = {
@@ -52,10 +52,10 @@ export type StudentCountAggregateOutputType = {
   first_name: number
   last_name: number
   id_card_code: number
+  added_by: number
   metadata: number
   created_at: number
   updated_at: number
-  deleted_at: number
   _all: number
 }
 
@@ -66,9 +66,9 @@ export type StudentMinAggregateInputType = {
   first_name?: true
   last_name?: true
   id_card_code?: true
+  added_by?: true
   created_at?: true
   updated_at?: true
-  deleted_at?: true
 }
 
 export type StudentMaxAggregateInputType = {
@@ -77,9 +77,9 @@ export type StudentMaxAggregateInputType = {
   first_name?: true
   last_name?: true
   id_card_code?: true
+  added_by?: true
   created_at?: true
   updated_at?: true
-  deleted_at?: true
 }
 
 export type StudentCountAggregateInputType = {
@@ -88,10 +88,10 @@ export type StudentCountAggregateInputType = {
   first_name?: true
   last_name?: true
   id_card_code?: true
+  added_by?: true
   metadata?: true
   created_at?: true
   updated_at?: true
-  deleted_at?: true
   _all?: true
 }
 
@@ -173,10 +173,10 @@ export type StudentGroupByOutputType = {
   first_name: string
   last_name: string
   id_card_code: string
+  added_by: string
   metadata: runtime.JsonValue
   created_at: Date
   updated_at: Date
-  deleted_at: Date | null
   _count: StudentCountAggregateOutputType | null
   _min: StudentMinAggregateOutputType | null
   _max: StudentMaxAggregateOutputType | null
@@ -206,12 +206,13 @@ export type StudentWhereInput = {
   first_name?: Prisma.StringFilter<"Student"> | string
   last_name?: Prisma.StringFilter<"Student"> | string
   id_card_code?: Prisma.StringFilter<"Student"> | string
+  added_by?: Prisma.StringFilter<"Student"> | string
   metadata?: Prisma.JsonFilter<"Student">
   created_at?: Prisma.DateTimeFilter<"Student"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableFilter<"Student"> | Date | string | null
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
   logs?: Prisma.EventLogListRelationFilter
+  adder?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type StudentOrderByWithRelationInput = {
@@ -220,12 +221,13 @@ export type StudentOrderByWithRelationInput = {
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   id_card_code?: Prisma.SortOrder
+  added_by?: Prisma.SortOrder
   metadata?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  deleted_at?: Prisma.SortOrderInput | Prisma.SortOrder
   workspace?: Prisma.WorkspaceOrderByWithRelationInput
   logs?: Prisma.EventLogOrderByRelationAggregateInput
+  adder?: Prisma.UserOrderByWithRelationInput
 }
 
 export type StudentWhereUniqueInput = Prisma.AtLeast<{
@@ -238,12 +240,13 @@ export type StudentWhereUniqueInput = Prisma.AtLeast<{
   first_name?: Prisma.StringFilter<"Student"> | string
   last_name?: Prisma.StringFilter<"Student"> | string
   id_card_code?: Prisma.StringFilter<"Student"> | string
+  added_by?: Prisma.StringFilter<"Student"> | string
   metadata?: Prisma.JsonFilter<"Student">
   created_at?: Prisma.DateTimeFilter<"Student"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableFilter<"Student"> | Date | string | null
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
   logs?: Prisma.EventLogListRelationFilter
+  adder?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "workspace_id_id_card_code">
 
 export type StudentOrderByWithAggregationInput = {
@@ -252,10 +255,10 @@ export type StudentOrderByWithAggregationInput = {
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   id_card_code?: Prisma.SortOrder
+  added_by?: Prisma.SortOrder
   metadata?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  deleted_at?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.StudentCountOrderByAggregateInput
   _max?: Prisma.StudentMaxOrderByAggregateInput
   _min?: Prisma.StudentMinOrderByAggregateInput
@@ -270,10 +273,10 @@ export type StudentScalarWhereWithAggregatesInput = {
   first_name?: Prisma.StringWithAggregatesFilter<"Student"> | string
   last_name?: Prisma.StringWithAggregatesFilter<"Student"> | string
   id_card_code?: Prisma.StringWithAggregatesFilter<"Student"> | string
+  added_by?: Prisma.StringWithAggregatesFilter<"Student"> | string
   metadata?: Prisma.JsonWithAggregatesFilter<"Student">
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Student"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Student"> | Date | string | null
 }
 
 export type StudentCreateInput = {
@@ -284,9 +287,9 @@ export type StudentCreateInput = {
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
   workspace: Prisma.WorkspaceCreateNestedOneWithoutStudentsInput
   logs?: Prisma.EventLogCreateNestedManyWithoutStudentInput
+  adder: Prisma.UserCreateNestedOneWithoutAdded_studentsInput
 }
 
 export type StudentUncheckedCreateInput = {
@@ -295,10 +298,10 @@ export type StudentUncheckedCreateInput = {
   first_name: string
   last_name: string
   id_card_code: string
+  added_by: string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
   logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutStudentInput
 }
 
@@ -310,9 +313,9 @@ export type StudentUpdateInput = {
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutStudentsNestedInput
   logs?: Prisma.EventLogUpdateManyWithoutStudentNestedInput
+  adder?: Prisma.UserUpdateOneRequiredWithoutAdded_studentsNestedInput
 }
 
 export type StudentUncheckedUpdateInput = {
@@ -321,10 +324,10 @@ export type StudentUncheckedUpdateInput = {
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  added_by?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logs?: Prisma.EventLogUncheckedUpdateManyWithoutStudentNestedInput
 }
 
@@ -334,10 +337,10 @@ export type StudentCreateManyInput = {
   first_name: string
   last_name: string
   id_card_code: string
+  added_by: string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
 }
 
 export type StudentUpdateManyMutationInput = {
@@ -348,7 +351,6 @@ export type StudentUpdateManyMutationInput = {
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type StudentUncheckedUpdateManyInput = {
@@ -357,10 +359,10 @@ export type StudentUncheckedUpdateManyInput = {
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  added_by?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type StudentListRelationFilter = {
@@ -384,10 +386,10 @@ export type StudentCountOrderByAggregateInput = {
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   id_card_code?: Prisma.SortOrder
+  added_by?: Prisma.SortOrder
   metadata?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  deleted_at?: Prisma.SortOrder
 }
 
 export type StudentMaxOrderByAggregateInput = {
@@ -396,9 +398,9 @@ export type StudentMaxOrderByAggregateInput = {
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   id_card_code?: Prisma.SortOrder
+  added_by?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  deleted_at?: Prisma.SortOrder
 }
 
 export type StudentMinOrderByAggregateInput = {
@@ -407,9 +409,9 @@ export type StudentMinOrderByAggregateInput = {
   first_name?: Prisma.SortOrder
   last_name?: Prisma.SortOrder
   id_card_code?: Prisma.SortOrder
+  added_by?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  deleted_at?: Prisma.SortOrder
 }
 
 export type StudentScalarRelationFilter = {
@@ -459,6 +461,48 @@ export type StudentUncheckedUpdateManyWithoutWorkspaceNestedInput = {
   deleteMany?: Prisma.StudentScalarWhereInput | Prisma.StudentScalarWhereInput[]
 }
 
+export type StudentCreateNestedManyWithoutAdderInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutAdderInput, Prisma.StudentUncheckedCreateWithoutAdderInput> | Prisma.StudentCreateWithoutAdderInput[] | Prisma.StudentUncheckedCreateWithoutAdderInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutAdderInput | Prisma.StudentCreateOrConnectWithoutAdderInput[]
+  createMany?: Prisma.StudentCreateManyAdderInputEnvelope
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+}
+
+export type StudentUncheckedCreateNestedManyWithoutAdderInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutAdderInput, Prisma.StudentUncheckedCreateWithoutAdderInput> | Prisma.StudentCreateWithoutAdderInput[] | Prisma.StudentUncheckedCreateWithoutAdderInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutAdderInput | Prisma.StudentCreateOrConnectWithoutAdderInput[]
+  createMany?: Prisma.StudentCreateManyAdderInputEnvelope
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+}
+
+export type StudentUpdateManyWithoutAdderNestedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutAdderInput, Prisma.StudentUncheckedCreateWithoutAdderInput> | Prisma.StudentCreateWithoutAdderInput[] | Prisma.StudentUncheckedCreateWithoutAdderInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutAdderInput | Prisma.StudentCreateOrConnectWithoutAdderInput[]
+  upsert?: Prisma.StudentUpsertWithWhereUniqueWithoutAdderInput | Prisma.StudentUpsertWithWhereUniqueWithoutAdderInput[]
+  createMany?: Prisma.StudentCreateManyAdderInputEnvelope
+  set?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  disconnect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  delete?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  update?: Prisma.StudentUpdateWithWhereUniqueWithoutAdderInput | Prisma.StudentUpdateWithWhereUniqueWithoutAdderInput[]
+  updateMany?: Prisma.StudentUpdateManyWithWhereWithoutAdderInput | Prisma.StudentUpdateManyWithWhereWithoutAdderInput[]
+  deleteMany?: Prisma.StudentScalarWhereInput | Prisma.StudentScalarWhereInput[]
+}
+
+export type StudentUncheckedUpdateManyWithoutAdderNestedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutAdderInput, Prisma.StudentUncheckedCreateWithoutAdderInput> | Prisma.StudentCreateWithoutAdderInput[] | Prisma.StudentUncheckedCreateWithoutAdderInput[]
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutAdderInput | Prisma.StudentCreateOrConnectWithoutAdderInput[]
+  upsert?: Prisma.StudentUpsertWithWhereUniqueWithoutAdderInput | Prisma.StudentUpsertWithWhereUniqueWithoutAdderInput[]
+  createMany?: Prisma.StudentCreateManyAdderInputEnvelope
+  set?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  disconnect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  delete?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  connect?: Prisma.StudentWhereUniqueInput | Prisma.StudentWhereUniqueInput[]
+  update?: Prisma.StudentUpdateWithWhereUniqueWithoutAdderInput | Prisma.StudentUpdateWithWhereUniqueWithoutAdderInput[]
+  updateMany?: Prisma.StudentUpdateManyWithWhereWithoutAdderInput | Prisma.StudentUpdateManyWithWhereWithoutAdderInput[]
+  deleteMany?: Prisma.StudentScalarWhereInput | Prisma.StudentScalarWhereInput[]
+}
+
 export type StudentCreateNestedOneWithoutLogsInput = {
   create?: Prisma.XOR<Prisma.StudentCreateWithoutLogsInput, Prisma.StudentUncheckedCreateWithoutLogsInput>
   connectOrCreate?: Prisma.StudentCreateOrConnectWithoutLogsInput
@@ -481,8 +525,8 @@ export type StudentCreateWithoutWorkspaceInput = {
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
   logs?: Prisma.EventLogCreateNestedManyWithoutStudentInput
+  adder: Prisma.UserCreateNestedOneWithoutAdded_studentsInput
 }
 
 export type StudentUncheckedCreateWithoutWorkspaceInput = {
@@ -490,10 +534,10 @@ export type StudentUncheckedCreateWithoutWorkspaceInput = {
   first_name: string
   last_name: string
   id_card_code: string
+  added_by: string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
   logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutStudentInput
 }
 
@@ -532,10 +576,60 @@ export type StudentScalarWhereInput = {
   first_name?: Prisma.StringFilter<"Student"> | string
   last_name?: Prisma.StringFilter<"Student"> | string
   id_card_code?: Prisma.StringFilter<"Student"> | string
+  added_by?: Prisma.StringFilter<"Student"> | string
   metadata?: Prisma.JsonFilter<"Student">
   created_at?: Prisma.DateTimeFilter<"Student"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Student"> | Date | string
-  deleted_at?: Prisma.DateTimeNullableFilter<"Student"> | Date | string | null
+}
+
+export type StudentCreateWithoutAdderInput = {
+  id?: string
+  first_name: string
+  last_name: string
+  id_card_code: string
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  workspace: Prisma.WorkspaceCreateNestedOneWithoutStudentsInput
+  logs?: Prisma.EventLogCreateNestedManyWithoutStudentInput
+}
+
+export type StudentUncheckedCreateWithoutAdderInput = {
+  id?: string
+  workspace_id: string
+  first_name: string
+  last_name: string
+  id_card_code: string
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+  logs?: Prisma.EventLogUncheckedCreateNestedManyWithoutStudentInput
+}
+
+export type StudentCreateOrConnectWithoutAdderInput = {
+  where: Prisma.StudentWhereUniqueInput
+  create: Prisma.XOR<Prisma.StudentCreateWithoutAdderInput, Prisma.StudentUncheckedCreateWithoutAdderInput>
+}
+
+export type StudentCreateManyAdderInputEnvelope = {
+  data: Prisma.StudentCreateManyAdderInput | Prisma.StudentCreateManyAdderInput[]
+  skipDuplicates?: boolean
+}
+
+export type StudentUpsertWithWhereUniqueWithoutAdderInput = {
+  where: Prisma.StudentWhereUniqueInput
+  update: Prisma.XOR<Prisma.StudentUpdateWithoutAdderInput, Prisma.StudentUncheckedUpdateWithoutAdderInput>
+  create: Prisma.XOR<Prisma.StudentCreateWithoutAdderInput, Prisma.StudentUncheckedCreateWithoutAdderInput>
+}
+
+export type StudentUpdateWithWhereUniqueWithoutAdderInput = {
+  where: Prisma.StudentWhereUniqueInput
+  data: Prisma.XOR<Prisma.StudentUpdateWithoutAdderInput, Prisma.StudentUncheckedUpdateWithoutAdderInput>
+}
+
+export type StudentUpdateManyWithWhereWithoutAdderInput = {
+  where: Prisma.StudentScalarWhereInput
+  data: Prisma.XOR<Prisma.StudentUpdateManyMutationInput, Prisma.StudentUncheckedUpdateManyWithoutAdderInput>
 }
 
 export type StudentCreateWithoutLogsInput = {
@@ -546,8 +640,8 @@ export type StudentCreateWithoutLogsInput = {
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
   workspace: Prisma.WorkspaceCreateNestedOneWithoutStudentsInput
+  adder: Prisma.UserCreateNestedOneWithoutAdded_studentsInput
 }
 
 export type StudentUncheckedCreateWithoutLogsInput = {
@@ -556,10 +650,10 @@ export type StudentUncheckedCreateWithoutLogsInput = {
   first_name: string
   last_name: string
   id_card_code: string
+  added_by: string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
 }
 
 export type StudentCreateOrConnectWithoutLogsInput = {
@@ -586,8 +680,8 @@ export type StudentUpdateWithoutLogsInput = {
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutStudentsNestedInput
+  adder?: Prisma.UserUpdateOneRequiredWithoutAdded_studentsNestedInput
 }
 
 export type StudentUncheckedUpdateWithoutLogsInput = {
@@ -596,10 +690,10 @@ export type StudentUncheckedUpdateWithoutLogsInput = {
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  added_by?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type StudentCreateManyWorkspaceInput = {
@@ -607,10 +701,10 @@ export type StudentCreateManyWorkspaceInput = {
   first_name: string
   last_name: string
   id_card_code: string
+  added_by: string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Date | string
   updated_at?: Date | string
-  deleted_at?: Date | string | null
 }
 
 export type StudentUpdateWithoutWorkspaceInput = {
@@ -621,8 +715,8 @@ export type StudentUpdateWithoutWorkspaceInput = {
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logs?: Prisma.EventLogUpdateManyWithoutStudentNestedInput
+  adder?: Prisma.UserUpdateOneRequiredWithoutAdded_studentsNestedInput
 }
 
 export type StudentUncheckedUpdateWithoutWorkspaceInput = {
@@ -630,10 +724,10 @@ export type StudentUncheckedUpdateWithoutWorkspaceInput = {
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  added_by?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logs?: Prisma.EventLogUncheckedUpdateManyWithoutStudentNestedInput
 }
 
@@ -642,10 +736,56 @@ export type StudentUncheckedUpdateManyWithoutWorkspaceInput = {
   first_name?: Prisma.StringFieldUpdateOperationsInput | string
   last_name?: Prisma.StringFieldUpdateOperationsInput | string
   id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  added_by?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deleted_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type StudentCreateManyAdderInput = {
+  id?: string
+  workspace_id: string
+  first_name: string
+  last_name: string
+  id_card_code: string
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type StudentUpdateWithoutAdderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutStudentsNestedInput
+  logs?: Prisma.EventLogUpdateManyWithoutStudentNestedInput
+}
+
+export type StudentUncheckedUpdateWithoutAdderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
+  first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  logs?: Prisma.EventLogUncheckedUpdateManyWithoutStudentNestedInput
+}
+
+export type StudentUncheckedUpdateManyWithoutAdderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
+  first_name?: Prisma.StringFieldUpdateOperationsInput | string
+  last_name?: Prisma.StringFieldUpdateOperationsInput | string
+  id_card_code?: Prisma.StringFieldUpdateOperationsInput | string
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -685,12 +825,13 @@ export type StudentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   first_name?: boolean
   last_name?: boolean
   id_card_code?: boolean
+  added_by?: boolean
   metadata?: boolean
   created_at?: boolean
   updated_at?: boolean
-  deleted_at?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   logs?: boolean | Prisma.Student$logsArgs<ExtArgs>
+  adder?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
 
@@ -700,11 +841,12 @@ export type StudentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   first_name?: boolean
   last_name?: boolean
   id_card_code?: boolean
+  added_by?: boolean
   metadata?: boolean
   created_at?: boolean
   updated_at?: boolean
-  deleted_at?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
+  adder?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
 
 export type StudentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -713,11 +855,12 @@ export type StudentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   first_name?: boolean
   last_name?: boolean
   id_card_code?: boolean
+  added_by?: boolean
   metadata?: boolean
   created_at?: boolean
   updated_at?: boolean
-  deleted_at?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
+  adder?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["student"]>
 
 export type StudentSelectScalar = {
@@ -726,23 +869,26 @@ export type StudentSelectScalar = {
   first_name?: boolean
   last_name?: boolean
   id_card_code?: boolean
+  added_by?: boolean
   metadata?: boolean
   created_at?: boolean
   updated_at?: boolean
-  deleted_at?: boolean
 }
 
-export type StudentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspace_id" | "first_name" | "last_name" | "id_card_code" | "metadata" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["student"]>
+export type StudentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspace_id" | "first_name" | "last_name" | "id_card_code" | "added_by" | "metadata" | "created_at" | "updated_at", ExtArgs["result"]["student"]>
 export type StudentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   logs?: boolean | Prisma.Student$logsArgs<ExtArgs>
+  adder?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StudentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
+  adder?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type StudentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
+  adder?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $StudentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -750,6 +896,7 @@ export type $StudentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     workspace: Prisma.$WorkspacePayload<ExtArgs>
     logs: Prisma.$EventLogPayload<ExtArgs>[]
+    adder: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -757,10 +904,10 @@ export type $StudentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     first_name: string
     last_name: string
     id_card_code: string
+    added_by: string
     metadata: runtime.JsonValue
     created_at: Date
     updated_at: Date
-    deleted_at: Date | null
   }, ExtArgs["result"]["student"]>
   composites: {}
 }
@@ -1157,6 +1304,7 @@ export interface Prisma__StudentClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   workspace<T extends Prisma.WorkspaceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WorkspaceDefaultArgs<ExtArgs>>): Prisma.Prisma__WorkspaceClient<runtime.Types.Result.GetResult<Prisma.$WorkspacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   logs<T extends Prisma.Student$logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  adder<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1191,10 +1339,10 @@ export interface StudentFieldRefs {
   readonly first_name: Prisma.FieldRef<"Student", 'String'>
   readonly last_name: Prisma.FieldRef<"Student", 'String'>
   readonly id_card_code: Prisma.FieldRef<"Student", 'String'>
+  readonly added_by: Prisma.FieldRef<"Student", 'String'>
   readonly metadata: Prisma.FieldRef<"Student", 'Json'>
   readonly created_at: Prisma.FieldRef<"Student", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Student", 'DateTime'>
-  readonly deleted_at: Prisma.FieldRef<"Student", 'DateTime'>
 }
     
 
