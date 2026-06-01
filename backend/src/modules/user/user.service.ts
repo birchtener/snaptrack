@@ -8,15 +8,26 @@ import {
 } from "../../api/clerk";
 export class UserService {
   static async getUser(userId: string) {
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-    });
+    try {
+      const user = await prisma.user.findUnique({
+        where: { id: userId },
+      });
 
-    if (!user) {
-      throw new AppError("User not found", 404);
+      if (!user) {
+        throw new AppError("User not found", 404);
+      }
+
+      return user;
+    } catch (error) {
+      if (error instanceof AppError) throw error;
+
+      if (process.env.NODE_ENV === "development")
+        console.error("Database user fetch error:", error);
+      throw new AppError(
+        "An unexpected error occurred while fetching the user.",
+        500,
+      );
     }
-
-    return user;
   }
 
   static async deleteUser(userId: string) {
