@@ -10,7 +10,9 @@ import {
   getStudentByIdSchema,
 } from "./student.validation";
 
-export const router = Router();
+export const router = Router({
+  mergeParams: true,
+});
 
 router.get(
   "/",
