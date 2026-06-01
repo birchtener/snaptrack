@@ -77,13 +77,15 @@ export class EventService {
         where: { id: eventId, workspace_id: workspaceId, is_active: true },
       });
 
+      if (!event) {
+        throw new AppError("Event not found", 404);
+      }
+
       return event;
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2003") {
           throw new AppError("Workspace not found", 404);
-        } else if (error.code === "P2025") {
-          throw new AppError("Event not found", 404);
         }
       }
 
