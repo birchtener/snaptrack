@@ -1,13 +1,15 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { useAuth } from "@clerk/react";
 import AuthPage from "@/pages/auth/AuthPage";
 import AuthGuard from "@/pages/auth/components/AuthGuard";
-import { LoginForm } from "./pages/auth/components/LoginForm";
-import { SignupForm } from "./pages/auth/components/SignupForm";
-import { Button } from "@base-ui/react";
-import { useClerk, useAuth } from "@clerk/react";
+import WorkspacePage from "@/pages/dashboard/workspaces/WorkspacePage";
+import EventPage from "@/pages/dashboard/events/EventPage";
+import CreateWorkspacePage from "@/pages/dashboard/workspaces/CreateWorkspacePage";
+import LoginForm from "./pages/auth/components/LoginForm";
+import SignupForm from "./pages/auth/components/SignupForm";
+import DashboardLayout from "./pages/dashboard/layouts/DashboardLayout";
 function App() {
-  const { signOut } = useClerk();
   const { isLoaded, isSignedIn } = useAuth();
 
   if (!isLoaded) {
@@ -22,7 +24,7 @@ function App() {
             path="/"
             element={
               <Navigate
-                to={isSignedIn ? "/app/organizations" : "/login"}
+                to={isSignedIn ? "/app/workspaces" : "/login"}
                 replace
               />
             }
@@ -34,23 +36,21 @@ function App() {
           </Route>
 
           <Route element={<AuthGuard />}>
-            <Route
-              path="/app/organizations"
-              element={
-                <div>
-                  <Button onClick={() => signOut({ redirectUrl: "/" })}>
-                    Sign Out
-                  </Button>
-                </div>
-              }
-            />
+            <Route element={<DashboardLayout />}>
+              <Route path="/app/workspaces" element={<WorkspacePage />} />
+              <Route
+                path="/app/workspaces/create"
+                element={<CreateWorkspacePage />}
+              />
+              <Route path="/app/:workspaceId/events" element={<EventPage />} />
+            </Route>
           </Route>
 
           <Route
             path="*"
             element={
               <Navigate
-                to={isSignedIn ? "/app/organizations" : "/login"}
+                to={isSignedIn ? "/app/workspaces" : "/login"}
                 replace
               />
             }
