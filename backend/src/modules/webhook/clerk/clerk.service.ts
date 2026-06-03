@@ -3,13 +3,32 @@ import { UserJSON, WebhookEvent } from "@clerk/express";
 import { AppError } from "../../../utils/app.error";
 export class ClerkService {
   static async handleCreateUser(event: WebhookEvent) {
-    const newUser = await prisma.user.create({
-      data: {
-        id: (event.data as UserJSON).id,
-        email: (event.data as UserJSON).email_addresses[0].email_address,
-        first_name: (event.data as UserJSON).first_name as string,
-        last_name: (event.data as UserJSON).last_name as string,
-        image_url: (event.data as UserJSON).image_url as string,
+    const userData = event.data as UserJSON;
+    const primaryEmail = userData.email_addresses[0]?.email_address;
+
+    if (!primaryEmail) {
+      throw new AppError(
+        "Clerk user payload is missing a primary email address.",
+        400,
+      );
+    }
+
+    const newUser = await prisma.user.upsert({
+      where: {
+        id: userData.id,
+      },
+      create: {
+        id: userData.id,
+        email: primaryEmail,
+        first_name: userData.first_name || "",
+        last_name: userData.last_name || "",
+        image_url: userData.image_url || "",
+      },
+      update: {
+        email: primaryEmail,
+        first_name: userData.first_name || "",
+        last_name: userData.last_name || "",
+        image_url: userData.image_url || "",
       },
     });
 
@@ -20,10 +39,21 @@ export class ClerkService {
       },
     });
 
-    console.log("User created in database:", {
-      user: newUser,
-      defaultWorkspace,
+    const membership = await prisma.membership.create({
+      data: {
+        user_id: newUser.id,
+        workspace_id: defaultWorkspace.id,
+        role: "owner",
+      },
     });
+
+    if (process.env.NODE_ENV === "development") {
+      console.log("User created in database:", {
+        user: newUser,
+        defaultWorkspace,
+        membership,
+      });
+    }
   }
 
   static async handleDeleteUser(event: WebhookEvent) {
