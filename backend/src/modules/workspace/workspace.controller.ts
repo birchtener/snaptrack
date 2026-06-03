@@ -4,10 +4,14 @@ import { catchAsync } from "../../utils/catchAsync";
 
 export class WorkspaceController {
   static createWorkspace = catchAsync(async (req: Request, res: Response) => {
-    const { name } = req.body;
+    const { name, fieldDefinitions } = req.body;
     const userId = req.user!.id;
 
-    const workspace = await WorkspaceService.createWorkspace(name, userId);
+    const workspace = await WorkspaceService.createWorkspace(
+      name,
+      userId,
+      fieldDefinitions,
+    );
 
     res.status(201).json({
       success: true,
