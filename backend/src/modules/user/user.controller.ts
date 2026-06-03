@@ -7,7 +7,17 @@ export class UserController {
 
     const user = await UserService.getUser(userId);
 
-    return res.status(200).json({ user });
+    return res.status(200).json({
+      success: true,
+      user: {
+        id: user.id,
+        email: user.email,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        imageUrl: user.image_url,
+        createdAt: user.created_at,
+      },
+    });
   });
 
   static deleteUser = catchAsync(async (req: Request, res: Response) => {
@@ -15,7 +25,7 @@ export class UserController {
 
     const deletedUser = await UserService.deleteUser(userId as string);
 
-    return res.status(200).json({ user: deletedUser });
+    return res.status(200).json({ success: true, user: deletedUser });
   });
 
   static updateUser = catchAsync(async (req: Request, res: Response) => {
@@ -31,6 +41,16 @@ export class UserController {
       req.file?.originalname,
     );
 
-    return res.status(200).json({ user: updatedUser });
+    return res.status(200).json({
+      success: true,
+      user: {
+        id: updatedUser.id,
+        email: updatedUser.email,
+        firstName: updatedUser.first_name,
+        lastName: updatedUser.last_name,
+        imageUrl: updatedUser.image_url,
+        createdAt: updatedUser.created_at,
+      },
+    });
   });
 }
