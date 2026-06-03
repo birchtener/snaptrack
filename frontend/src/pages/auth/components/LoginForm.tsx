@@ -80,8 +80,6 @@ export function LoginForm() {
     },
   });
 
-  console.log(signIn.status);
-
   const emailvalue = forgot ? watch("email") : emailWatch("email");
 
   const onSubmit = async (values: LoginFormData) => {

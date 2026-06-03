@@ -1,17 +1,16 @@
 import PixelBlast from "@/components/background/PixelBlast";
 import { Outlet, Link } from "react-router-dom";
-import Logo from "@/assets/Logo";
+import Logo from "@/assets/logo_dark.png";
 
 export default function AuthPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2 bg-background">
-      <div className="flex flex-col gap-4 p-6 md:p-10">
+      <div className="flex flex-col p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           <Link to="/" className="flex items-center gap-2 font-bold">
             <div className="flex items-center justify-center">
-              <Logo className="size-6 text-primary" />
+              <img src={Logo} alt="Logo" className="size-10" />
             </div>
-            SnapTrack
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
@@ -24,7 +23,7 @@ export default function AuthPage() {
         <PixelBlast
           variant="square"
           pixelSize={4}
-          color="#1447e6"
+          color="#7499d6"
           patternScale={2}
           patternDensity={1}
           pixelSizeJitter={0}

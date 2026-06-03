@@ -19,7 +19,7 @@ import { toast } from "sonner";
 import { VerifyEmail } from "./signup/VerifyEmail";
 import { signUpSchema, type SignUpFormData } from "./signup/types/signupTypes";
 import { Eye, EyeOff } from "lucide-react";
-export function SignupForm({
+export default function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
