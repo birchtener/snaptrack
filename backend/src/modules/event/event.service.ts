@@ -17,6 +17,16 @@ export class EventService {
           description,
           created_by: userId,
         },
+        include: {
+          creator: {
+            select: {
+              id: true,
+              first_name: true,
+              last_name: true,
+              email: true,
+            },
+          },
+        },
       });
 
       void SystemLogService.createLog(
@@ -29,7 +39,22 @@ export class EventService {
         },
       );
 
-      return newEvent;
+      return {
+        id: newEvent.id,
+        name: newEvent.name,
+        description: newEvent.description,
+        createdAt: newEvent.created_at,
+        createdBy: newEvent.created_by,
+        isActive: newEvent.is_active,
+        archivedAt: newEvent.archived_at,
+        workspaceId: newEvent.workspace_id,
+        creator: {
+          id: newEvent.creator?.id,
+          firstName: newEvent.creator?.first_name,
+          lastName: newEvent.creator?.last_name,
+          email: newEvent.creator?.email,
+        },
+      };
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2003") {
@@ -51,9 +76,34 @@ export class EventService {
     try {
       const events = await prisma.event.findMany({
         where: { workspace_id: workspaceId, is_active: true },
+        include: {
+          creator: {
+            select: {
+              id: true,
+              first_name: true,
+              last_name: true,
+              email: true,
+            },
+          },
+        },
       });
 
-      return events;
+      return events.map((event) => ({
+        id: event.id,
+        name: event.name,
+        description: event.description,
+        createdAt: event.created_at,
+        createdBy: event.created_by,
+        isActive: event.is_active,
+        archivedAt: event.archived_at,
+        workspaceId: event.workspace_id,
+        creator: {
+          id: event.creator?.id,
+          firstName: event.creator?.first_name,
+          lastName: event.creator?.last_name,
+          email: event.creator?.email,
+        },
+      }));
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2003") {
@@ -75,13 +125,38 @@ export class EventService {
     try {
       const event = await prisma.event.findFirst({
         where: { id: eventId, workspace_id: workspaceId, is_active: true },
+        include: {
+          creator: {
+            select: {
+              id: true,
+              first_name: true,
+              last_name: true,
+              email: true,
+            },
+          },
+        },
       });
 
       if (!event) {
         throw new AppError("Event not found", 404);
       }
 
-      return event;
+      return {
+        id: event.id,
+        name: event.name,
+        description: event.description,
+        createdAt: event.created_at,
+        createdBy: event.created_by,
+        isActive: event.is_active,
+        archivedAt: event.archived_at,
+        workspaceId: event.workspace_id,
+        creator: {
+          id: event.creator?.id,
+          firstName: event.creator?.first_name,
+          lastName: event.creator?.last_name,
+          email: event.creator?.email,
+        },
+      };
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2003") {
@@ -119,6 +194,16 @@ export class EventService {
           name,
           description,
         },
+        include: {
+          creator: {
+            select: {
+              id: true,
+              first_name: true,
+              last_name: true,
+              email: true,
+            },
+          },
+        },
       });
 
       if (Object.keys(changesPayload).length > 0) {
@@ -133,7 +218,22 @@ export class EventService {
         );
       }
 
-      return updatedEvent;
+      return {
+        id: updatedEvent.id,
+        name: updatedEvent.name,
+        description: updatedEvent.description,
+        createdAt: updatedEvent.created_at,
+        createdBy: updatedEvent.created_by,
+        isActive: updatedEvent.is_active,
+        archivedAt: updatedEvent.archived_at,
+        workspaceId: updatedEvent.workspace_id,
+        creator: {
+          id: updatedEvent.creator?.id,
+          firstName: updatedEvent.creator?.first_name,
+          lastName: updatedEvent.creator?.last_name,
+          email: updatedEvent.creator?.email,
+        },
+      };
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2003") {
@@ -180,7 +280,7 @@ export class EventService {
         },
       );
 
-      return deletedEvent;
+      return;
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2003") {
