@@ -29,7 +29,7 @@ import {
 import { Eye, EyeOff } from "lucide-react";
 import { VerifyTrustForm } from "./login/VerifyTrustForm";
 
-export function LoginForm() {
+export default function LoginForm() {
   const { signIn } = useSignIn();
   const navigate = useNavigate();
   const [forgot, setForgot] = useState(false);
