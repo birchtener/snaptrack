@@ -10,6 +10,7 @@ const app = express();
 const allowedOrigins = [
   process.env.CLIENT_URL || "http://localhost:5173",
   "https://snaptrack.birchtener.dev",
+  "http://192.168.254.181:5173",
 ];
 
 app.use(

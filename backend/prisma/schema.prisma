@@ -49,6 +49,8 @@ model Workspace {
   event_logs  EventLog[]
   system_logs SystemLog[]
   creator     User         @relation("WorkspaceCreator", fields: [created_by], references: [id], onDelete: Restrict)
+
+  @@map("workspaces")
 }
 
 model User {
@@ -67,6 +69,8 @@ model User {
   events             Event[]
   added_students     Student[]
   created_workspaces Workspace[]  @relation("WorkspaceCreator")
+
+  @@map("users")
 }
 
 model Membership {
@@ -81,6 +85,7 @@ model Membership {
   workspace Workspace @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
 
   @@unique([user_id, workspace_id])
+  @@map("memberships")
 }
 
 model Student {
@@ -101,22 +106,32 @@ model Student {
 
   @@unique([workspace_id, id_card_code])
   @@index([id_card_code])
+  @@map("students")
 }
 
 model Event {
-  id           String    @id @default(uuid())
-  workspace_id String
-  name         String
-  description  String?
-  is_active    Boolean   @default(true)
-  created_at   DateTime  @default(now())
-  created_by   String
-  archived_at  DateTime?
+  id                String    @id @default(uuid())
+  workspace_id      String
+  name              String
+  description       String?
+  start_date        DateTime
+  end_date          DateTime?
+  infinite          Boolean   @default(false)
+  geofencing_enabled Boolean   @default(false)
+  latitude          Float?
+  longitude         Float?
+  radius            Float?
+  is_active         Boolean   @default(true)
+  created_at        DateTime  @default(now())
+  created_by        String
+  archived_at       DateTime?
 
   // Relations
   workspace Workspace  @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
   logs      EventLog[]
   creator   User       @relation(fields: [created_by], references: [id], onDelete: Restrict)
+
+  @@map("events")
 }
 
 model EventLog {
@@ -135,6 +150,7 @@ model EventLog {
   scanner   User      @relation(fields: [scanned_by], references: [id], onDelete: Restrict)
 
   @@index([event_id, timestamp(sort: Desc)])
+  @@map("event_logs")
 }
 
 model SystemLog {
@@ -150,4 +166,5 @@ model SystemLog {
   executor  User      @relation(fields: [created_by], references: [id], onDelete: Restrict)
 
   @@index([workspace_id, timestamp(sort: Desc)])
+  @@map("system_logs")
 }

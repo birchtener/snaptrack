@@ -20,8 +20,22 @@ export type EventModel = runtime.Types.Result.DefaultSelection<Prisma.$EventPayl
 
 export type AggregateEvent = {
   _count: EventCountAggregateOutputType | null
+  _avg: EventAvgAggregateOutputType | null
+  _sum: EventSumAggregateOutputType | null
   _min: EventMinAggregateOutputType | null
   _max: EventMaxAggregateOutputType | null
+}
+
+export type EventAvgAggregateOutputType = {
+  latitude: number | null
+  longitude: number | null
+  radius: number | null
+}
+
+export type EventSumAggregateOutputType = {
+  latitude: number | null
+  longitude: number | null
+  radius: number | null
 }
 
 export type EventMinAggregateOutputType = {
@@ -29,6 +43,13 @@ export type EventMinAggregateOutputType = {
   workspace_id: string | null
   name: string | null
   description: string | null
+  start_date: Date | null
+  end_date: Date | null
+  infinite: boolean | null
+  geofencing_enabled: boolean | null
+  latitude: number | null
+  longitude: number | null
+  radius: number | null
   is_active: boolean | null
   created_at: Date | null
   created_by: string | null
@@ -40,6 +61,13 @@ export type EventMaxAggregateOutputType = {
   workspace_id: string | null
   name: string | null
   description: string | null
+  start_date: Date | null
+  end_date: Date | null
+  infinite: boolean | null
+  geofencing_enabled: boolean | null
+  latitude: number | null
+  longitude: number | null
+  radius: number | null
   is_active: boolean | null
   created_at: Date | null
   created_by: string | null
@@ -51,6 +79,13 @@ export type EventCountAggregateOutputType = {
   workspace_id: number
   name: number
   description: number
+  start_date: number
+  end_date: number
+  infinite: number
+  geofencing_enabled: number
+  latitude: number
+  longitude: number
+  radius: number
   is_active: number
   created_at: number
   created_by: number
@@ -59,11 +94,30 @@ export type EventCountAggregateOutputType = {
 }
 
 
+export type EventAvgAggregateInputType = {
+  latitude?: true
+  longitude?: true
+  radius?: true
+}
+
+export type EventSumAggregateInputType = {
+  latitude?: true
+  longitude?: true
+  radius?: true
+}
+
 export type EventMinAggregateInputType = {
   id?: true
   workspace_id?: true
   name?: true
   description?: true
+  start_date?: true
+  end_date?: true
+  infinite?: true
+  geofencing_enabled?: true
+  latitude?: true
+  longitude?: true
+  radius?: true
   is_active?: true
   created_at?: true
   created_by?: true
@@ -75,6 +129,13 @@ export type EventMaxAggregateInputType = {
   workspace_id?: true
   name?: true
   description?: true
+  start_date?: true
+  end_date?: true
+  infinite?: true
+  geofencing_enabled?: true
+  latitude?: true
+  longitude?: true
+  radius?: true
   is_active?: true
   created_at?: true
   created_by?: true
@@ -86,6 +147,13 @@ export type EventCountAggregateInputType = {
   workspace_id?: true
   name?: true
   description?: true
+  start_date?: true
+  end_date?: true
+  infinite?: true
+  geofencing_enabled?: true
+  latitude?: true
+  longitude?: true
+  radius?: true
   is_active?: true
   created_at?: true
   created_by?: true
@@ -131,6 +199,18 @@ export type EventAggregateArgs<ExtArgs extends runtime.Types.Extensions.Internal
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: EventAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: EventSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: EventMinAggregateInputType
@@ -161,6 +241,8 @@ export type EventGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   _count?: EventCountAggregateInputType | true
+  _avg?: EventAvgAggregateInputType
+  _sum?: EventSumAggregateInputType
   _min?: EventMinAggregateInputType
   _max?: EventMaxAggregateInputType
 }
@@ -170,11 +252,20 @@ export type EventGroupByOutputType = {
   workspace_id: string
   name: string
   description: string | null
+  start_date: Date
+  end_date: Date | null
+  infinite: boolean
+  geofencing_enabled: boolean
+  latitude: number | null
+  longitude: number | null
+  radius: number | null
   is_active: boolean
   created_at: Date
   created_by: string
   archived_at: Date | null
   _count: EventCountAggregateOutputType | null
+  _avg: EventAvgAggregateOutputType | null
+  _sum: EventSumAggregateOutputType | null
   _min: EventMinAggregateOutputType | null
   _max: EventMaxAggregateOutputType | null
 }
@@ -202,6 +293,13 @@ export type EventWhereInput = {
   workspace_id?: Prisma.StringFilter<"Event"> | string
   name?: Prisma.StringFilter<"Event"> | string
   description?: Prisma.StringNullableFilter<"Event"> | string | null
+  start_date?: Prisma.DateTimeFilter<"Event"> | Date | string
+  end_date?: Prisma.DateTimeNullableFilter<"Event"> | Date | string | null
+  infinite?: Prisma.BoolFilter<"Event"> | boolean
+  geofencing_enabled?: Prisma.BoolFilter<"Event"> | boolean
+  latitude?: Prisma.FloatNullableFilter<"Event"> | number | null
+  longitude?: Prisma.FloatNullableFilter<"Event"> | number | null
+  radius?: Prisma.FloatNullableFilter<"Event"> | number | null
   is_active?: Prisma.BoolFilter<"Event"> | boolean
   created_at?: Prisma.DateTimeFilter<"Event"> | Date | string
   created_by?: Prisma.StringFilter<"Event"> | string
@@ -216,6 +314,13 @@ export type EventOrderByWithRelationInput = {
   workspace_id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  start_date?: Prisma.SortOrder
+  end_date?: Prisma.SortOrderInput | Prisma.SortOrder
+  infinite?: Prisma.SortOrder
+  geofencing_enabled?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  radius?: Prisma.SortOrderInput | Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
@@ -233,6 +338,13 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   workspace_id?: Prisma.StringFilter<"Event"> | string
   name?: Prisma.StringFilter<"Event"> | string
   description?: Prisma.StringNullableFilter<"Event"> | string | null
+  start_date?: Prisma.DateTimeFilter<"Event"> | Date | string
+  end_date?: Prisma.DateTimeNullableFilter<"Event"> | Date | string | null
+  infinite?: Prisma.BoolFilter<"Event"> | boolean
+  geofencing_enabled?: Prisma.BoolFilter<"Event"> | boolean
+  latitude?: Prisma.FloatNullableFilter<"Event"> | number | null
+  longitude?: Prisma.FloatNullableFilter<"Event"> | number | null
+  radius?: Prisma.FloatNullableFilter<"Event"> | number | null
   is_active?: Prisma.BoolFilter<"Event"> | boolean
   created_at?: Prisma.DateTimeFilter<"Event"> | Date | string
   created_by?: Prisma.StringFilter<"Event"> | string
@@ -247,13 +359,22 @@ export type EventOrderByWithAggregationInput = {
   workspace_id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  start_date?: Prisma.SortOrder
+  end_date?: Prisma.SortOrderInput | Prisma.SortOrder
+  infinite?: Prisma.SortOrder
+  geofencing_enabled?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  radius?: Prisma.SortOrderInput | Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
   archived_at?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EventCountOrderByAggregateInput
+  _avg?: Prisma.EventAvgOrderByAggregateInput
   _max?: Prisma.EventMaxOrderByAggregateInput
   _min?: Prisma.EventMinOrderByAggregateInput
+  _sum?: Prisma.EventSumOrderByAggregateInput
 }
 
 export type EventScalarWhereWithAggregatesInput = {
@@ -264,6 +385,13 @@ export type EventScalarWhereWithAggregatesInput = {
   workspace_id?: Prisma.StringWithAggregatesFilter<"Event"> | string
   name?: Prisma.StringWithAggregatesFilter<"Event"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
+  start_date?: Prisma.DateTimeWithAggregatesFilter<"Event"> | Date | string
+  end_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Event"> | Date | string | null
+  infinite?: Prisma.BoolWithAggregatesFilter<"Event"> | boolean
+  geofencing_enabled?: Prisma.BoolWithAggregatesFilter<"Event"> | boolean
+  latitude?: Prisma.FloatNullableWithAggregatesFilter<"Event"> | number | null
+  longitude?: Prisma.FloatNullableWithAggregatesFilter<"Event"> | number | null
+  radius?: Prisma.FloatNullableWithAggregatesFilter<"Event"> | number | null
   is_active?: Prisma.BoolWithAggregatesFilter<"Event"> | boolean
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Event"> | Date | string
   created_by?: Prisma.StringWithAggregatesFilter<"Event"> | string
@@ -274,6 +402,13 @@ export type EventCreateInput = {
   id?: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   archived_at?: Date | string | null
@@ -287,6 +422,13 @@ export type EventUncheckedCreateInput = {
   workspace_id: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   created_by: string
@@ -298,6 +440,13 @@ export type EventUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archived_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -311,6 +460,13 @@ export type EventUncheckedUpdateInput = {
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
@@ -323,6 +479,13 @@ export type EventCreateManyInput = {
   workspace_id: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   created_by: string
@@ -333,6 +496,13 @@ export type EventUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archived_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -343,6 +513,13 @@ export type EventUncheckedUpdateManyInput = {
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
@@ -364,10 +541,23 @@ export type EventCountOrderByAggregateInput = {
   workspace_id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  start_date?: Prisma.SortOrder
+  end_date?: Prisma.SortOrder
+  infinite?: Prisma.SortOrder
+  geofencing_enabled?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
   archived_at?: Prisma.SortOrder
+}
+
+export type EventAvgOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
 }
 
 export type EventMaxOrderByAggregateInput = {
@@ -375,6 +565,13 @@ export type EventMaxOrderByAggregateInput = {
   workspace_id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  start_date?: Prisma.SortOrder
+  end_date?: Prisma.SortOrder
+  infinite?: Prisma.SortOrder
+  geofencing_enabled?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
@@ -386,10 +583,23 @@ export type EventMinOrderByAggregateInput = {
   workspace_id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  start_date?: Prisma.SortOrder
+  end_date?: Prisma.SortOrder
+  infinite?: Prisma.SortOrder
+  geofencing_enabled?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   created_by?: Prisma.SortOrder
   archived_at?: Prisma.SortOrder
+}
+
+export type EventSumOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
 }
 
 export type EventScalarRelationFilter = {
@@ -485,6 +695,14 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type EventCreateNestedOneWithoutLogsInput = {
   create?: Prisma.XOR<Prisma.EventCreateWithoutLogsInput, Prisma.EventUncheckedCreateWithoutLogsInput>
   connectOrCreate?: Prisma.EventCreateOrConnectWithoutLogsInput
@@ -503,6 +721,13 @@ export type EventCreateWithoutWorkspaceInput = {
   id?: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   archived_at?: Date | string | null
@@ -514,6 +739,13 @@ export type EventUncheckedCreateWithoutWorkspaceInput = {
   id?: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   created_by: string
@@ -555,6 +787,13 @@ export type EventScalarWhereInput = {
   workspace_id?: Prisma.StringFilter<"Event"> | string
   name?: Prisma.StringFilter<"Event"> | string
   description?: Prisma.StringNullableFilter<"Event"> | string | null
+  start_date?: Prisma.DateTimeFilter<"Event"> | Date | string
+  end_date?: Prisma.DateTimeNullableFilter<"Event"> | Date | string | null
+  infinite?: Prisma.BoolFilter<"Event"> | boolean
+  geofencing_enabled?: Prisma.BoolFilter<"Event"> | boolean
+  latitude?: Prisma.FloatNullableFilter<"Event"> | number | null
+  longitude?: Prisma.FloatNullableFilter<"Event"> | number | null
+  radius?: Prisma.FloatNullableFilter<"Event"> | number | null
   is_active?: Prisma.BoolFilter<"Event"> | boolean
   created_at?: Prisma.DateTimeFilter<"Event"> | Date | string
   created_by?: Prisma.StringFilter<"Event"> | string
@@ -565,6 +804,13 @@ export type EventCreateWithoutCreatorInput = {
   id?: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   archived_at?: Date | string | null
@@ -577,6 +823,13 @@ export type EventUncheckedCreateWithoutCreatorInput = {
   workspace_id: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   archived_at?: Date | string | null
@@ -613,6 +866,13 @@ export type EventCreateWithoutLogsInput = {
   id?: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   archived_at?: Date | string | null
@@ -625,6 +885,13 @@ export type EventUncheckedCreateWithoutLogsInput = {
   workspace_id: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   created_by: string
@@ -651,6 +918,13 @@ export type EventUpdateWithoutLogsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archived_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -663,6 +937,13 @@ export type EventUncheckedUpdateWithoutLogsInput = {
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
@@ -673,6 +954,13 @@ export type EventCreateManyWorkspaceInput = {
   id?: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   created_by: string
@@ -683,6 +971,13 @@ export type EventUpdateWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archived_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -694,6 +989,13 @@ export type EventUncheckedUpdateWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
@@ -705,6 +1007,13 @@ export type EventUncheckedUpdateManyWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_by?: Prisma.StringFieldUpdateOperationsInput | string
@@ -716,6 +1025,13 @@ export type EventCreateManyCreatorInput = {
   workspace_id: string
   name: string
   description?: string | null
+  start_date: Date | string
+  end_date?: Date | string | null
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: number | null
+  longitude?: number | null
+  radius?: number | null
   is_active?: boolean
   created_at?: Date | string
   archived_at?: Date | string | null
@@ -725,6 +1041,13 @@ export type EventUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archived_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -737,6 +1060,13 @@ export type EventUncheckedUpdateWithoutCreatorInput = {
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archived_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -748,6 +1078,13 @@ export type EventUncheckedUpdateManyWithoutCreatorInput = {
   workspace_id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  infinite?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  geofencing_enabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  radius?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archived_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -789,6 +1126,13 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   workspace_id?: boolean
   name?: boolean
   description?: boolean
+  start_date?: boolean
+  end_date?: boolean
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  radius?: boolean
   is_active?: boolean
   created_at?: boolean
   created_by?: boolean
@@ -804,6 +1148,13 @@ export type EventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   workspace_id?: boolean
   name?: boolean
   description?: boolean
+  start_date?: boolean
+  end_date?: boolean
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  radius?: boolean
   is_active?: boolean
   created_at?: boolean
   created_by?: boolean
@@ -817,6 +1168,13 @@ export type EventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   workspace_id?: boolean
   name?: boolean
   description?: boolean
+  start_date?: boolean
+  end_date?: boolean
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  radius?: boolean
   is_active?: boolean
   created_at?: boolean
   created_by?: boolean
@@ -830,13 +1188,20 @@ export type EventSelectScalar = {
   workspace_id?: boolean
   name?: boolean
   description?: boolean
+  start_date?: boolean
+  end_date?: boolean
+  infinite?: boolean
+  geofencing_enabled?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  radius?: boolean
   is_active?: boolean
   created_at?: boolean
   created_by?: boolean
   archived_at?: boolean
 }
 
-export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspace_id" | "name" | "description" | "is_active" | "created_at" | "created_by" | "archived_at", ExtArgs["result"]["event"]>
+export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspace_id" | "name" | "description" | "start_date" | "end_date" | "infinite" | "geofencing_enabled" | "latitude" | "longitude" | "radius" | "is_active" | "created_at" | "created_by" | "archived_at", ExtArgs["result"]["event"]>
 export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   logs?: boolean | Prisma.Event$logsArgs<ExtArgs>
@@ -864,6 +1229,13 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     workspace_id: string
     name: string
     description: string | null
+    start_date: Date
+    end_date: Date | null
+    infinite: boolean
+    geofencing_enabled: boolean
+    latitude: number | null
+    longitude: number | null
+    radius: number | null
     is_active: boolean
     created_at: Date
     created_by: string
@@ -1298,6 +1670,13 @@ export interface EventFieldRefs {
   readonly workspace_id: Prisma.FieldRef<"Event", 'String'>
   readonly name: Prisma.FieldRef<"Event", 'String'>
   readonly description: Prisma.FieldRef<"Event", 'String'>
+  readonly start_date: Prisma.FieldRef<"Event", 'DateTime'>
+  readonly end_date: Prisma.FieldRef<"Event", 'DateTime'>
+  readonly infinite: Prisma.FieldRef<"Event", 'Boolean'>
+  readonly geofencing_enabled: Prisma.FieldRef<"Event", 'Boolean'>
+  readonly latitude: Prisma.FieldRef<"Event", 'Float'>
+  readonly longitude: Prisma.FieldRef<"Event", 'Float'>
+  readonly radius: Prisma.FieldRef<"Event", 'Float'>
   readonly is_active: Prisma.FieldRef<"Event", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"Event", 'DateTime'>
   readonly created_by: Prisma.FieldRef<"Event", 'String'>

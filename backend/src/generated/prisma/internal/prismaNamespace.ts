@@ -1023,6 +1023,13 @@ export const EventScalarFieldEnum = {
   workspace_id: 'workspace_id',
   name: 'name',
   description: 'description',
+  start_date: 'start_date',
+  end_date: 'end_date',
+  infinite: 'infinite',
+  geofencing_enabled: 'geofencing_enabled',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  radius: 'radius',
   is_active: 'is_active',
   created_at: 'created_at',
   created_by: 'created_by',
@@ -1163,6 +1170,20 @@ export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
