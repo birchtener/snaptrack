@@ -2,9 +2,17 @@ import { type AxiosInstance } from "axios";
 
 interface CreateEventParams {
   api: AxiosInstance;
+  workspaceId: string;
   data: {
     name: string;
     description?: string;
+    startDate: string;
+    endDate?: string;
+    infinite?: boolean;
+    geofencingEnabled?: boolean;
+    radius?: number;
+    longitude?: number;
+    latitude?: number;
   };
 }
 
@@ -19,6 +27,13 @@ interface CreateEventResponse {
     isActive: boolean;
     archivedAt: string | null;
     workspaceId: string;
+    startDate: string | null;
+    endDate: string | null;
+    infinite: boolean | null;
+    geofencingEnabled: boolean | null;
+    radius: number | null;
+    longitude: number | null;
+    latitude: number | null;
     creator: {
       id: string;
       firstName: string;
@@ -30,9 +45,11 @@ interface CreateEventResponse {
 
 export const createEvent = async ({
   api,
+  workspaceId,
   data,
 }: CreateEventParams): Promise<CreateEventResponse> => {
-  const response = await api.post("/events", data);
+  console.log("Creating event with data:", data); // Debug log to check the payload
+  const response = await api.post(`/${workspaceId}/events`, data);
   return response.data;
 };
 
@@ -50,6 +67,13 @@ export interface Event {
   isActive: boolean;
   archivedAt: string | null;
   workspaceId: string;
+  startDate: string;
+  endDate: string | null;
+  infinite: boolean | null;
+  geofencingEnabled: boolean | null;
+  radius: number | null;
+  longitude: number | null;
+  latitude: number | null;
   creator: {
     id: string;
     firstName: string;
@@ -98,6 +122,13 @@ export interface UpdateEventParams {
   data: {
     name?: string;
     description?: string;
+    startDate?: string;
+    endDate?: string | null;
+    infinite?: boolean | null;
+    geofencingEnabled?: boolean | null;
+    radius?: number | null;
+    longitude?: number | null;
+    latitude?: number | null;
   };
 }
 

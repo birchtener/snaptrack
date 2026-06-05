@@ -6,7 +6,6 @@ import {
   getEventById,
   updateEvent,
   deleteEvent,
-  type Event,
 } from "../api/events";
 
 export const useEvents = (workspaceId: string) => {
@@ -34,8 +33,17 @@ export const useCreateEvent = (workspaceId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: { name: string; description?: string }) =>
-      createEvent({ api, data }),
+    mutationFn: (data: {
+      name: string;
+      description?: string;
+      startDate: string;
+      endDate?: string;
+      infinite?: boolean;
+      geofencingEnabled?: boolean;
+      radius?: number;
+      longitude?: number;
+      latitude?: number;
+    }) => createEvent({ api, workspaceId, data }),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["workspaces", workspaceId, "events"],
@@ -52,7 +60,17 @@ export const useUpdateEvent = () => {
     mutationFn: (variables: {
       workspaceId: string;
       eventId: string;
-      data: { name?: string; description?: string };
+      data: {
+        name?: string;
+        description?: string;
+        start_date?: string;
+        end_date?: string;
+        infinite?: boolean;
+        geofencingEnabled?: boolean;
+        radius?: number;
+        longitude?: number;
+        latitude?: number;
+      };
     }) =>
       updateEvent({
         api,

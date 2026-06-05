@@ -85,7 +85,7 @@ export default function EventPage() {
               className="pr-10"
             />
           </div>
-          <Button>
+          <Button onClick={() => navigate(`/app/${workspaceId}/event/create`)}>
             <CalendarPlus className="w-4 h-4 mr-2" />
             Create Event
           </Button>
@@ -112,11 +112,7 @@ export default function EventPage() {
           {filteredEvents?.map((event) => (
             <Card
               key={event.id}
-              onClick={() =>
-                navigate(
-                  `/dashboard/workspaces/${workspaceId}/events/${event.id}`,
-                )
-              }
+              onClick={() => navigate(`/app/${workspaceId}/event/${event.id}`)}
               className="group cursor-pointer hover:bg-accent/10 border-border bg-card shadow transition-all hover:-translate-y-0.5 active:translate-y-0"
             >
               <CardHeader>
