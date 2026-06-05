@@ -6,13 +6,30 @@ export class EventController {
   static createEvent = catchAsync(async (req: Request, res: Response) => {
     const workspaceId = req.workspace!.id;
     const userId = req.user!.id;
-    const { name, description } = req.body;
+    const {
+      name,
+      description,
+      startDate,
+      endDate,
+      infinite,
+      geofencingEnabled,
+      radius,
+      longitude,
+      latitude,
+    } = req.body;
 
     const event = await EventService.createEvent(
       workspaceId,
       userId,
       name,
+      startDate,
       description,
+      endDate,
+      infinite,
+      geofencingEnabled,
+      radius,
+      longitude,
+      latitude,
     );
 
     return res.status(201).json({
@@ -48,7 +65,17 @@ export class EventController {
     const workspaceId = req.workspace!.id;
     const userId = req.user!.id;
     const eventId = req.params.event_id as string;
-    const { name, description } = req.body;
+    const {
+      name,
+      description,
+      startDate,
+      endDate,
+      infinite,
+      geofencingEnabled,
+      radius,
+      longitude,
+      latitude,
+    } = req.body;
 
     const event = await EventService.updateEvent(
       workspaceId,
@@ -56,6 +83,13 @@ export class EventController {
       eventId,
       name,
       description,
+      startDate,
+      endDate,
+      infinite,
+      geofencingEnabled,
+      radius,
+      longitude,
+      latitude,
     );
 
     return res.status(200).json({

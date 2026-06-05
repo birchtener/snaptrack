@@ -7,7 +7,14 @@ export class EventService {
     workspaceId: string,
     userId: string,
     name: string,
+    startDate: string | Date,
     description?: string,
+    endDate?: string | Date,
+    infinite?: boolean,
+    geofencingEnabled?: boolean,
+    radius?: number,
+    longitude?: number,
+    latitude?: number,
   ) {
     try {
       const newEvent = await prisma.event.create({
@@ -16,6 +23,13 @@ export class EventService {
           name,
           description,
           created_by: userId,
+          start_date: startDate,
+          end_date: endDate,
+          infinite,
+          geofencing_enabled: geofencingEnabled,
+          radius,
+          longitude,
+          latitude,
         },
         include: {
           creator: {
@@ -48,6 +62,13 @@ export class EventService {
         isActive: newEvent.is_active,
         archivedAt: newEvent.archived_at,
         workspaceId: newEvent.workspace_id,
+        startData: newEvent.start_date,
+        endDate: newEvent.end_date,
+        infinite: newEvent.infinite,
+        geofencingEnabled: newEvent.geofencing_enabled,
+        radius: newEvent.radius,
+        longitude: newEvent.longitude,
+        latitude: newEvent.latitude,
         creator: {
           id: newEvent.creator?.id,
           firstName: newEvent.creator?.first_name,
@@ -97,6 +118,13 @@ export class EventService {
         isActive: event.is_active,
         archivedAt: event.archived_at,
         workspaceId: event.workspace_id,
+        startDate: event.start_date,
+        endDate: event.end_date,
+        infinite: event.infinite,
+        geofencingEnabled: event.geofencing_enabled,
+        radius: event.radius,
+        longitude: event.longitude,
+        latitude: event.latitude,
         creator: {
           id: event.creator?.id,
           firstName: event.creator?.first_name,
@@ -150,6 +178,13 @@ export class EventService {
         isActive: event.is_active,
         archivedAt: event.archived_at,
         workspaceId: event.workspace_id,
+        startDate: event.start_date,
+        endDate: event.end_date,
+        infinite: event.infinite,
+        geofencingEnabled: event.geofencing_enabled,
+        radius: event.radius,
+        longitude: event.longitude,
+        latitude: event.latitude,
         creator: {
           id: event.creator?.id,
           firstName: event.creator?.first_name,
@@ -178,6 +213,13 @@ export class EventService {
     eventId: string,
     name?: string,
     description?: string,
+    startDate?: string,
+    endDate?: string,
+    infinite?: boolean,
+    geofencingEnabled?: boolean,
+    radius?: number,
+    longitude?: number,
+    latitude?: number,
   ) {
     try {
       const changesPayload: Record<string, any> = {};
@@ -193,6 +235,13 @@ export class EventService {
         data: {
           name,
           description,
+          start_date: startDate,
+          end_date: endDate,
+          infinite,
+          geofencing_enabled: geofencingEnabled,
+          radius,
+          longitude,
+          latitude,
         },
         include: {
           creator: {
@@ -227,6 +276,13 @@ export class EventService {
         isActive: updatedEvent.is_active,
         archivedAt: updatedEvent.archived_at,
         workspaceId: updatedEvent.workspace_id,
+        startDate: updatedEvent.start_date,
+        endDate: updatedEvent.end_date,
+        infinite: updatedEvent.infinite,
+        geofencingEnabled: updatedEvent.geofencing_enabled,
+        radius: updatedEvent.radius,
+        longitude: updatedEvent.longitude,
+        latitude: updatedEvent.latitude,
         creator: {
           id: updatedEvent.creator?.id,
           firstName: updatedEvent.creator?.first_name,
@@ -259,7 +315,7 @@ export class EventService {
     eventId: string,
   ) {
     try {
-      const deletedEvent = await prisma.event.update({
+      await prisma.event.update({
         where: {
           id: eventId,
           workspace_id: workspaceId,
