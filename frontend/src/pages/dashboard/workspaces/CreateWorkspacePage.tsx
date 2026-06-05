@@ -23,7 +23,7 @@ import {
 import { useCreateWorkspace } from "./hooks/useWorkspaceQueries";
 import { FieldDefinitionsManager } from "./components/FieldDefinitionsManager";
 import { useNavigate } from "react-router-dom";
-
+import { useIsMobile } from "@/hooks/use-mobile";
 const CreateWorkspacePage = () => {
   const { mutate, isPending } = useCreateWorkspace();
   const navigate = useNavigate();
@@ -35,6 +35,8 @@ const CreateWorkspacePage = () => {
     },
     mode: "onChange",
   });
+
+  const isMobile = useIsMobile();
 
   const {
     register,
@@ -57,6 +59,58 @@ const CreateWorkspacePage = () => {
       },
     );
   };
+
+  if (isMobile) {
+    return (
+      <div className="w-full h-full bg-background text-foreground">
+        <h1 className="text-2xl font-medium tracking-normal">
+          Create Workspace
+        </h1>
+        <p className="mt-2 text-muted-foreground mb-4">
+          Workspaces group student rosters and can include multiple custom
+          fields for extra student metadata.
+        </p>
+        <FormProvider {...methods}>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <Field>
+              <FieldLabel>Workspace Name</FieldLabel>
+              <FieldDescription>
+                Use a clear name for the workspace your team will recognize.
+              </FieldDescription>
+              <FieldGroup>
+                <Input
+                  placeholder="Enter workspace name"
+                  {...register("name")}
+                  className="max-w-md"
+                  disabled={isPending}
+                />
+              </FieldGroup>
+              <FieldError>{errors.name?.message}</FieldError>
+            </Field>
+
+            <FieldDefinitionsManager />
+
+            <div className="flex justify-end gap-3">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => navigate("/app/workspaces")}
+                disabled={isPending}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                disabled={isPending || !methods.formState.isValid}
+              >
+                {isPending ? "Creating..." : "Create Workspace"}
+              </Button>
+            </div>
+          </form>
+        </FormProvider>
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-full justify-center px-4 py-6">
